@@ -22,8 +22,14 @@
                 emp.inss = tbInss.Text
                 emp.fecha_contratacion = Date.Today
                 context.empleados.Add(emp)
-                context.SaveChanges()
-                UpdateDataGrid(context, Me.DataGridView1)
+                Try
+                    context.SaveChanges()
+                    MessageBox.Show("Guardado exitoso")
+                    UpdateDataGrid(context, Me.DataGridView1)
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+               
             End Using
         End Sub
     End Class
