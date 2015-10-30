@@ -1,3 +1,5 @@
-﻿Public Class RegistrarPermisos
+﻿Namespace Vistas
+    Public Class RegistrarPermisos
 
-End Class
+    End Class
+End Namespace

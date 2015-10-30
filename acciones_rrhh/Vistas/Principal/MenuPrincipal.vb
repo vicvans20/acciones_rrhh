@@ -1,4 +1,6 @@
 ﻿
-Public Class MenuPrincipal
+Namespace Vistas
+    Public Class MenuPrincipal
 
-End Class
+    End Class
+End Namespace

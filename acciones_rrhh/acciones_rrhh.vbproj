@@ -112,6 +112,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Vistas\Permisos\RegistrarPermisos.resx">
+      <DependentUpon>RegistrarPermisos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Principal\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
     </EmbeddedResource>

@@ -1,3 +1,6 @@
-﻿Public Class Form1
+﻿Namespace Vistas
+    Public Class AdministrarVacaciones
 
-End Class
+    End Class
+End Namespace
+
