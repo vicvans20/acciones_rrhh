@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="rrhhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="empleados">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="primer_nombre" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="apellidos" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="10" />
+    <Property Name="fecha_contratacion" Type="date" Nullable="false" />
+    <Property Name="vacaciones_acumuladas" Type="float" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="cargo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="departamento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="salario" Type="float" Nullable="false" />
+    <Property Name="inss" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entradas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_emp" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="hora_marcado" Type="time" Precision="7" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="liquidaciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_emp" Type="int" Nullable="false" />
+    <Property Name="fecha_egreso" Type="date" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="total_aguinaldo" Type="float" Nullable="false" />
+    <Property Name="total_vacaciones" Type="float" Nullable="false" />
+    <Property Name="total_indemnizacion" Type="float" Nullable="false" />
+    <Property Name="total_salarios_restantes" Type="float" Nullable="false" />
+    <Property Name="deduccion_inss" Type="float" Nullable="false" />
+    <Property Name="deduccion_prestamo_personales" Type="float" Nullable="false" />
+    <Property Name="deduccion_otros" Type="float" Nullable="false" />
+    <Property Name="descripcion_otros" Type="text" />
+    <Property Name="pago_total" Type="float" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="permisos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_emp" Type="int" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="fecha_inicio" Type="date" Nullable="false" />
+    <Property Name="fecha_fin" Type="date" Nullable="false" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+    <Property Name="categoria" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="salidas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_emp" Type="int" Nullable="false" />
+    <Property Name="id_entrada" Type="int" Nullable="false" />
+    <Property Name="hora_marcado" Type="time" Precision="7" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="vacaciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_emp" Type="int" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="fecha_inicio" Type="date" Nullable="false" />
+    <Property Name="fecha_fin" Type="date" Nullable="false" />
+    <Property Name="aceptado" Type="bit" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__entradas__id_emp__1CF15040">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+    <End Role="entradas" Type="Self.entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="entradas">
+        <PropertyRef Name="id_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__liquidaci__id_em__24927208">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+    <End Role="liquidaciones" Type="Self.liquidaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="liquidaciones">
+        <PropertyRef Name="id_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__permisos__id_emp__1920BF5C">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+    <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="id_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__salidas__id_emp__1FCDBCEB">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+    <End Role="salidas" Type="Self.salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="salidas">
+        <PropertyRef Name="id_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__salidas__id_entr__20C1E124">
+    <End Role="entradas" Type="Self.entradas" Multiplicity="1" />
+    <End Role="salidas" Type="Self.salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entradas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="salidas">
+        <PropertyRef Name="id_entrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vacacione__id_em__15502E78">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+    <End Role="vacaciones" Type="Self.vacaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vacaciones">
+        <PropertyRef Name="id_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="rrhhModelStoreContainer">
+    <EntitySet Name="empleados" EntityType="Self.empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entradas" EntityType="Self.entradas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="liquidaciones" EntityType="Self.liquidaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permisos" EntityType="Self.permisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salidas" EntityType="Self.salidas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vacaciones" EntityType="Self.vacaciones" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__entradas__id_emp__1CF15040" Association="Self.FK__entradas__id_emp__1CF15040">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="entradas" EntitySet="entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__liquidaci__id_em__24927208" Association="Self.FK__liquidaci__id_em__24927208">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="liquidaciones" EntitySet="liquidaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__permisos__id_emp__1920BF5C" Association="Self.FK__permisos__id_emp__1920BF5C">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__salidas__id_emp__1FCDBCEB" Association="Self.FK__salidas__id_emp__1FCDBCEB">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="salidas" EntitySet="salidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__salidas__id_entr__20C1E124" Association="Self.FK__salidas__id_entr__20C1E124">
+      <End Role="entradas" EntitySet="entradas" />
+      <End Role="salidas" EntitySet="salidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vacacione__id_em__15502E78" Association="Self.FK__vacacione__id_em__15502E78">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="vacaciones" EntitySet="vacaciones" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

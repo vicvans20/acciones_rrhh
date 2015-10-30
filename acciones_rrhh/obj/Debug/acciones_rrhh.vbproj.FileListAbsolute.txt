@@ -12,3 +12,9 @@ C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_r
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.RegistrarPermisos.resources
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.AdministrarVacaciones.resources
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.Solicitar_Vacaciones.resources
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.dll
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.xml
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.vbprojResolveAssemblyReference.cache
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.RegistrarEmpleado.resources

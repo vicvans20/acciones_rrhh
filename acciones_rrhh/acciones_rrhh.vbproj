@@ -133,6 +133,12 @@
     <Compile Include="Vistas\Principal\MenuPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\Temp Empleado\RegistrarEmpleado.Designer.vb">
+      <DependentUpon>RegistrarEmpleado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Temp Empleado\RegistrarEmpleado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\Vacaciones\AdministrarVacaciones.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Principal\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Temp Empleado\RegistrarEmpleado.resx">
+      <DependentUpon>RegistrarEmpleado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vacaciones\AdministrarVacaciones.resx">
       <DependentUpon>AdministrarVacaciones.vb</DependentUpon>
