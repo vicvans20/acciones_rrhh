@@ -79,14 +79,12 @@
     <Compile Include="Vistas\Principal\MenuPrincipal.Designer.vb">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Principal\MenuPrincipal.vb">
+    <Compile Include="Vistas\Principal\MenuPrincipal.vb" />
+    <Compile Include="Vistas\Vacaciones\AdministrarVacaciones.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Vacaciones\RegistrarVacaciones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\Vacaciones\RegistrarVacaciones.Designer.vb">
-      <DependentUpon>RegistrarVacaciones.vb</DependentUpon>
+    <Compile Include="Vistas\Vacaciones\AdministrarVacaciones.Designer.vb">
+      <DependentUpon>AdministrarVacaciones.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -104,16 +102,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Vistas\Vacaciones\SolicitarVacaciones.Designer.vb">
+      <DependentUpon>SolicitarVacaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Vacaciones\SolicitarVacaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Vistas\Vacaciones\RegistrarVacaciones.resx">
-      <DependentUpon>RegistrarVacaciones.vb</DependentUpon>
+    <EmbeddedResource Include="Vistas\Principal\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Vacaciones\AdministrarVacaciones.resx">
+      <DependentUpon>AdministrarVacaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Vacaciones\SolicitarVacaciones.resx">
+      <DependentUpon>SolicitarVacaciones.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controladores\" />
-    <Folder Include="Modelos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\database_gen.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

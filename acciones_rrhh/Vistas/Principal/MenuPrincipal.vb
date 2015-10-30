@@ -1,3 +1,6 @@
-﻿Public Class MenuPrincipal
+﻿
+Namespace acciones_rrhh.vistas
+    Public Class MenuPrincipal
 
-End Class
+    End Class
+End Namespace
