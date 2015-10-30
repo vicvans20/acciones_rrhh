@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2fcd4ec386be46de8c163f9692d2ad11" Name="Diagram1">
+        <EntityTypeShape EntityType="rrhhModel.empleado" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rrhhModel.entrada" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="rrhhModel.liquidacione" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="rrhhModel.permiso" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rrhhModel.salida" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="rrhhModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rrhhModel.vacacione" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="rrhhModel.FK__entradas__id_emp__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="rrhhModel.FK__liquidaci__id_em__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="rrhhModel.FK__permisos__id_emp__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="rrhhModel.FK__salidas__id_emp__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="rrhhModel.FK__vacacione__id_em__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="rrhhModel.FK__salidas__id_entr__20C1E124" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
