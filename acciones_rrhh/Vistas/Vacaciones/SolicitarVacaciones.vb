@@ -1,23 +1,23 @@
 ﻿Namespace Vistas
     Public Class Solicitar_Vacaciones
         Private Function calcular_saldo_vacaciones(eid As Integer)
-            Using context As New rrhhEntities
-                Dim emp As New empleado
-                emp = context.empleados.Find(eid)
+            Using context As New DB_Recursos_HumanosEntities
+                Dim emp As New Empleado
+                emp = context.Empleadoes.Find(eid)
                 'emp = From e In context.empleados Select e Where e.id = 1
-                Dim vList = (From v In context.vacaciones Select v Where v.id_emp = eid).ToList
+                Dim vList = (From v In context.vacaciones Select v Where v.Id_Empleado = eid).ToList
                 Dim vDebitado As Double = 0
                 For Each v In vList
                     vDebitado = vDebitado + DateDiff(DateInterval.Day, v.fecha_inicio, v.fecha_fin)
                 Next
-                Dim vAcumulado = DateDiff(DateInterval.Month, emp.fecha_contratacion, Date.Today) * 2.5
+                Dim vAcumulado = DateDiff(DateInterval.Month, emp.FechaNacimiento, Date.Today) * 2.5
                 Dim saldo = vAcumulado - vDebitado
                 Return saldo
             End Using
         End Function
         Private Sub Solicitar_Vacaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Using context As New rrhhEntities
-                Dim empList = (From emp In context.empleados Select emp.primer_nombre, emp.apellidos, emp.id).ToList
+            Using context As New DB_Recursos_HumanosEntities
+                Dim empList = (From emp In context.Empleadoes Select emp.Nombre, emp.Apellido, emp.Id_Empleado).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "primer_nombre"
                 cbEmpleados.ValueMember = "id"
@@ -25,11 +25,11 @@
         End Sub
 
         Private Sub bSend_Click(sender As Object, e As EventArgs) Handles bSend.Click
-            Using context As New rrhhEntities
+            Using context As New DB_Recursos_HumanosEntities
                 Dim vac As New vacacione
                 vac.fecha_inicio = dateInicio.Value
                 vac.fecha_fin = dateFin.Value
-                vac.id_emp = cbEmpleados.SelectedValue
+                vac.Id_Empleado = cbEmpleados.SelectedValue
                 vac.fecha_creacion = Today
                 context.vacaciones.Add(vac)
                 Try

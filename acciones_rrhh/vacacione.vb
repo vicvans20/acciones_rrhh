@@ -12,13 +12,13 @@ Imports System.Collections.Generic
 
 Partial Public Class vacacione
     Public Property id As Integer
-    Public Property id_emp As Integer
+    Public Property Id_Empleado As Integer
     Public Property fecha_creacion As Date
     Public Property fecha_inicio As Date
     Public Property fecha_fin As Date
     Public Property aceptado As Boolean
     Public Property timestamp As Byte()
 
-    Public Overridable Property empleado As empleado
+    Public Overridable Property Empleado As Empleado
 
 End Class

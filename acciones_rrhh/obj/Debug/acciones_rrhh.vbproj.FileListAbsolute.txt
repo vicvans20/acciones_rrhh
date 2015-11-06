@@ -1,20 +1,2 @@
 C:\Users\Vicvans\Documents\Visual Studio 2013\Projects\acciones_rrhh\acciones_rrhh\bin\Debug\acciones_rrhh.exe.config
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\acciones_rrhh.exe.config
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.MenuPrincipal.resources
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Resources.resources
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.vbproj.GenerateResource.Cache
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\acciones_rrhh.exe
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\acciones_rrhh.pdb
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\acciones_rrhh.xml
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.exe
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.xml
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.pdb
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.RegistrarPermisos.resources
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.AdministrarVacaciones.resources
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.Solicitar_Vacaciones.resources
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.dll
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.xml
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.vbprojResolveAssemblyReference.cache
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.RegistrarEmpleado.resources

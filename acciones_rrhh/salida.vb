@@ -12,12 +12,12 @@ Imports System.Collections.Generic
 
 Partial Public Class salida
     Public Property id As Integer
-    Public Property id_emp As Integer
+    Public Property Id_Empleado As Integer
     Public Property id_entrada As Integer
     Public Property hora_marcado As System.TimeSpan
     Public Property timestamp As Byte()
 
-    Public Overridable Property empleado As empleado
+    Public Overridable Property Empleado As Empleado
     Public Overridable Property entrada As entrada
 
 End Class

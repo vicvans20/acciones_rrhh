@@ -10,25 +10,39 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class empleado
-    Public Property id As Integer
-    Public Property primer_nombre As String
-    Public Property apellidos As String
-    Public Property cedula As String
-    Public Property telefono As String
-    Public Property fecha_contratacion As Date
-    Public Property vacaciones_acumuladas As Double
-    Public Property fecha_creacion As Date
-    Public Property cargo As String
-    Public Property departamento As String
-    Public Property salario As Double
-    Public Property inss As String
-    Public Property timestamp As Byte()
+Partial Public Class Empleado
+    Public Property Id_Empleado As Integer
+    Public Property Nombre As String
+    Public Property Apellido As String
+    Public Property Cedula As String
+    Public Property Telefono As String
+    Public Property FechaNacimiento As Date
+    Public Property Estado_Civil As Boolean
+    Public Property Domicilio As String
+    Public Property Estado As Boolean
+    Public Property Id_Profesion As Integer
+    Public Property Id_Info_Academica As Integer
+    Public Property Id_Antecendete As Integer
+    Public Property Id_area As Integer
+    Public Property Id_Cargo As Integer
 
+    Public Overridable Property Antecedente As Antecedente
+    Public Overridable Property area As area
+    Public Overridable Property Cargo As Cargo
+    Public Overridable Property Contratoes As ICollection(Of Contrato) = New HashSet(Of Contrato)
     Public Overridable Property entradas As ICollection(Of entrada) = New HashSet(Of entrada)
     Public Overridable Property liquidaciones As ICollection(Of liquidacione) = New HashSet(Of liquidacione)
     Public Overridable Property permisos As ICollection(Of permiso) = New HashSet(Of permiso)
     Public Overridable Property salidas As ICollection(Of salida) = New HashSet(Of salida)
+    Public Overridable Property TB_Adm_Usuario As ICollection(Of TB_Adm_Usuario) = New HashSet(Of TB_Adm_Usuario)
+    Public Overridable Property TB_MOVIMIENTO_DEVENGADO As ICollection(Of TB_MOVIMIENTO_DEVENGADO) = New HashSet(Of TB_MOVIMIENTO_DEVENGADO)
+    Public Overridable Property TB_MOVIMIENTO_DEDUCCION As ICollection(Of TB_MOVIMIENTO_DEDUCCION) = New HashSet(Of TB_MOVIMIENTO_DEDUCCION)
     Public Overridable Property vacaciones As ICollection(Of vacacione) = New HashSet(Of vacacione)
+    Public Overridable Property Informacion_Academica As Informacion_Academica
+    Public Overridable Property Profesione As Profesione
+    Public Overridable Property Resultados As ICollection(Of Resultado) = New HashSet(Of Resultado)
+    Public Overridable Property TB_PRESTAMO As ICollection(Of TB_PRESTAMO) = New HashSet(Of TB_PRESTAMO)
+    Public Overridable Property TB_RECIBO_CUOTA As ICollection(Of TB_RECIBO_CUOTA) = New HashSet(Of TB_RECIBO_CUOTA)
+    Public Overridable Property capacitacions As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
 
 End Class
