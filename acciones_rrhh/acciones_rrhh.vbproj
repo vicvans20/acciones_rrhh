@@ -357,6 +357,10 @@
     <Folder Include="Controladores\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imgs\icon-booking.png" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\icon-booking.png" />
+    <None Include="Resources\icon.png" />
     <Content Include="Scripts\database_gen.sql" />
     <Content Include="Scripts\insert_catalogs.sql" />
     <Content Include="Scripts\ScriptActualizadoRRHHVersion1.sql" />

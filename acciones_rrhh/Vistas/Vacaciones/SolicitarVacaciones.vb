@@ -10,17 +10,24 @@
                 For Each v In vList
                     vDebitado = vDebitado + DateDiff(DateInterval.Day, v.fecha_inicio, v.fecha_fin)
                 Next
-                Dim vAcumulado = DateDiff(DateInterval.Month, emp.FechaNacimiento, Date.Today) * 2.5
-                Dim saldo = vAcumulado - vDebitado
-                Return saldo
+                Try
+                    Dim vAcumulado = DateDiff(DateInterval.Month, CType(emp.Contratoes.Last.Fecha_Contratacion, Date), Date.Today) * 2.5
+                    Dim saldo = vAcumulado - vDebitado
+                    Return saldo
+                Catch ex As System.InvalidOperationException
+                    MessageBox.Show("Hubo un error, porfavor verifique que el empleado seleccionado tiene un contrato asociado.")
+                Catch ex As Exception
+                    MessageBox.Show("Hubo un error, porfavor verifique que todos los datos esten en orden e intente de nuevo.")
+                End Try
+                Return 0
             End Using
         End Function
         Private Sub Solicitar_Vacaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Using context As New DB_Recursos_HumanosEntities
                 Dim empList = (From emp In context.Empleadoes Select emp.Nombre, emp.Apellido, emp.Id_Empleado).ToList
                 cbEmpleados.DataSource = empList
-                cbEmpleados.DisplayMember = "primer_nombre"
-                cbEmpleados.ValueMember = "id"
+                cbEmpleados.DisplayMember = "Nombre"
+                cbEmpleados.ValueMember = "Id_Empleado"
             End Using
         End Sub
 

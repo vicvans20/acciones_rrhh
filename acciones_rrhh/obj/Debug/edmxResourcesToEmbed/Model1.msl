@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_Recursos_HumanosModelStoreContainer" CdmEntityContainer="DB_Recursos_HumanosEntities">
+    <EntitySetMapping Name="Antecedentes">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Antecedente">
+        <MappingFragment StoreEntitySet="Antecedentes">
+          <ScalarProperty Name="Id_Antecedente" ColumnName="Id_Antecedente" />
+          <ScalarProperty Name="Antecedente1" ColumnName="Antecedente" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Candidatoes">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Candidato">
+        <MappingFragment StoreEntitySet="Candidato">
+          <ScalarProperty Name="ID_Candidato" ColumnName="ID_Candidato" />
+          <ScalarProperty Name="tb_Candidatos_nombres" ColumnName="tb_Candidatos_nombres" />
+          <ScalarProperty Name="tb_Candidatos_apellidos" ColumnName="tb_Candidatos_apellidos" />
+          <ScalarProperty Name="tb_Candidatos_genero" ColumnName="tb_Candidatos_genero" />
+          <ScalarProperty Name="tb_Candidatos_cedula" ColumnName="tb_Candidatos_cedula" />
+          <ScalarProperty Name="tb_Candidatos_fecNac" ColumnName="tb_Candidatos_fecNac" />
+          <ScalarProperty Name="tb_Candidatos_estadoCivil" ColumnName="tb_Candidatos_estadoCivil" />
+          <ScalarProperty Name="tb_Candidatos_domicilio" ColumnName="tb_Candidatos_domicilio" />
+          <ScalarProperty Name="tb_Candidatos_ciudad" ColumnName="tb_Candidatos_ciudad" />
+          <ScalarProperty Name="tb_Candidatos_departamento" ColumnName="tb_Candidatos_departamento" />
+          <ScalarProperty Name="tb_Candidatos_pais" ColumnName="tb_Candidatos_pais" />
+          <ScalarProperty Name="tb_Candidatos_telefonoConv" ColumnName="tb_Candidatos_telefonoConv" />
+          <ScalarProperty Name="tb_Candidatos_telefonomovil" ColumnName="tb_Candidatos_telefonomovil" />
+          <ScalarProperty Name="tb_Candidatos_correoElectronico" ColumnName="tb_Candidatos_correoElectronico" />
+          <ScalarProperty Name="tb_Candidatos_especialidad" ColumnName="tb_Candidatos_especialidad" />
+          <ScalarProperty Name="tb_Candidatos_idioma" ColumnName="tb_Candidatos_idioma" />
+          <ScalarProperty Name="tb_Candidatos_nivelAcademico" ColumnName="tb_Candidatos_nivelAcademico" />
+          <ScalarProperty Name="tb_Candidatos_notaTestPsicologico" ColumnName="tb_Candidatos_notaTestPsicologico" />
+          <ScalarProperty Name="tb_Candidatos_notaTestPsicometrico" ColumnName="tb_Candidatos_notaTestPsicometrico" />
+          <ScalarProperty Name="tb_Candidatos_notaTestTecnico" ColumnName="tb_Candidatos_notaTestTecnico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="capacitacions">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.capacitacion">
+        <MappingFragment StoreEntitySet="capacitacion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_plan" ColumnName="ID_plan" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+          <ScalarProperty Name="ID_centro_cap" ColumnName="ID_centro_cap" />
+          <ScalarProperty Name="ID_encuesta" ColumnName="ID_encuesta" />
+          <ScalarProperty Name="ID_area" ColumnName="ID_area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargoes">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
+          <ScalarProperty Name="Nombre_Cargo" ColumnName="Nombre_Cargo" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id_Oficina" ColumnName="Id_Oficina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="centro_capacit">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.centro_capacit">
+        <MappingFragment StoreEntitySet="centro_capacit">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contratoes">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Contrato">
+        <MappingFragment StoreEntitySet="Contrato">
+          <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
+          <ScalarProperty Name="Fecha_Contratacion" ColumnName="Fecha_Contratacion" />
+          <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Id_Documento" ColumnName="Id_Documento" />
+          <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Debilidades">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Debilidade">
+        <MappingFragment StoreEntitySet="Debilidades">
+          <ScalarProperty Name="Id_Debilidades" ColumnName="Id_Debilidades" />
+          <ScalarProperty Name="Nombre_Debilidades" ColumnName="Nombre_Debilidades" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetEspecialidadesCands">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetEspecialidadesCand">
+        <MappingFragment StoreEntitySet="DetEspecialidadesCand">
+          <ScalarProperty Name="Id_DetalleEspecialistaCandidato" ColumnName="Id_DetalleEspecialistaCandidato" />
+          <ScalarProperty Name="tb_DetEspeCan_titulo" ColumnName="tb_DetEspeCan_titulo" />
+          <ScalarProperty Name="tb_DetEspeCan_aniosExpe" ColumnName="tb_DetEspeCan_aniosExpe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetEspecialidadesReqs">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetEspecialidadesReq">
+        <MappingFragment StoreEntitySet="DetEspecialidadesReq">
+          <ScalarProperty Name="ID_EspecialidadesReq" ColumnName="ID_EspecialidadesReq" />
+          <ScalarProperty Name="tb_DetEspecialidadesReq_titulo" ColumnName="tb_DetEspecialidadesReq_titulo" />
+          <ScalarProperty Name="tb_DetespecialidadesReq_aniosExp" ColumnName="tb_DetespecialidadesReq_aniosExp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetIdiomasCands">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetIdiomasCand">
+        <MappingFragment StoreEntitySet="DetIdiomasCand">
+          <ScalarProperty Name="ID_DetCandidatosIdioma" ColumnName="ID_DetCandidatosIdioma" />
+          <ScalarProperty Name="tb_DetIdiCan_idioma" ColumnName="tb_DetIdiCan_idioma" />
+          <ScalarProperty Name="tb_DetIdiCan_dominio" ColumnName="tb_DetIdiCan_dominio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetIdiomasReqs">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetIdiomasReq">
+        <MappingFragment StoreEntitySet="DetIdiomasReq">
+          <ScalarProperty Name="ID_IdiomaReq" ColumnName="ID_IdiomaReq" />
+          <ScalarProperty Name="tb_DetIdiomasReq_titulo" ColumnName="tb_DetIdiomasReq_titulo" />
+          <ScalarProperty Name="tb_DetIdiomasReq_dominio" ColumnName="tb_DetIdiomasReq_dominio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documentacions">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Documentacion">
+        <MappingFragment StoreEntitySet="Documentacion">
+          <ScalarProperty Name="Id_Documento" ColumnName="Id_Documento" />
+          <ScalarProperty Name="Tipo_Documento" ColumnName="Tipo_Documento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleadoes">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Estado_Civil" ColumnName="Estado_Civil" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Id_Profesion" ColumnName="Id_Profesion" />
+          <ScalarProperty Name="Id_Info_Academica" ColumnName="Id_Info_Academica" />
+          <ScalarProperty Name="Id_Antecendete" ColumnName="Id_Antecendete" />
+          <ScalarProperty Name="Id_area" ColumnName="Id_area" />
+          <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="encuestas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.encuesta">
+        <MappingFragment StoreEntitySet="encuesta">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_pregunta" ColumnName="ID_pregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entradas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.entrada">
+        <MappingFragment StoreEntitySet="entradas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora_marcado" ColumnName="hora_marcado" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidades">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Especialidade">
+        <MappingFragment StoreEntitySet="Especialidades">
+          <ScalarProperty Name="Id_Especialidad" ColumnName="Id_Especialidad" />
+          <ScalarProperty Name="DetalleEspecialidad" ColumnName="DetalleEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EspecialidadesReqs">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.EspecialidadesReq">
+        <MappingFragment StoreEntitySet="EspecialidadesReq">
+          <ScalarProperty Name="tb_EspecialidadesReq_id" ColumnName="tb_EspecialidadesReq_id" />
+          <ScalarProperty Name="ID_DetalleEspecReq" ColumnName="ID_DetalleEspecReq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fortalezas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Fortaleza">
+        <MappingFragment StoreEntitySet="Fortalezas">
+          <ScalarProperty Name="Id_Fortalezas" ColumnName="Id_Fortalezas" />
+          <ScalarProperty Name="Nombre_Fortalezas" ColumnName="Nombre_Fortalezas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Idiomas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Idioma">
+        <MappingFragment StoreEntitySet="Idiomas">
+          <ScalarProperty Name="tb_idiomas_id" ColumnName="tb_idiomas_id" />
+          <ScalarProperty Name="DetalleIdiomaCandidato" ColumnName="DetalleIdiomaCandidato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdiomasRequeridos">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.IdiomasRequerido">
+        <MappingFragment StoreEntitySet="IdiomasRequeridos">
+          <ScalarProperty Name="tb_idiomasReq_id" ColumnName="tb_idiomasReq_id" />
+          <ScalarProperty Name="ID_DetalleIdiomaReq" ColumnName="ID_DetalleIdiomaReq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Indicadores">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Indicadore">
+        <MappingFragment StoreEntitySet="Indicadores">
+          <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
+          <ScalarProperty Name="Nombre_Indicador" ColumnName="Nombre_Indicador" />
+          <ScalarProperty Name="Id_Nivel_Evaluativo" ColumnName="Id_Nivel_Evaluativo" />
+          <ScalarProperty Name="Id_Fortalezas" ColumnName="Id_Fortalezas" />
+          <ScalarProperty Name="Id_Debilidades" ColumnName="Id_Debilidades" />
+          <ScalarProperty Name="Fecha_Evaluacion" ColumnName="Fecha_Evaluacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Informacion_Academica">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Informacion_Academica">
+        <MappingFragment StoreEntitySet="Informacion_Academica">
+          <ScalarProperty Name="Id_hist_academico" ColumnName="Id_hist_academico" />
+          <ScalarProperty Name="Tipo_Estudio" ColumnName="Tipo_Estudio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="liquidaciones">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.liquidacione">
+        <MappingFragment StoreEntitySet="liquidaciones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="fecha_egreso" ColumnName="fecha_egreso" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="total_aguinaldo" ColumnName="total_aguinaldo" />
+          <ScalarProperty Name="total_vacaciones" ColumnName="total_vacaciones" />
+          <ScalarProperty Name="total_indemnizacion" ColumnName="total_indemnizacion" />
+          <ScalarProperty Name="total_salarios_restantes" ColumnName="total_salarios_restantes" />
+          <ScalarProperty Name="deduccion_inss" ColumnName="deduccion_inss" />
+          <ScalarProperty Name="deduccion_prestamo_personales" ColumnName="deduccion_prestamo_personales" />
+          <ScalarProperty Name="deduccion_otros" ColumnName="deduccion_otros" />
+          <ScalarProperty Name="descripcion_otros" ColumnName="descripcion_otros" />
+          <ScalarProperty Name="pago_total" ColumnName="pago_total" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Niveles_Evaluativos">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Niveles_Evaluativos">
+        <MappingFragment StoreEntitySet="Niveles_Evaluativos">
+          <ScalarProperty Name="Id_Nivel_Evaluativo" ColumnName="Id_Nivel_Evaluativo" />
+          <ScalarProperty Name="Tipo_Nivel_Evaluativo" ColumnName="Tipo_Nivel_Evaluativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oficinas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Oficina">
+        <MappingFragment StoreEntitySet="Oficina">
+          <ScalarProperty Name="Id_Oficina" ColumnName="Id_Oficina" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permisos">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.permiso">
+        <MappingFragment StoreEntitySet="permisos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plan_estudio">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.plan_estudio">
+        <MappingFragment StoreEntitySet="plan_estudio">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_tema_plan" ColumnName="ID_tema_plan" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preguntas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.pregunta">
+        <MappingFragment StoreEntitySet="pregunta">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="pregunta1" ColumnName="pregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profesiones">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Profesione">
+        <MappingFragment StoreEntitySet="Profesiones">
+          <ScalarProperty Name="Id_Profesion" ColumnName="Id_Profesion" />
+          <ScalarProperty Name="Profesion" ColumnName="Profesion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="respuestas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.respuesta">
+        <MappingFragment StoreEntitySet="respuesta">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_pregunta" ColumnName="ID_pregunta" />
+          <ScalarProperty Name="respuesta1" ColumnName="respuesta" />
+          <ScalarProperty Name="correcta" ColumnName="correcta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resultados">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultado">
+        <MappingFragment StoreEntitySet="Resultados">
+          <ScalarProperty Name="Id_Resultados" ColumnName="Id_Resultados" />
+          <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
+          <ScalarProperty Name="Resultado_Final" ColumnName="Resultado_Final" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="salidas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.salida">
+        <MappingFragment StoreEntitySet="salidas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="id_entrada" ColumnName="id_entrada" />
+          <ScalarProperty Name="hora_marcado" ColumnName="hora_marcado" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_Contenido">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Contenido">
+        <MappingFragment StoreEntitySet="TB_Adm_Contenido">
+          <ScalarProperty Name="id_contenido" ColumnName="id_contenido" />
+          <ScalarProperty Name="id_sesion" ColumnName="id_sesion" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="tabla_registro" ColumnName="tabla_registro" />
+          <ScalarProperty Name="registros_creados" ColumnName="registros_creados" />
+          <ScalarProperty Name="tabla_cambios" ColumnName="tabla_cambios" />
+          <ScalarProperty Name="cambios_realizados" ColumnName="cambios_realizados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_OpcionesSistema">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_OpcionesSistema">
+        <MappingFragment StoreEntitySet="TB_Adm_OpcionesSistema">
+          <ScalarProperty Name="id_opciones" ColumnName="id_opciones" />
+          <ScalarProperty Name="nombre_opciones" ColumnName="nombre_opciones" />
+          <ScalarProperty Name="desc_opciones" ColumnName="desc_opciones" />
+          <ScalarProperty Name="modulo" ColumnName="modulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_RolesDeUsuario">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_RolesDeUsuario">
+        <MappingFragment StoreEntitySet="TB_Adm_RolesDeUsuario">
+          <ScalarProperty Name="id_rolUsuario" ColumnName="id_rolUsuario" />
+          <ScalarProperty Name="rol_usuario" ColumnName="rol_usuario" />
+          <ScalarProperty Name="descripcion_rol" ColumnName="descripcion_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_Sesion">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Sesion">
+        <MappingFragment StoreEntitySet="TB_Adm_Sesion">
+          <ScalarProperty Name="id_sesion" ColumnName="id_sesion" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="fechaSesion" ColumnName="fechaSesion" />
+          <ScalarProperty Name="horaIngreso" ColumnName="horaIngreso" />
+          <ScalarProperty Name="horaFinalizado" ColumnName="horaFinalizado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_Usuario">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Usuario">
+        <MappingFragment StoreEntitySet="TB_Adm_Usuario">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="passUser" ColumnName="passUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_Usuario_OpcionesSistema">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Usuario_OpcionesSistema">
+        <MappingFragment StoreEntitySet="TB_Adm_Usuario_OpcionesSistema">
+          <ScalarProperty Name="id_userOpciones" ColumnName="id_userOpciones" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_opciones" ColumnName="id_opciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_Usuario_Roles">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Usuario_Roles">
+        <MappingFragment StoreEntitySet="TB_Adm_Usuario_Roles">
+          <ScalarProperty Name="id_userRoles" ColumnName="id_userRoles" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_rolUsuario" ColumnName="id_rolUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CUOTA">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_CUOTA">
+        <MappingFragment StoreEntitySet="TB_CUOTA">
+          <ScalarProperty Name="id_cuota" ColumnName="id_cuota" />
+          <ScalarProperty Name="fecha_pago" ColumnName="fecha_pago" />
+          <ScalarProperty Name="numero_cuota" ColumnName="numero_cuota" />
+          <ScalarProperty Name="monto_cuota" ColumnName="monto_cuota" />
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DEDUCCION">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_DEDUCCION">
+        <MappingFragment StoreEntitySet="TB_DEDUCCION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DEVENGADO">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_DEVENGADO">
+        <MappingFragment StoreEntitySet="TB_DEVENGADO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ESTADO">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_ESTADO">
+        <MappingFragment StoreEntitySet="TB_ESTADO">
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="nombre_estado" ColumnName="nombre_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MOVIMIENTO_DEDUCCION">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_MOVIMIENTO_DEDUCCION">
+        <MappingFragment StoreEntitySet="TB_MOVIMIENTO_DEDUCCION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="ID_DEDUCCION" ColumnName="ID_DEDUCCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MOVIMIENTO_DEVENGADO">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_MOVIMIENTO_DEVENGADO">
+        <MappingFragment StoreEntitySet="TB_MOVIMIENTO_DEVENGADO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="ID_DEVENGADOS" ColumnName="ID_DEVENGADOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PLAZO_PAGO">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_PLAZO_PAGO">
+        <MappingFragment StoreEntitySet="TB_PLAZO_PAGO">
+          <ScalarProperty Name="id_plazo_pago" ColumnName="id_plazo_pago" />
+          <ScalarProperty Name="plazo_pago" ColumnName="plazo_pago" />
+          <ScalarProperty Name="cant_plazo" ColumnName="cant_plazo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRESTAMO">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_PRESTAMO">
+        <MappingFragment StoreEntitySet="TB_PRESTAMO">
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="id_plazo_pago" ColumnName="id_plazo_pago" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+          <ScalarProperty Name="monto_prestado" ColumnName="monto_prestado" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_RECIBO_CUOTA">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_RECIBO_CUOTA">
+        <MappingFragment StoreEntitySet="TB_RECIBO_CUOTA">
+          <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+          <ScalarProperty Name="id_cuota" ColumnName="id_cuota" />
+          <ScalarProperty Name="fecha_pago_emitido" ColumnName="fecha_pago_emitido" />
+          <ScalarProperty Name="ciudad_emitido" ColumnName="ciudad_emitido" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temas">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.tema">
+        <MappingFragment StoreEntitySet="tema">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tema_plan">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.tema_plan">
+        <MappingFragment StoreEntitySet="tema_plan">
+          <ScalarProperty Name="ID_plan" ColumnName="ID_plan" />
+          <ScalarProperty Name="ID_tema" ColumnName="ID_tema" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vacaciones">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.vacacione">
+        <MappingFragment StoreEntitySet="vacaciones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="aceptado" ColumnName="aceptado" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacantes">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Vacante">
+        <MappingFragment StoreEntitySet="Vacantes">
+          <ScalarProperty Name="ID_Vacante" ColumnName="ID_Vacante" />
+          <ScalarProperty Name="tb_Vacantes_cargo" ColumnName="tb_Vacantes_cargo" />
+          <ScalarProperty Name="tb_Vacantes_genero" ColumnName="tb_Vacantes_genero" />
+          <ScalarProperty Name="tb_Vacantes_edadMax" ColumnName="tb_Vacantes_edadMax" />
+          <ScalarProperty Name="tb_Vacantes_edadMin" ColumnName="tb_Vacantes_edadMin" />
+          <ScalarProperty Name="tb_Vacantes_ofertaSal" ColumnName="tb_Vacantes_ofertaSal" />
+          <ScalarProperty Name="tb_Vacantes_nivelAcade" ColumnName="tb_Vacantes_nivelAcade" />
+          <ScalarProperty Name="tb_Vacantes_idioma" ColumnName="tb_Vacantes_idioma" />
+          <ScalarProperty Name="tb_Vacantes_especialidad" ColumnName="tb_Vacantes_especialidad" />
+          <ScalarProperty Name="tb_Vacantes_notaMinTestPsicologico" ColumnName="tb_Vacantes_notaMinTestPsicologico" />
+          <ScalarProperty Name="tb_Vacantes_notaMinTestPsicometrico" ColumnName="tb_Vacantes_notaMinTestPsicometrico" />
+          <ScalarProperty Name="tb_Vacantes_notaMinTestTecnico" ColumnName="tb_Vacantes_notaMinTestTecnico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="capacitacion_empleado" TypeName="DB_Recursos_HumanosModel.capacitacion_empleado" StoreEntitySet="capacitacion_empleado">
+      <EndProperty Name="capacitacion">
+        <ScalarProperty Name="ID" ColumnName="ID_capacitacion" />
+      </EndProperty>
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id_Empleado" ColumnName="Id_empleado" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

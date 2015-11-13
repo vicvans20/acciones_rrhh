@@ -1,0 +1,1590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_Recursos_HumanosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Antecedente">
+    <Key>
+      <PropertyRef Name="Id_Antecedente" />
+    </Key>
+    <Property Name="Id_Antecedente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Antecedente1" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Antecedente_Empleado" FromRole="Antecedentes" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_ar__59063A47" FromRole="area" ToRole="capacitacion" />
+    <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Area_Empleado" FromRole="area" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Candidato">
+    <Key>
+      <PropertyRef Name="ID_Candidato" />
+    </Key>
+    <Property Name="ID_Candidato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb_Candidatos_nombres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_apellidos" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="tb_Candidatos_genero" Type="Boolean" />
+    <Property Name="tb_Candidatos_cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_fecNac" Type="DateTime" Precision="0" />
+    <Property Name="tb_Candidatos_estadoCivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_domicilio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_telefonoConv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_telefonomovil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_correoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_especialidad" Type="Int32" />
+    <Property Name="tb_Candidatos_idioma" Type="Int32" />
+    <Property Name="tb_Candidatos_nivelAcademico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Candidatos_notaTestPsicologico" Type="Double" />
+    <Property Name="tb_Candidatos_notaTestPsicometrico" Type="Double" />
+    <Property Name="tb_Candidatos_notaTestTecnico" Type="Double" />
+    <NavigationProperty Name="Especialidade" Relationship="Self.FK_Candidato_Especialidades" FromRole="Candidato" ToRole="Especialidades" />
+    <NavigationProperty Name="Idioma" Relationship="Self.FK_Candidato_Idiomas" FromRole="Candidato" ToRole="Idiomas" />
+  </EntityType>
+  <EntityType Name="capacitacion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_plan" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="duracion" Type="Int32" Nullable="false" />
+    <Property Name="ID_centro_cap" Type="Int32" Nullable="false" />
+    <Property Name="ID_encuesta" Type="Int32" Nullable="false" />
+    <Property Name="ID_area" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="area" Relationship="Self.FK__capacitac__ID_ar__59063A47" FromRole="capacitacion" ToRole="area" />
+    <NavigationProperty Name="centro_capacit" Relationship="Self.FK__capacitac__ID_ce__571DF1D5" FromRole="capacitacion" ToRole="centro_capacit" />
+    <NavigationProperty Name="encuesta" Relationship="Self.FK__capacitac__ID_en__5812160E" FromRole="capacitacion" ToRole="encuesta" />
+    <NavigationProperty Name="plan_estudio" Relationship="Self.FK__capacitac__ID_pl__5629CD9C" FromRole="capacitacion" ToRole="plan_estudio" />
+    <NavigationProperty Name="Empleadoes" Relationship="Self.capacitacion_empleado" FromRole="capacitacion" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="Id_Cargo" />
+    </Key>
+    <Property Name="Id_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Salario" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Oficina" Type="Int32" />
+    <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Cargo_Empleado" FromRole="Cargo" ToRole="Empleado" />
+    <NavigationProperty Name="Oficina" Relationship="Self.FK_Cargo_Oficina" FromRole="Cargo" ToRole="Oficina" />
+    <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Cargo" FromRole="Cargo" ToRole="Contrato" />
+  </EntityType>
+  <EntityType Name="centro_capacit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_ce__571DF1D5" FromRole="centro_capacit" ToRole="capacitacion" />
+  </EntityType>
+  <EntityType Name="Contrato">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+    </Key>
+    <Property Name="Id_Contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha_Contratacion" Type="DateTime" Precision="0" />
+    <Property Name="Fecha_Fin" Type="DateTime" Precision="0" />
+    <Property Name="Id_Empleado" Type="Int32" />
+    <Property Name="Id_Documento" Type="Int32" />
+    <Property Name="Id_Cargo" Type="Int32" />
+    <NavigationProperty Name="Cargo" Relationship="Self.FK_Contrato_Cargo" FromRole="Contrato" ToRole="Cargo" />
+    <NavigationProperty Name="Documentacion" Relationship="Self.FK_Contrato_Documentacion" FromRole="Contrato" ToRole="Documentacion" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Contrato_Empleado" FromRole="Contrato" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Debilidade">
+    <Key>
+      <PropertyRef Name="Id_Debilidades" />
+    </Key>
+    <Property Name="Id_Debilidades" Type="Int32" Nullable="false" />
+    <Property Name="Nombre_Debilidades" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Indicadores" Relationship="Self.FK_Indicadores_Debilidades" FromRole="Debilidades" ToRole="Indicadores" />
+  </EntityType>
+  <EntityType Name="DetEspecialidadesCand">
+    <Key>
+      <PropertyRef Name="Id_DetalleEspecialistaCandidato" />
+    </Key>
+    <Property Name="Id_DetalleEspecialistaCandidato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb_DetEspeCan_titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tb_DetEspeCan_aniosExpe" Type="Int32" />
+    <NavigationProperty Name="Especialidades" Relationship="Self.FK_Especialidades_DetEspecialidadesCand" FromRole="DetEspecialidadesCand" ToRole="Especialidades" />
+  </EntityType>
+  <EntityType Name="DetEspecialidadesReq">
+    <Key>
+      <PropertyRef Name="ID_EspecialidadesReq" />
+    </Key>
+    <Property Name="ID_EspecialidadesReq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb_DetEspecialidadesReq_titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_DetespecialidadesReq_aniosExp" Type="Int32" />
+    <NavigationProperty Name="EspecialidadesReqs" Relationship="Self.FK_EspecialidadesReq_DetEspecialidadesReq" FromRole="DetEspecialidadesReq" ToRole="EspecialidadesReq" />
+  </EntityType>
+  <EntityType Name="DetIdiomasCand">
+    <Key>
+      <PropertyRef Name="ID_DetCandidatosIdioma" />
+    </Key>
+    <Property Name="ID_DetCandidatosIdioma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb_DetIdiCan_idioma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_DetIdiCan_dominio" Type="Double" />
+    <NavigationProperty Name="Idiomas" Relationship="Self.FK_Idiomas_DetIdiomasCand" FromRole="DetIdiomasCand" ToRole="Idiomas" />
+  </EntityType>
+  <EntityType Name="DetIdiomasReq">
+    <Key>
+      <PropertyRef Name="ID_IdiomaReq" />
+    </Key>
+    <Property Name="ID_IdiomaReq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb_DetIdiomasReq_titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_DetIdiomasReq_dominio" Type="Double" />
+    <NavigationProperty Name="IdiomasRequeridos" Relationship="Self.FK_IdiomasRequeridos_DetIdiomasReq" FromRole="DetIdiomasReq" ToRole="IdiomasRequeridos" />
+  </EntityType>
+  <EntityType Name="Documentacion">
+    <Key>
+      <PropertyRef Name="Id_Documento" />
+    </Key>
+    <Property Name="Id_Documento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo_Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Documentacion" FromRole="Documentacion" ToRole="Contrato" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="Id_Empleado" />
+    </Key>
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado_Civil" Type="Boolean" Nullable="false" />
+    <Property Name="Domicilio" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="Id_Profesion" Type="Int32" Nullable="false" />
+    <Property Name="Id_Info_Academica" Type="Int32" Nullable="false" />
+    <Property Name="Id_Antecendete" Type="Int32" Nullable="false" />
+    <Property Name="Id_area" Type="Int32" Nullable="false" />
+    <Property Name="Id_Cargo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Antecedente" Relationship="Self.FK_Antecedente_Empleado" FromRole="Empleado" ToRole="Antecedentes" />
+    <NavigationProperty Name="area" Relationship="Self.FK_Area_Empleado" FromRole="Empleado" ToRole="area" />
+    <NavigationProperty Name="Cargo" Relationship="Self.FK_Cargo_Empleado" FromRole="Empleado" ToRole="Cargo" />
+    <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Empleado" FromRole="Empleado" ToRole="Contrato" />
+    <NavigationProperty Name="entradas" Relationship="Self.FK__entradas__Id_Emp__75A278F5" FromRole="Empleado" ToRole="entradas" />
+    <NavigationProperty Name="liquidaciones" Relationship="Self.FK__liquidaci__Id_Em__7D439ABD" FromRole="Empleado" ToRole="liquidaciones" />
+    <NavigationProperty Name="permisos" Relationship="Self.FK__permisos__Id_Emp__71D1E811" FromRole="Empleado" ToRole="permisos" />
+    <NavigationProperty Name="salidas" Relationship="Self.FK__salidas__Id_Empl__787EE5A0" FromRole="Empleado" ToRole="salidas" />
+    <NavigationProperty Name="TB_Adm_Usuario" Relationship="Self.FK__TB_Adm_Us__Id_Em__1F98B2C1" FromRole="Empleado" ToRole="TB_Adm_Usuario" />
+    <NavigationProperty Name="TB_MOVIMIENTO_DEVENGADO" Relationship="Self.FK__TB_MOVIMI__EMPLE__03F0984C" FromRole="Empleado" ToRole="TB_MOVIMIENTO_DEVENGADO" />
+    <NavigationProperty Name="TB_MOVIMIENTO_DEDUCCION" Relationship="Self.FK__TB_MOVIMI__EMPLE__07C12930" FromRole="Empleado" ToRole="TB_MOVIMIENTO_DEDUCCION" />
+    <NavigationProperty Name="vacaciones" Relationship="Self.FK__vacacione__Id_Em__6E01572D" FromRole="Empleado" ToRole="vacaciones" />
+    <NavigationProperty Name="Informacion_Academica" Relationship="Self.FK_Empleado_Informacion_Academica" FromRole="Empleado" ToRole="Informacion_Academica" />
+    <NavigationProperty Name="Profesione" Relationship="Self.FK_Empleado_Profesiones" FromRole="Empleado" ToRole="Profesiones" />
+    <NavigationProperty Name="Resultados" Relationship="Self.FK_Resultados_Empleados" FromRole="Empleado" ToRole="Resultados" />
+    <NavigationProperty Name="TB_PRESTAMO" Relationship="Self.FK_TB_PRESTAMO_Empleado" FromRole="Empleado" ToRole="TB_PRESTAMO" />
+    <NavigationProperty Name="TB_RECIBO_CUOTA" Relationship="Self.FK_TB_RECIBO_CUOTA_Empleado" FromRole="Empleado" ToRole="TB_RECIBO_CUOTA" />
+    <NavigationProperty Name="capacitacions" Relationship="Self.capacitacion_empleado" FromRole="Empleado" ToRole="capacitacion" />
+  </EntityType>
+  <EntityType Name="encuesta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_pregunta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_en__5812160E" FromRole="encuesta" ToRole="capacitacion" />
+    <NavigationProperty Name="pregunta" Relationship="Self.FK__encuesta__ID_pre__4BAC3F29" FromRole="encuesta" ToRole="pregunta" />
+  </EntityType>
+  <EntityType Name="entrada">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hora_marcado" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__entradas__Id_Emp__75A278F5" FromRole="entradas" ToRole="Empleado" />
+    <NavigationProperty Name="salidas" Relationship="Self.FK__salidas__id_entr__797309D9" FromRole="entradas" ToRole="salidas" />
+  </EntityType>
+  <EntityType Name="Especialidade">
+    <Key>
+      <PropertyRef Name="Id_Especialidad" />
+    </Key>
+    <Property Name="Id_Especialidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DetalleEspecialidad" Type="Int32" />
+    <NavigationProperty Name="Candidatoes" Relationship="Self.FK_Candidato_Especialidades" FromRole="Especialidades" ToRole="Candidato" />
+    <NavigationProperty Name="DetEspecialidadesCand" Relationship="Self.FK_Especialidades_DetEspecialidadesCand" FromRole="Especialidades" ToRole="DetEspecialidadesCand" />
+  </EntityType>
+  <EntityType Name="EspecialidadesReq">
+    <Key>
+      <PropertyRef Name="tb_EspecialidadesReq_id" />
+    </Key>
+    <Property Name="tb_EspecialidadesReq_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DetalleEspecReq" Type="Int32" />
+    <NavigationProperty Name="DetEspecialidadesReq" Relationship="Self.FK_EspecialidadesReq_DetEspecialidadesReq" FromRole="EspecialidadesReq" ToRole="DetEspecialidadesReq" />
+    <NavigationProperty Name="Vacantes" Relationship="Self.FK_Vacantes_EspecialidadesReq" FromRole="EspecialidadesReq" ToRole="Vacantes" />
+  </EntityType>
+  <EntityType Name="Fortaleza">
+    <Key>
+      <PropertyRef Name="Id_Fortalezas" />
+    </Key>
+    <Property Name="Id_Fortalezas" Type="Int32" Nullable="false" />
+    <Property Name="Nombre_Fortalezas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Indicadores" Relationship="Self.FK_Indicadores_Fortalezas" FromRole="Fortalezas" ToRole="Indicadores" />
+  </EntityType>
+  <EntityType Name="Idioma">
+    <Key>
+      <PropertyRef Name="tb_idiomas_id" />
+    </Key>
+    <Property Name="tb_idiomas_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DetalleIdiomaCandidato" Type="Int32" />
+    <NavigationProperty Name="Candidatoes" Relationship="Self.FK_Candidato_Idiomas" FromRole="Idiomas" ToRole="Candidato" />
+    <NavigationProperty Name="DetIdiomasCand" Relationship="Self.FK_Idiomas_DetIdiomasCand" FromRole="Idiomas" ToRole="DetIdiomasCand" />
+  </EntityType>
+  <EntityType Name="IdiomasRequerido">
+    <Key>
+      <PropertyRef Name="tb_idiomasReq_id" />
+    </Key>
+    <Property Name="tb_idiomasReq_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DetalleIdiomaReq" Type="Int32" />
+    <NavigationProperty Name="DetIdiomasReq" Relationship="Self.FK_IdiomasRequeridos_DetIdiomasReq" FromRole="IdiomasRequeridos" ToRole="DetIdiomasReq" />
+    <NavigationProperty Name="Vacantes" Relationship="Self.FK_Vacantes_IdiomasRequeridos" FromRole="IdiomasRequeridos" ToRole="Vacantes" />
+  </EntityType>
+  <EntityType Name="Indicadore">
+    <Key>
+      <PropertyRef Name="Id_Indicador" />
+    </Key>
+    <Property Name="Id_Indicador" Type="Int32" Nullable="false" />
+    <Property Name="Nombre_Indicador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id_Nivel_Evaluativo" Type="Int32" Nullable="false" />
+    <Property Name="Id_Fortalezas" Type="Int32" Nullable="false" />
+    <Property Name="Id_Debilidades" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Evaluacion" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Debilidade" Relationship="Self.FK_Indicadores_Debilidades" FromRole="Indicadores" ToRole="Debilidades" />
+    <NavigationProperty Name="Fortaleza" Relationship="Self.FK_Indicadores_Fortalezas" FromRole="Indicadores" ToRole="Fortalezas" />
+    <NavigationProperty Name="Niveles_Evaluativos" Relationship="Self.FK_Indicadores_Niveles_Evaluativos" FromRole="Indicadores" ToRole="Niveles_Evaluativos" />
+    <NavigationProperty Name="Resultados" Relationship="Self.FK_Resultados_Indicadores1" FromRole="Indicadores" ToRole="Resultados" />
+  </EntityType>
+  <EntityType Name="Informacion_Academica">
+    <Key>
+      <PropertyRef Name="Id_hist_academico" />
+    </Key>
+    <Property Name="Id_hist_academico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo_Estudio" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Informacion_Academica" FromRole="Informacion_Academica" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="liquidacione">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_egreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="total_aguinaldo" Type="Double" Nullable="false" />
+    <Property Name="total_vacaciones" Type="Double" Nullable="false" />
+    <Property Name="total_indemnizacion" Type="Double" Nullable="false" />
+    <Property Name="total_salarios_restantes" Type="Double" Nullable="false" />
+    <Property Name="deduccion_inss" Type="Double" Nullable="false" />
+    <Property Name="deduccion_prestamo_personales" Type="Double" Nullable="false" />
+    <Property Name="deduccion_otros" Type="Double" Nullable="false" />
+    <Property Name="descripcion_otros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="pago_total" Type="Double" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__liquidaci__Id_Em__7D439ABD" FromRole="liquidaciones" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Niveles_Evaluativos">
+    <Key>
+      <PropertyRef Name="Id_Nivel_Evaluativo" />
+    </Key>
+    <Property Name="Id_Nivel_Evaluativo" Type="Int32" Nullable="false" />
+    <Property Name="Tipo_Nivel_Evaluativo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Indicadores" Relationship="Self.FK_Indicadores_Niveles_Evaluativos" FromRole="Niveles_Evaluativos" ToRole="Indicadores" />
+  </EntityType>
+  <EntityType Name="Oficina">
+    <Key>
+      <PropertyRef Name="Id_Oficina" />
+    </Key>
+    <Property Name="Id_Oficina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cargoes" Relationship="Self.FK_Cargo_Oficina" FromRole="Oficina" ToRole="Cargo" />
+  </EntityType>
+  <EntityType Name="permiso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__permisos__Id_Emp__71D1E811" FromRole="permisos" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="plan_estudio">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_tema_plan" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_pl__5629CD9C" FromRole="plan_estudio" ToRole="capacitacion" />
+    <NavigationProperty Name="tema_plan" Relationship="Self.FK__plan_estu__ID_te__534D60F1" FromRole="plan_estudio" ToRole="tema_plan" />
+  </EntityType>
+  <EntityType Name="pregunta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="pregunta1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="encuestas" Relationship="Self.FK__encuesta__ID_pre__4BAC3F29" FromRole="pregunta" ToRole="encuesta" />
+    <NavigationProperty Name="respuestas" Relationship="Self.FK__respuesta__ID_pr__48CFD27E" FromRole="pregunta" ToRole="respuesta" />
+  </EntityType>
+  <EntityType Name="Profesione">
+    <Key>
+      <PropertyRef Name="Id_Profesion" />
+    </Key>
+    <Property Name="Id_Profesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Profesiones" FromRole="Profesiones" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="respuesta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_pregunta" Type="Int32" Nullable="false" />
+    <Property Name="respuesta1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correcta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="pregunta" Relationship="Self.FK__respuesta__ID_pr__48CFD27E" FromRole="respuesta" ToRole="pregunta" />
+  </EntityType>
+  <EntityType Name="Resultado">
+    <Key>
+      <PropertyRef Name="Id_Resultados" />
+    </Key>
+    <Property Name="Id_Resultados" Type="Int32" Nullable="false" />
+    <Property Name="Id_Indicador" Type="Int32" Nullable="false" />
+    <Property Name="Resultado_Final" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Resultados_Empleados" FromRole="Resultados" ToRole="Empleado" />
+    <NavigationProperty Name="Indicadore" Relationship="Self.FK_Resultados_Indicadores1" FromRole="Resultados" ToRole="Indicadores" />
+  </EntityType>
+  <EntityType Name="salida">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="id_entrada" Type="Int32" Nullable="false" />
+    <Property Name="hora_marcado" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__salidas__Id_Empl__787EE5A0" FromRole="salidas" ToRole="Empleado" />
+    <NavigationProperty Name="entrada" Relationship="Self.FK__salidas__id_entr__797309D9" FromRole="salidas" ToRole="entradas" />
+  </EntityType>
+  <EntityType Name="TB_Adm_Contenido">
+    <Key>
+      <PropertyRef Name="id_contenido" />
+    </Key>
+    <Property Name="id_contenido" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_sesion" Type="Int16" Nullable="false" />
+    <Property Name="id_user" Type="Int16" Nullable="false" />
+    <Property Name="tabla_registro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="registros_creados" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tabla_cambios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cambios_realizados" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TB_Adm_Sesion" Relationship="Self.FK_TB_Adm_Contenido_TB_Adm_Sesion" FromRole="TB_Adm_Contenido" ToRole="TB_Adm_Sesion" />
+    <NavigationProperty Name="TB_Adm_Usuario" Relationship="Self.FK_TB_Adm_Contenido_TB_Adm_Usuario" FromRole="TB_Adm_Contenido" ToRole="TB_Adm_Usuario" />
+  </EntityType>
+  <EntityType Name="TB_Adm_OpcionesSistema">
+    <Key>
+      <PropertyRef Name="id_opciones" />
+    </Key>
+    <Property Name="id_opciones" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_opciones" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="desc_opciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="modulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TB_Adm_Usuario_OpcionesSistema" Relationship="Self.FK_Usuario_OpcionesSistema_TB_Adm_OpcionesSistema" FromRole="TB_Adm_OpcionesSistema" ToRole="TB_Adm_Usuario_OpcionesSistema" />
+  </EntityType>
+  <EntityType Name="TB_Adm_RolesDeUsuario">
+    <Key>
+      <PropertyRef Name="id_rolUsuario" />
+    </Key>
+    <Property Name="id_rolUsuario" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rol_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion_rol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TB_Adm_Usuario_Roles" Relationship="Self.FK_Usuario_Roles_TB_Adm_RolesDeUsuario" FromRole="TB_Adm_RolesDeUsuario" ToRole="TB_Adm_Usuario_Roles" />
+  </EntityType>
+  <EntityType Name="TB_Adm_Sesion">
+    <Key>
+      <PropertyRef Name="id_sesion" />
+    </Key>
+    <Property Name="id_sesion" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="Int16" Nullable="false" />
+    <Property Name="fechaSesion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="horaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="horaFinalizado" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TB_Adm_Contenido" Relationship="Self.FK_TB_Adm_Contenido_TB_Adm_Sesion" FromRole="TB_Adm_Sesion" ToRole="TB_Adm_Contenido" />
+    <NavigationProperty Name="TB_Adm_Usuario" Relationship="Self.FK_TB_Adm_Sesion_TB_Adm_Usuario" FromRole="TB_Adm_Sesion" ToRole="TB_Adm_Usuario" />
+  </EntityType>
+  <EntityType Name="TB_Adm_Usuario">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__TB_Adm_Us__Id_Em__1F98B2C1" FromRole="TB_Adm_Usuario" ToRole="Empleado" />
+    <NavigationProperty Name="TB_Adm_Contenido" Relationship="Self.FK_TB_Adm_Contenido_TB_Adm_Usuario" FromRole="TB_Adm_Usuario" ToRole="TB_Adm_Contenido" />
+    <NavigationProperty Name="TB_Adm_Sesion" Relationship="Self.FK_TB_Adm_Sesion_TB_Adm_Usuario" FromRole="TB_Adm_Usuario" ToRole="TB_Adm_Sesion" />
+    <NavigationProperty Name="TB_Adm_Usuario_OpcionesSistema" Relationship="Self.FK_Usuario_OpcionesSistema_TB_Adm_Usuario" FromRole="TB_Adm_Usuario" ToRole="TB_Adm_Usuario_OpcionesSistema" />
+    <NavigationProperty Name="TB_Adm_Usuario_Roles" Relationship="Self.FK_Usuario_Roles_TB_Adm_Usuario" FromRole="TB_Adm_Usuario" ToRole="TB_Adm_Usuario_Roles" />
+  </EntityType>
+  <EntityType Name="TB_Adm_Usuario_OpcionesSistema">
+    <Key>
+      <PropertyRef Name="id_userOpciones" />
+    </Key>
+    <Property Name="id_userOpciones" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="Int16" Nullable="false" />
+    <Property Name="id_opciones" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="TB_Adm_OpcionesSistema" Relationship="Self.FK_Usuario_OpcionesSistema_TB_Adm_OpcionesSistema" FromRole="TB_Adm_Usuario_OpcionesSistema" ToRole="TB_Adm_OpcionesSistema" />
+    <NavigationProperty Name="TB_Adm_Usuario" Relationship="Self.FK_Usuario_OpcionesSistema_TB_Adm_Usuario" FromRole="TB_Adm_Usuario_OpcionesSistema" ToRole="TB_Adm_Usuario" />
+  </EntityType>
+  <EntityType Name="TB_Adm_Usuario_Roles">
+    <Key>
+      <PropertyRef Name="id_userRoles" />
+    </Key>
+    <Property Name="id_userRoles" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="Int16" Nullable="false" />
+    <Property Name="id_rolUsuario" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="TB_Adm_RolesDeUsuario" Relationship="Self.FK_Usuario_Roles_TB_Adm_RolesDeUsuario" FromRole="TB_Adm_Usuario_Roles" ToRole="TB_Adm_RolesDeUsuario" />
+    <NavigationProperty Name="TB_Adm_Usuario" Relationship="Self.FK_Usuario_Roles_TB_Adm_Usuario" FromRole="TB_Adm_Usuario_Roles" ToRole="TB_Adm_Usuario" />
+  </EntityType>
+  <EntityType Name="TB_CUOTA">
+    <Key>
+      <PropertyRef Name="id_cuota" />
+    </Key>
+    <Property Name="id_cuota" Type="Int32" Nullable="false" />
+    <Property Name="fecha_pago" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="numero_cuota" Type="Int32" Nullable="false" />
+    <Property Name="monto_cuota" Type="Double" Nullable="false" />
+    <Property Name="id_prestamo" Type="Int32" Nullable="false" />
+    <Property Name="id_estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_PRESTAMO" Relationship="Self.FK_TB_CUOTA_TB_PRESTAMO" FromRole="TB_CUOTA" ToRole="TB_PRESTAMO" />
+    <NavigationProperty Name="TB_RECIBO_CUOTA" Relationship="Self.FK_TB_RECIBO_CUOTA_TB_CUOTA" FromRole="TB_CUOTA" ToRole="TB_RECIBO_CUOTA" />
+  </EntityType>
+  <EntityType Name="TB_DEDUCCION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TB_MOVIMIENTO_DEDUCCION" Relationship="Self.FK__TB_MOVIMI__ID_DE__08B54D69" FromRole="TB_DEDUCCION" ToRole="TB_MOVIMIENTO_DEDUCCION" />
+  </EntityType>
+  <EntityType Name="TB_DEVENGADO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TB_MOVIMIENTO_DEVENGADO" Relationship="Self.FK__TB_MOVIMI__ID_DE__04E4BC85" FromRole="TB_DEVENGADO" ToRole="TB_MOVIMIENTO_DEVENGADO" />
+  </EntityType>
+  <EntityType Name="TB_ESTADO">
+    <Key>
+      <PropertyRef Name="id_estado" />
+    </Key>
+    <Property Name="id_estado" Type="Int32" Nullable="false" />
+    <Property Name="nombre_estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TB_PRESTAMO" Relationship="Self.FK_TB_PRESTAMO_TB_ESTADO" FromRole="TB_ESTADO" ToRole="TB_PRESTAMO" />
+  </EntityType>
+  <EntityType Name="TB_MOVIMIENTO_DEDUCCION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPLEADO" Type="Int32" Nullable="false" />
+    <Property Name="AÑO" Type="Int32" Nullable="false" />
+    <Property Name="MES" Type="Int32" Nullable="false" />
+    <Property Name="DIA_INICIO" Type="Int32" Nullable="false" />
+    <Property Name="DIA_FIN" Type="Int32" Nullable="false" />
+    <Property Name="MONTO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ID_DEDUCCION" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado1" Relationship="Self.FK__TB_MOVIMI__EMPLE__07C12930" FromRole="TB_MOVIMIENTO_DEDUCCION" ToRole="Empleado" />
+    <NavigationProperty Name="TB_DEDUCCION" Relationship="Self.FK__TB_MOVIMI__ID_DE__08B54D69" FromRole="TB_MOVIMIENTO_DEDUCCION" ToRole="TB_DEDUCCION" />
+  </EntityType>
+  <EntityType Name="TB_MOVIMIENTO_DEVENGADO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPLEADO" Type="Int32" Nullable="false" />
+    <Property Name="AÑO" Type="Int32" Nullable="false" />
+    <Property Name="MES" Type="Int32" Nullable="false" />
+    <Property Name="DIA_INICIO" Type="Int32" Nullable="false" />
+    <Property Name="DIA_FIN" Type="Int32" Nullable="false" />
+    <Property Name="MONTO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ID_DEVENGADOS" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado1" Relationship="Self.FK__TB_MOVIMI__EMPLE__03F0984C" FromRole="TB_MOVIMIENTO_DEVENGADO" ToRole="Empleado" />
+    <NavigationProperty Name="TB_DEVENGADO" Relationship="Self.FK__TB_MOVIMI__ID_DE__04E4BC85" FromRole="TB_MOVIMIENTO_DEVENGADO" ToRole="TB_DEVENGADO" />
+  </EntityType>
+  <EntityType Name="TB_PLAZO_PAGO">
+    <Key>
+      <PropertyRef Name="id_plazo_pago" />
+    </Key>
+    <Property Name="id_plazo_pago" Type="Int32" Nullable="false" />
+    <Property Name="plazo_pago" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cant_plazo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_PRESTAMO" Relationship="Self.FK_prestamo_pagoPlazo" FromRole="TB_PLAZO_PAGO" ToRole="TB_PRESTAMO" />
+    <NavigationProperty Name="TB_PRESTAMO1" Relationship="Self.FK_TB_PRESTAMO_TB_PLAZO_PAGO" FromRole="TB_PLAZO_PAGO" ToRole="TB_PRESTAMO" />
+  </EntityType>
+  <EntityType Name="TB_PRESTAMO">
+    <Key>
+      <PropertyRef Name="id_prestamo" />
+    </Key>
+    <Property Name="id_prestamo" Type="Int32" Nullable="false" />
+    <Property Name="id_estado" Type="Int32" Nullable="false" />
+    <Property Name="id_plazo_pago" Type="Int32" Nullable="false" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_final" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="monto_prestado" Type="Double" Nullable="false" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_TB_PRESTAMO_Empleado" FromRole="TB_PRESTAMO" ToRole="Empleado" />
+    <NavigationProperty Name="TB_CUOTA" Relationship="Self.FK_TB_CUOTA_TB_PRESTAMO" FromRole="TB_PRESTAMO" ToRole="TB_CUOTA" />
+    <NavigationProperty Name="TB_ESTADO" Relationship="Self.FK_TB_PRESTAMO_TB_ESTADO" FromRole="TB_PRESTAMO" ToRole="TB_ESTADO" />
+    <NavigationProperty Name="TB_PLAZO_PAGO" Relationship="Self.FK_prestamo_pagoPlazo" FromRole="TB_PRESTAMO" ToRole="TB_PLAZO_PAGO" />
+    <NavigationProperty Name="TB_PLAZO_PAGO1" Relationship="Self.FK_TB_PRESTAMO_TB_PLAZO_PAGO" FromRole="TB_PRESTAMO" ToRole="TB_PLAZO_PAGO" />
+    <NavigationProperty Name="TB_RECIBO_CUOTA" Relationship="Self.FK_TB_RECIBO_CUOTA_TB_PRESTAMO" FromRole="TB_PRESTAMO" ToRole="TB_RECIBO_CUOTA" />
+  </EntityType>
+  <EntityType Name="TB_RECIBO_CUOTA">
+    <Key>
+      <PropertyRef Name="id_prestamo" />
+      <PropertyRef Name="id_cuota" />
+    </Key>
+    <Property Name="id_prestamo" Type="Int32" Nullable="false" />
+    <Property Name="id_cuota" Type="Int32" Nullable="false" />
+    <Property Name="fecha_pago_emitido" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ciudad_emitido" Type="Int32" Nullable="false" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_TB_RECIBO_CUOTA_Empleado" FromRole="TB_RECIBO_CUOTA" ToRole="Empleado" />
+    <NavigationProperty Name="TB_CUOTA" Relationship="Self.FK_TB_RECIBO_CUOTA_TB_CUOTA" FromRole="TB_RECIBO_CUOTA" ToRole="TB_CUOTA" />
+    <NavigationProperty Name="TB_PRESTAMO" Relationship="Self.FK_TB_RECIBO_CUOTA_TB_PRESTAMO" FromRole="TB_RECIBO_CUOTA" ToRole="TB_PRESTAMO" />
+  </EntityType>
+  <EntityType Name="tema">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tema_plan" Relationship="Self.FK__tema_plan__ID_te__5070F446" FromRole="tema" ToRole="tema_plan" />
+  </EntityType>
+  <EntityType Name="tema_plan">
+    <Key>
+      <PropertyRef Name="ID_plan" />
+    </Key>
+    <Property Name="ID_plan" Type="Int32" Nullable="false" />
+    <Property Name="ID_tema" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="plan_estudio" Relationship="Self.FK__plan_estu__ID_te__534D60F1" FromRole="tema_plan" ToRole="plan_estudio" />
+    <NavigationProperty Name="tema" Relationship="Self.FK__tema_plan__ID_te__5070F446" FromRole="tema_plan" ToRole="tema" />
+  </EntityType>
+  <EntityType Name="vacacione">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="aceptado" Type="Boolean" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__vacacione__Id_Em__6E01572D" FromRole="vacaciones" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Vacante">
+    <Key>
+      <PropertyRef Name="ID_Vacante" />
+    </Key>
+    <Property Name="ID_Vacante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb_Vacantes_cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Vacantes_genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Vacantes_edadMax" Type="Int32" />
+    <Property Name="tb_Vacantes_edadMin" Type="Int32" />
+    <Property Name="tb_Vacantes_ofertaSal" Type="Double" />
+    <Property Name="tb_Vacantes_nivelAcade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tb_Vacantes_idioma" Type="Int32" />
+    <Property Name="tb_Vacantes_especialidad" Type="Int32" />
+    <Property Name="tb_Vacantes_notaMinTestPsicologico" Type="Double" />
+    <Property Name="tb_Vacantes_notaMinTestPsicometrico" Type="Double" />
+    <Property Name="tb_Vacantes_notaMinTestTecnico" Type="Double" />
+    <NavigationProperty Name="EspecialidadesReq" Relationship="Self.FK_Vacantes_EspecialidadesReq" FromRole="Vacantes" ToRole="EspecialidadesReq" />
+    <NavigationProperty Name="IdiomasRequerido" Relationship="Self.FK_Vacantes_IdiomasRequeridos" FromRole="Vacantes" ToRole="IdiomasRequeridos" />
+  </EntityType>
+  <Association Name="FK_Antecedente_Empleado">
+    <End Role="Antecedentes" Type="Self.Antecedente" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Antecedentes">
+        <PropertyRef Name="Id_Antecedente" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="Id_Antecendete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__capacitac__ID_ar__59063A47">
+    <End Role="area" Type="Self.area" Multiplicity="1" />
+    <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="capacitacion">
+        <PropertyRef Name="ID_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Area_Empleado">
+    <End Role="area" Type="Self.area" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="Id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidato_Especialidades">
+    <End Role="Especialidades" Type="Self.Especialidade" Multiplicity="0..1" />
+    <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialidades">
+        <PropertyRef Name="Id_Especialidad" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="tb_Candidatos_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidato_Idiomas">
+    <End Role="Idiomas" Type="Self.Idioma" Multiplicity="0..1" />
+    <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiomas">
+        <PropertyRef Name="tb_idiomas_id" />
+      </Principal>
+      <Dependent Role="Candidato">
+        <PropertyRef Name="tb_Candidatos_idioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__capacitac__ID_ce__571DF1D5">
+    <End Role="centro_capacit" Type="Self.centro_capacit" Multiplicity="1" />
+    <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="centro_capacit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="capacitacion">
+        <PropertyRef Name="ID_centro_cap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__capacitac__ID_en__5812160E">
+    <End Role="encuesta" Type="Self.encuesta" Multiplicity="1" />
+    <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="encuesta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="capacitacion">
+        <PropertyRef Name="ID_encuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__capacitac__ID_pl__5629CD9C">
+    <End Role="plan_estudio" Type="Self.plan_estudio" Multiplicity="1" />
+    <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan_estudio">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="capacitacion">
+        <PropertyRef Name="ID_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cargo_Empleado">
+    <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="Id_Cargo" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="Id_Cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cargo_Oficina">
+    <End Role="Oficina" Type="Self.Oficina" Multiplicity="0..1" />
+    <End Role="Cargo" Type="Self.Cargo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oficina">
+        <PropertyRef Name="Id_Oficina" />
+      </Principal>
+      <Dependent Role="Cargo">
+        <PropertyRef Name="Id_Oficina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Cargo">
+    <End Role="Cargo" Type="Self.Cargo" Multiplicity="0..1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="Id_Cargo" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="Id_Cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Documentacion">
+    <End Role="Documentacion" Type="Self.Documentacion" Multiplicity="0..1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documentacion">
+        <PropertyRef Name="Id_Documento" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="Id_Documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Indicadores_Debilidades">
+    <End Role="Debilidades" Type="Self.Debilidade" Multiplicity="1" />
+    <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Debilidades">
+        <PropertyRef Name="Id_Debilidades" />
+      </Principal>
+      <Dependent Role="Indicadores">
+        <PropertyRef Name="Id_Debilidades" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Especialidades_DetEspecialidadesCand">
+    <End Role="DetEspecialidadesCand" Type="Self.DetEspecialidadesCand" Multiplicity="0..1" />
+    <End Role="Especialidades" Type="Self.Especialidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetEspecialidadesCand">
+        <PropertyRef Name="Id_DetalleEspecialistaCandidato" />
+      </Principal>
+      <Dependent Role="Especialidades">
+        <PropertyRef Name="DetalleEspecialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EspecialidadesReq_DetEspecialidadesReq">
+    <End Role="DetEspecialidadesReq" Type="Self.DetEspecialidadesReq" Multiplicity="0..1" />
+    <End Role="EspecialidadesReq" Type="Self.EspecialidadesReq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetEspecialidadesReq">
+        <PropertyRef Name="ID_EspecialidadesReq" />
+      </Principal>
+      <Dependent Role="EspecialidadesReq">
+        <PropertyRef Name="ID_DetalleEspecReq" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Idiomas_DetIdiomasCand">
+    <End Role="DetIdiomasCand" Type="Self.DetIdiomasCand" Multiplicity="0..1" />
+    <End Role="Idiomas" Type="Self.Idioma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetIdiomasCand">
+        <PropertyRef Name="ID_DetCandidatosIdioma" />
+      </Principal>
+      <Dependent Role="Idiomas">
+        <PropertyRef Name="DetalleIdiomaCandidato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdiomasRequeridos_DetIdiomasReq">
+    <End Role="DetIdiomasReq" Type="Self.DetIdiomasReq" Multiplicity="0..1" />
+    <End Role="IdiomasRequeridos" Type="Self.IdiomasRequerido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetIdiomasReq">
+        <PropertyRef Name="ID_IdiomaReq" />
+      </Principal>
+      <Dependent Role="IdiomasRequeridos">
+        <PropertyRef Name="ID_DetalleIdiomaReq" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__entradas__Id_Emp__75A278F5">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="entradas" Type="Self.entrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="entradas">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__liquidaci__Id_Em__7D439ABD">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="liquidaciones" Type="Self.liquidacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="liquidaciones">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__permisos__Id_Emp__71D1E811">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="permisos" Type="Self.permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="permisos">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__salidas__Id_Empl__787EE5A0">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="salidas" Type="Self.salida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="salidas">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_Adm_Us__Id_Em__1F98B2C1">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="TB_Adm_Usuario">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_MOVIMI__EMPLE__03F0984C">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="TB_MOVIMIENTO_DEVENGADO" Type="Self.TB_MOVIMIENTO_DEVENGADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="TB_MOVIMIENTO_DEVENGADO">
+        <PropertyRef Name="EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_MOVIMI__EMPLE__07C12930">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="TB_MOVIMIENTO_DEDUCCION" Type="Self.TB_MOVIMIENTO_DEDUCCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="TB_MOVIMIENTO_DEDUCCION">
+        <PropertyRef Name="EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vacacione__Id_Em__6E01572D">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="vacaciones" Type="Self.vacacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="vacaciones">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Informacion_Academica">
+    <End Role="Informacion_Academica" Type="Self.Informacion_Academica" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Informacion_Academica">
+        <PropertyRef Name="Id_hist_academico" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="Id_Info_Academica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Profesiones">
+    <End Role="Profesiones" Type="Self.Profesione" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesiones">
+        <PropertyRef Name="Id_Profesion" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="Id_Profesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resultados_Empleados">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Resultados" Type="Self.Resultado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="Resultados">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PRESTAMO_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="TB_PRESTAMO">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_RECIBO_CUOTA_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="TB_RECIBO_CUOTA" Type="Self.TB_RECIBO_CUOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="TB_RECIBO_CUOTA">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__encuesta__ID_pre__4BAC3F29">
+    <End Role="pregunta" Type="Self.pregunta" Multiplicity="1" />
+    <End Role="encuesta" Type="Self.encuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pregunta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="encuesta">
+        <PropertyRef Name="ID_pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__salidas__id_entr__797309D9">
+    <End Role="entradas" Type="Self.entrada" Multiplicity="1" />
+    <End Role="salidas" Type="Self.salida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entradas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="salidas">
+        <PropertyRef Name="id_entrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vacantes_EspecialidadesReq">
+    <End Role="EspecialidadesReq" Type="Self.EspecialidadesReq" Multiplicity="0..1" />
+    <End Role="Vacantes" Type="Self.Vacante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EspecialidadesReq">
+        <PropertyRef Name="tb_EspecialidadesReq_id" />
+      </Principal>
+      <Dependent Role="Vacantes">
+        <PropertyRef Name="tb_Vacantes_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Indicadores_Fortalezas">
+    <End Role="Fortalezas" Type="Self.Fortaleza" Multiplicity="1" />
+    <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fortalezas">
+        <PropertyRef Name="Id_Fortalezas" />
+      </Principal>
+      <Dependent Role="Indicadores">
+        <PropertyRef Name="Id_Fortalezas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vacantes_IdiomasRequeridos">
+    <End Role="IdiomasRequeridos" Type="Self.IdiomasRequerido" Multiplicity="0..1" />
+    <End Role="Vacantes" Type="Self.Vacante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdiomasRequeridos">
+        <PropertyRef Name="tb_idiomasReq_id" />
+      </Principal>
+      <Dependent Role="Vacantes">
+        <PropertyRef Name="tb_Vacantes_idioma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Indicadores_Niveles_Evaluativos">
+    <End Role="Niveles_Evaluativos" Type="Self.Niveles_Evaluativos" Multiplicity="1" />
+    <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Niveles_Evaluativos">
+        <PropertyRef Name="Id_Nivel_Evaluativo" />
+      </Principal>
+      <Dependent Role="Indicadores">
+        <PropertyRef Name="Id_Nivel_Evaluativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resultados_Indicadores1">
+    <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="1" />
+    <End Role="Resultados" Type="Self.Resultado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicadores">
+        <PropertyRef Name="Id_Indicador" />
+      </Principal>
+      <Dependent Role="Resultados">
+        <PropertyRef Name="Id_Indicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__plan_estu__ID_te__534D60F1">
+    <End Role="tema_plan" Type="Self.tema_plan" Multiplicity="1" />
+    <End Role="plan_estudio" Type="Self.plan_estudio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tema_plan">
+        <PropertyRef Name="ID_plan" />
+      </Principal>
+      <Dependent Role="plan_estudio">
+        <PropertyRef Name="ID_tema_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__respuesta__ID_pr__48CFD27E">
+    <End Role="pregunta" Type="Self.pregunta" Multiplicity="1" />
+    <End Role="respuesta" Type="Self.respuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pregunta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="respuesta">
+        <PropertyRef Name="ID_pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Adm_Contenido_TB_Adm_Sesion">
+    <End Role="TB_Adm_Sesion" Type="Self.TB_Adm_Sesion" Multiplicity="1" />
+    <End Role="TB_Adm_Contenido" Type="Self.TB_Adm_Contenido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_Sesion">
+        <PropertyRef Name="id_sesion" />
+      </Principal>
+      <Dependent Role="TB_Adm_Contenido">
+        <PropertyRef Name="id_sesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Adm_Contenido_TB_Adm_Usuario">
+    <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="1" />
+    <End Role="TB_Adm_Contenido" Type="Self.TB_Adm_Contenido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_Usuario">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="TB_Adm_Contenido">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_OpcionesSistema_TB_Adm_OpcionesSistema">
+    <End Role="TB_Adm_OpcionesSistema" Type="Self.TB_Adm_OpcionesSistema" Multiplicity="1" />
+    <End Role="TB_Adm_Usuario_OpcionesSistema" Type="Self.TB_Adm_Usuario_OpcionesSistema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_OpcionesSistema">
+        <PropertyRef Name="id_opciones" />
+      </Principal>
+      <Dependent Role="TB_Adm_Usuario_OpcionesSistema">
+        <PropertyRef Name="id_opciones" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Roles_TB_Adm_RolesDeUsuario">
+    <End Role="TB_Adm_RolesDeUsuario" Type="Self.TB_Adm_RolesDeUsuario" Multiplicity="1" />
+    <End Role="TB_Adm_Usuario_Roles" Type="Self.TB_Adm_Usuario_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_RolesDeUsuario">
+        <PropertyRef Name="id_rolUsuario" />
+      </Principal>
+      <Dependent Role="TB_Adm_Usuario_Roles">
+        <PropertyRef Name="id_rolUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Adm_Sesion_TB_Adm_Usuario">
+    <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="1" />
+    <End Role="TB_Adm_Sesion" Type="Self.TB_Adm_Sesion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_Usuario">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="TB_Adm_Sesion">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_OpcionesSistema_TB_Adm_Usuario">
+    <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="1" />
+    <End Role="TB_Adm_Usuario_OpcionesSistema" Type="Self.TB_Adm_Usuario_OpcionesSistema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_Usuario">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="TB_Adm_Usuario_OpcionesSistema">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Roles_TB_Adm_Usuario">
+    <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="1" />
+    <End Role="TB_Adm_Usuario_Roles" Type="Self.TB_Adm_Usuario_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Adm_Usuario">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="TB_Adm_Usuario_Roles">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CUOTA_TB_PRESTAMO">
+    <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="1" />
+    <End Role="TB_CUOTA" Type="Self.TB_CUOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PRESTAMO">
+        <PropertyRef Name="id_prestamo" />
+      </Principal>
+      <Dependent Role="TB_CUOTA">
+        <PropertyRef Name="id_prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_RECIBO_CUOTA_TB_CUOTA">
+    <End Role="TB_CUOTA" Type="Self.TB_CUOTA" Multiplicity="1" />
+    <End Role="TB_RECIBO_CUOTA" Type="Self.TB_RECIBO_CUOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CUOTA">
+        <PropertyRef Name="id_cuota" />
+      </Principal>
+      <Dependent Role="TB_RECIBO_CUOTA">
+        <PropertyRef Name="id_cuota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_MOVIMI__ID_DE__08B54D69">
+    <End Role="TB_DEDUCCION" Type="Self.TB_DEDUCCION" Multiplicity="1" />
+    <End Role="TB_MOVIMIENTO_DEDUCCION" Type="Self.TB_MOVIMIENTO_DEDUCCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_DEDUCCION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TB_MOVIMIENTO_DEDUCCION">
+        <PropertyRef Name="ID_DEDUCCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_MOVIMI__ID_DE__04E4BC85">
+    <End Role="TB_DEVENGADO" Type="Self.TB_DEVENGADO" Multiplicity="1" />
+    <End Role="TB_MOVIMIENTO_DEVENGADO" Type="Self.TB_MOVIMIENTO_DEVENGADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_DEVENGADO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TB_MOVIMIENTO_DEVENGADO">
+        <PropertyRef Name="ID_DEVENGADOS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PRESTAMO_TB_ESTADO">
+    <End Role="TB_ESTADO" Type="Self.TB_ESTADO" Multiplicity="1" />
+    <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESTADO">
+        <PropertyRef Name="id_estado" />
+      </Principal>
+      <Dependent Role="TB_PRESTAMO">
+        <PropertyRef Name="id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prestamo_pagoPlazo">
+    <End Role="TB_PLAZO_PAGO" Type="Self.TB_PLAZO_PAGO" Multiplicity="1" />
+    <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PLAZO_PAGO">
+        <PropertyRef Name="id_plazo_pago" />
+      </Principal>
+      <Dependent Role="TB_PRESTAMO">
+        <PropertyRef Name="id_plazo_pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PRESTAMO_TB_PLAZO_PAGO">
+    <End Role="TB_PLAZO_PAGO" Type="Self.TB_PLAZO_PAGO" Multiplicity="1" />
+    <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PLAZO_PAGO">
+        <PropertyRef Name="id_plazo_pago" />
+      </Principal>
+      <Dependent Role="TB_PRESTAMO">
+        <PropertyRef Name="id_plazo_pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_RECIBO_CUOTA_TB_PRESTAMO">
+    <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="1" />
+    <End Role="TB_RECIBO_CUOTA" Type="Self.TB_RECIBO_CUOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PRESTAMO">
+        <PropertyRef Name="id_prestamo" />
+      </Principal>
+      <Dependent Role="TB_RECIBO_CUOTA">
+        <PropertyRef Name="id_prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tema_plan__ID_te__5070F446">
+    <End Role="tema" Type="Self.tema" Multiplicity="1" />
+    <End Role="tema_plan" Type="Self.tema_plan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tema">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tema_plan">
+        <PropertyRef Name="ID_tema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="capacitacion_empleado">
+    <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DB_Recursos_HumanosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Antecedentes" EntityType="Self.Antecedente" />
+    <EntitySet Name="areas" EntityType="Self.area" />
+    <EntitySet Name="Candidatoes" EntityType="Self.Candidato" />
+    <EntitySet Name="capacitacions" EntityType="Self.capacitacion" />
+    <EntitySet Name="Cargoes" EntityType="Self.Cargo" />
+    <EntitySet Name="centro_capacit" EntityType="Self.centro_capacit" />
+    <EntitySet Name="Contratoes" EntityType="Self.Contrato" />
+    <EntitySet Name="Debilidades" EntityType="Self.Debilidade" />
+    <EntitySet Name="DetEspecialidadesCands" EntityType="Self.DetEspecialidadesCand" />
+    <EntitySet Name="DetEspecialidadesReqs" EntityType="Self.DetEspecialidadesReq" />
+    <EntitySet Name="DetIdiomasCands" EntityType="Self.DetIdiomasCand" />
+    <EntitySet Name="DetIdiomasReqs" EntityType="Self.DetIdiomasReq" />
+    <EntitySet Name="Documentacions" EntityType="Self.Documentacion" />
+    <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
+    <EntitySet Name="encuestas" EntityType="Self.encuesta" />
+    <EntitySet Name="entradas" EntityType="Self.entrada" />
+    <EntitySet Name="Especialidades" EntityType="Self.Especialidade" />
+    <EntitySet Name="EspecialidadesReqs" EntityType="Self.EspecialidadesReq" />
+    <EntitySet Name="Fortalezas" EntityType="Self.Fortaleza" />
+    <EntitySet Name="Idiomas" EntityType="Self.Idioma" />
+    <EntitySet Name="IdiomasRequeridos" EntityType="Self.IdiomasRequerido" />
+    <EntitySet Name="Indicadores" EntityType="Self.Indicadore" />
+    <EntitySet Name="Informacion_Academica" EntityType="Self.Informacion_Academica" />
+    <EntitySet Name="liquidaciones" EntityType="Self.liquidacione" />
+    <EntitySet Name="Niveles_Evaluativos" EntityType="Self.Niveles_Evaluativos" />
+    <EntitySet Name="Oficinas" EntityType="Self.Oficina" />
+    <EntitySet Name="permisos" EntityType="Self.permiso" />
+    <EntitySet Name="plan_estudio" EntityType="Self.plan_estudio" />
+    <EntitySet Name="preguntas" EntityType="Self.pregunta" />
+    <EntitySet Name="Profesiones" EntityType="Self.Profesione" />
+    <EntitySet Name="respuestas" EntityType="Self.respuesta" />
+    <EntitySet Name="Resultados" EntityType="Self.Resultado" />
+    <EntitySet Name="salidas" EntityType="Self.salida" />
+    <EntitySet Name="TB_Adm_Contenido" EntityType="Self.TB_Adm_Contenido" />
+    <EntitySet Name="TB_Adm_OpcionesSistema" EntityType="Self.TB_Adm_OpcionesSistema" />
+    <EntitySet Name="TB_Adm_RolesDeUsuario" EntityType="Self.TB_Adm_RolesDeUsuario" />
+    <EntitySet Name="TB_Adm_Sesion" EntityType="Self.TB_Adm_Sesion" />
+    <EntitySet Name="TB_Adm_Usuario" EntityType="Self.TB_Adm_Usuario" />
+    <EntitySet Name="TB_Adm_Usuario_OpcionesSistema" EntityType="Self.TB_Adm_Usuario_OpcionesSistema" />
+    <EntitySet Name="TB_Adm_Usuario_Roles" EntityType="Self.TB_Adm_Usuario_Roles" />
+    <EntitySet Name="TB_CUOTA" EntityType="Self.TB_CUOTA" />
+    <EntitySet Name="TB_DEDUCCION" EntityType="Self.TB_DEDUCCION" />
+    <EntitySet Name="TB_DEVENGADO" EntityType="Self.TB_DEVENGADO" />
+    <EntitySet Name="TB_ESTADO" EntityType="Self.TB_ESTADO" />
+    <EntitySet Name="TB_MOVIMIENTO_DEDUCCION" EntityType="Self.TB_MOVIMIENTO_DEDUCCION" />
+    <EntitySet Name="TB_MOVIMIENTO_DEVENGADO" EntityType="Self.TB_MOVIMIENTO_DEVENGADO" />
+    <EntitySet Name="TB_PLAZO_PAGO" EntityType="Self.TB_PLAZO_PAGO" />
+    <EntitySet Name="TB_PRESTAMO" EntityType="Self.TB_PRESTAMO" />
+    <EntitySet Name="TB_RECIBO_CUOTA" EntityType="Self.TB_RECIBO_CUOTA" />
+    <EntitySet Name="temas" EntityType="Self.tema" />
+    <EntitySet Name="tema_plan" EntityType="Self.tema_plan" />
+    <EntitySet Name="vacaciones" EntityType="Self.vacacione" />
+    <EntitySet Name="Vacantes" EntityType="Self.Vacante" />
+    <AssociationSet Name="FK_Antecedente_Empleado" Association="Self.FK_Antecedente_Empleado">
+      <End Role="Antecedentes" EntitySet="Antecedentes" />
+      <End Role="Empleado" EntitySet="Empleadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__capacitac__ID_ar__59063A47" Association="Self.FK__capacitac__ID_ar__59063A47">
+      <End Role="area" EntitySet="areas" />
+      <End Role="capacitacion" EntitySet="capacitacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Area_Empleado" Association="Self.FK_Area_Empleado">
+      <End Role="area" EntitySet="areas" />
+      <End Role="Empleado" EntitySet="Empleadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidato_Especialidades" Association="Self.FK_Candidato_Especialidades">
+      <End Role="Especialidades" EntitySet="Especialidades" />
+      <End Role="Candidato" EntitySet="Candidatoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidato_Idiomas" Association="Self.FK_Candidato_Idiomas">
+      <End Role="Idiomas" EntitySet="Idiomas" />
+      <End Role="Candidato" EntitySet="Candidatoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__capacitac__ID_ce__571DF1D5" Association="Self.FK__capacitac__ID_ce__571DF1D5">
+      <End Role="centro_capacit" EntitySet="centro_capacit" />
+      <End Role="capacitacion" EntitySet="capacitacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__capacitac__ID_en__5812160E" Association="Self.FK__capacitac__ID_en__5812160E">
+      <End Role="encuesta" EntitySet="encuestas" />
+      <End Role="capacitacion" EntitySet="capacitacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__capacitac__ID_pl__5629CD9C" Association="Self.FK__capacitac__ID_pl__5629CD9C">
+      <End Role="plan_estudio" EntitySet="plan_estudio" />
+      <End Role="capacitacion" EntitySet="capacitacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cargo_Empleado" Association="Self.FK_Cargo_Empleado">
+      <End Role="Cargo" EntitySet="Cargoes" />
+      <End Role="Empleado" EntitySet="Empleadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cargo_Oficina" Association="Self.FK_Cargo_Oficina">
+      <End Role="Oficina" EntitySet="Oficinas" />
+      <End Role="Cargo" EntitySet="Cargoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Cargo" Association="Self.FK_Contrato_Cargo">
+      <End Role="Cargo" EntitySet="Cargoes" />
+      <End Role="Contrato" EntitySet="Contratoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Documentacion" Association="Self.FK_Contrato_Documentacion">
+      <End Role="Documentacion" EntitySet="Documentacions" />
+      <End Role="Contrato" EntitySet="Contratoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_Empleado" Association="Self.FK_Contrato_Empleado">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Contrato" EntitySet="Contratoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Indicadores_Debilidades" Association="Self.FK_Indicadores_Debilidades">
+      <End Role="Debilidades" EntitySet="Debilidades" />
+      <End Role="Indicadores" EntitySet="Indicadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialidades_DetEspecialidadesCand" Association="Self.FK_Especialidades_DetEspecialidadesCand">
+      <End Role="DetEspecialidadesCand" EntitySet="DetEspecialidadesCands" />
+      <End Role="Especialidades" EntitySet="Especialidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EspecialidadesReq_DetEspecialidadesReq" Association="Self.FK_EspecialidadesReq_DetEspecialidadesReq">
+      <End Role="DetEspecialidadesReq" EntitySet="DetEspecialidadesReqs" />
+      <End Role="EspecialidadesReq" EntitySet="EspecialidadesReqs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Idiomas_DetIdiomasCand" Association="Self.FK_Idiomas_DetIdiomasCand">
+      <End Role="DetIdiomasCand" EntitySet="DetIdiomasCands" />
+      <End Role="Idiomas" EntitySet="Idiomas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdiomasRequeridos_DetIdiomasReq" Association="Self.FK_IdiomasRequeridos_DetIdiomasReq">
+      <End Role="DetIdiomasReq" EntitySet="DetIdiomasReqs" />
+      <End Role="IdiomasRequeridos" EntitySet="IdiomasRequeridos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__entradas__Id_Emp__75A278F5" Association="Self.FK__entradas__Id_Emp__75A278F5">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="entradas" EntitySet="entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__liquidaci__Id_Em__7D439ABD" Association="Self.FK__liquidaci__Id_Em__7D439ABD">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="liquidaciones" EntitySet="liquidaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__permisos__Id_Emp__71D1E811" Association="Self.FK__permisos__Id_Emp__71D1E811">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="permisos" EntitySet="permisos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__salidas__Id_Empl__787EE5A0" Association="Self.FK__salidas__Id_Empl__787EE5A0">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="salidas" EntitySet="salidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_Adm_Us__Id_Em__1F98B2C1" Association="Self.FK__TB_Adm_Us__Id_Em__1F98B2C1">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_MOVIMI__EMPLE__03F0984C" Association="Self.FK__TB_MOVIMI__EMPLE__03F0984C">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="TB_MOVIMIENTO_DEVENGADO" EntitySet="TB_MOVIMIENTO_DEVENGADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_MOVIMI__EMPLE__07C12930" Association="Self.FK__TB_MOVIMI__EMPLE__07C12930">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="TB_MOVIMIENTO_DEDUCCION" EntitySet="TB_MOVIMIENTO_DEDUCCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vacacione__Id_Em__6E01572D" Association="Self.FK__vacacione__Id_Em__6E01572D">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="vacaciones" EntitySet="vacaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Informacion_Academica" Association="Self.FK_Empleado_Informacion_Academica">
+      <End Role="Informacion_Academica" EntitySet="Informacion_Academica" />
+      <End Role="Empleado" EntitySet="Empleadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Profesiones" Association="Self.FK_Empleado_Profesiones">
+      <End Role="Profesiones" EntitySet="Profesiones" />
+      <End Role="Empleado" EntitySet="Empleadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resultados_Empleados" Association="Self.FK_Resultados_Empleados">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Resultados" EntitySet="Resultados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PRESTAMO_Empleado" Association="Self.FK_TB_PRESTAMO_Empleado">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_RECIBO_CUOTA_Empleado" Association="Self.FK_TB_RECIBO_CUOTA_Empleado">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="TB_RECIBO_CUOTA" EntitySet="TB_RECIBO_CUOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__encuesta__ID_pre__4BAC3F29" Association="Self.FK__encuesta__ID_pre__4BAC3F29">
+      <End Role="pregunta" EntitySet="preguntas" />
+      <End Role="encuesta" EntitySet="encuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__salidas__id_entr__797309D9" Association="Self.FK__salidas__id_entr__797309D9">
+      <End Role="entradas" EntitySet="entradas" />
+      <End Role="salidas" EntitySet="salidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vacantes_EspecialidadesReq" Association="Self.FK_Vacantes_EspecialidadesReq">
+      <End Role="EspecialidadesReq" EntitySet="EspecialidadesReqs" />
+      <End Role="Vacantes" EntitySet="Vacantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Indicadores_Fortalezas" Association="Self.FK_Indicadores_Fortalezas">
+      <End Role="Fortalezas" EntitySet="Fortalezas" />
+      <End Role="Indicadores" EntitySet="Indicadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vacantes_IdiomasRequeridos" Association="Self.FK_Vacantes_IdiomasRequeridos">
+      <End Role="IdiomasRequeridos" EntitySet="IdiomasRequeridos" />
+      <End Role="Vacantes" EntitySet="Vacantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Indicadores_Niveles_Evaluativos" Association="Self.FK_Indicadores_Niveles_Evaluativos">
+      <End Role="Niveles_Evaluativos" EntitySet="Niveles_Evaluativos" />
+      <End Role="Indicadores" EntitySet="Indicadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resultados_Indicadores1" Association="Self.FK_Resultados_Indicadores1">
+      <End Role="Indicadores" EntitySet="Indicadores" />
+      <End Role="Resultados" EntitySet="Resultados" />
+    </AssociationSet>
+    <AssociationSet Name="FK__plan_estu__ID_te__534D60F1" Association="Self.FK__plan_estu__ID_te__534D60F1">
+      <End Role="tema_plan" EntitySet="tema_plan" />
+      <End Role="plan_estudio" EntitySet="plan_estudio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__respuesta__ID_pr__48CFD27E" Association="Self.FK__respuesta__ID_pr__48CFD27E">
+      <End Role="pregunta" EntitySet="preguntas" />
+      <End Role="respuesta" EntitySet="respuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Adm_Contenido_TB_Adm_Sesion" Association="Self.FK_TB_Adm_Contenido_TB_Adm_Sesion">
+      <End Role="TB_Adm_Sesion" EntitySet="TB_Adm_Sesion" />
+      <End Role="TB_Adm_Contenido" EntitySet="TB_Adm_Contenido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Adm_Contenido_TB_Adm_Usuario" Association="Self.FK_TB_Adm_Contenido_TB_Adm_Usuario">
+      <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
+      <End Role="TB_Adm_Contenido" EntitySet="TB_Adm_Contenido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_OpcionesSistema_TB_Adm_OpcionesSistema" Association="Self.FK_Usuario_OpcionesSistema_TB_Adm_OpcionesSistema">
+      <End Role="TB_Adm_OpcionesSistema" EntitySet="TB_Adm_OpcionesSistema" />
+      <End Role="TB_Adm_Usuario_OpcionesSistema" EntitySet="TB_Adm_Usuario_OpcionesSistema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Roles_TB_Adm_RolesDeUsuario" Association="Self.FK_Usuario_Roles_TB_Adm_RolesDeUsuario">
+      <End Role="TB_Adm_RolesDeUsuario" EntitySet="TB_Adm_RolesDeUsuario" />
+      <End Role="TB_Adm_Usuario_Roles" EntitySet="TB_Adm_Usuario_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Adm_Sesion_TB_Adm_Usuario" Association="Self.FK_TB_Adm_Sesion_TB_Adm_Usuario">
+      <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
+      <End Role="TB_Adm_Sesion" EntitySet="TB_Adm_Sesion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_OpcionesSistema_TB_Adm_Usuario" Association="Self.FK_Usuario_OpcionesSistema_TB_Adm_Usuario">
+      <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
+      <End Role="TB_Adm_Usuario_OpcionesSistema" EntitySet="TB_Adm_Usuario_OpcionesSistema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Roles_TB_Adm_Usuario" Association="Self.FK_Usuario_Roles_TB_Adm_Usuario">
+      <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
+      <End Role="TB_Adm_Usuario_Roles" EntitySet="TB_Adm_Usuario_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_CUOTA_TB_PRESTAMO" Association="Self.FK_TB_CUOTA_TB_PRESTAMO">
+      <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
+      <End Role="TB_CUOTA" EntitySet="TB_CUOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_RECIBO_CUOTA_TB_CUOTA" Association="Self.FK_TB_RECIBO_CUOTA_TB_CUOTA">
+      <End Role="TB_CUOTA" EntitySet="TB_CUOTA" />
+      <End Role="TB_RECIBO_CUOTA" EntitySet="TB_RECIBO_CUOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_MOVIMI__ID_DE__08B54D69" Association="Self.FK__TB_MOVIMI__ID_DE__08B54D69">
+      <End Role="TB_DEDUCCION" EntitySet="TB_DEDUCCION" />
+      <End Role="TB_MOVIMIENTO_DEDUCCION" EntitySet="TB_MOVIMIENTO_DEDUCCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_MOVIMI__ID_DE__04E4BC85" Association="Self.FK__TB_MOVIMI__ID_DE__04E4BC85">
+      <End Role="TB_DEVENGADO" EntitySet="TB_DEVENGADO" />
+      <End Role="TB_MOVIMIENTO_DEVENGADO" EntitySet="TB_MOVIMIENTO_DEVENGADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PRESTAMO_TB_ESTADO" Association="Self.FK_TB_PRESTAMO_TB_ESTADO">
+      <End Role="TB_ESTADO" EntitySet="TB_ESTADO" />
+      <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prestamo_pagoPlazo" Association="Self.FK_prestamo_pagoPlazo">
+      <End Role="TB_PLAZO_PAGO" EntitySet="TB_PLAZO_PAGO" />
+      <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PRESTAMO_TB_PLAZO_PAGO" Association="Self.FK_TB_PRESTAMO_TB_PLAZO_PAGO">
+      <End Role="TB_PLAZO_PAGO" EntitySet="TB_PLAZO_PAGO" />
+      <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_RECIBO_CUOTA_TB_PRESTAMO" Association="Self.FK_TB_RECIBO_CUOTA_TB_PRESTAMO">
+      <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
+      <End Role="TB_RECIBO_CUOTA" EntitySet="TB_RECIBO_CUOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tema_plan__ID_te__5070F446" Association="Self.FK__tema_plan__ID_te__5070F446">
+      <End Role="tema" EntitySet="temas" />
+      <End Role="tema_plan" EntitySet="tema_plan" />
+    </AssociationSet>
+    <AssociationSet Name="capacitacion_empleado" Association="Self.capacitacion_empleado">
+      <End Role="capacitacion" EntitySet="capacitacions" />
+      <End Role="Empleado" EntitySet="Empleadoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
