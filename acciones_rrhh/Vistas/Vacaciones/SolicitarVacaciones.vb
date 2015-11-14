@@ -52,5 +52,10 @@
             Dim sal = calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
             MessageBox.Show(CType(sal, String) + " dias")
         End Sub
+
+        Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+            Me.Close()
+            Vistas.MenuPrincipal.Visible = True
+        End Sub
     End Class
 End Namespace
