@@ -2,12 +2,15 @@
     Public Class AdministrarVacaciones
         Private Sub UpdateDataGridV()
             Using context As New DB_Recursos_HumanosEntities
-                Dim empVList = (From emp In context.Empleadoes Join v In context.vacaciones On emp.Id_Empleado Equals v.Id_Empleado Where v.aceptado = False Select emp.Nombre, emp.Apellido, emp.Cedula, v.fecha_inicio, v.fecha_fin, v.id).ToList
+                ' Solo las vacaciones cuya fecha de fin sea mayor que la fecha actual
+                Dim empVList = (From emp In context.Empleadoes Join v In context.vacaciones On emp.Id_Empleado Equals v.Id_Empleado Where v.aceptado = False And v.fecha_fin > Date.Today Select emp.Nombre, emp.Apellido, emp.Cedula, v.fecha_inicio, v.fecha_fin, v.id).ToList
                 DataGridView1.DataSource = empVList
             End Using
         End Sub
         Private Sub AdministrarVacaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            'Cargar registros de vacaciones disponibles para evaluar
             UpdateDataGridV()
+            'Agregar icono para aceptar vacaciones
             Dim delbut As New DataGridViewImageColumn
             delbut.Image = My.Resources.icon
             delbut.Width = 50
@@ -21,9 +24,23 @@
                 Dim result = MessageBox.Show("Aprobar vacación?", "Confirmation", MessageBoxButtons.OKCancel)
                 If result = Windows.Forms.DialogResult.OK Then
                     Using context As New DB_Recursos_HumanosEntities
-                        Dim vac = context.vacaciones.Find(vid)
-                        vac.aceptado = True
-                        context.SaveChanges()
+                        Try
+                            Dim vac = context.vacaciones.Find(vid)
+                            ' Si el empleado no tiene suficiente saldo para cumplir la vacacion
+                            If (Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado) <
+                                (DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin))) Then
+                                Throw New ArgumentException("El empleado no cuenta con suficiente saldo.")
+                            End If
+                            vac.aceptado = True
+                            context.SaveChanges()
+                            DataGridView1.CurrentCell = Nothing
+                            DataGridView1.Rows(e.RowIndex).Visible = False
+                            MessageBox.Show("Vacación aprobada exitosamente!")
+                        Catch ex As ArgumentException
+                            MessageBox.Show(ex.Message)
+                        Catch ex As Exception
+                            MessageBox.Show(ex.Message)
+                        End Try
                     End Using
                 Else
                 End If
