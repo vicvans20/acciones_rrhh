@@ -24,7 +24,6 @@
         <System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
             Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-            Me.Button1 = New System.Windows.Forms.Button()
             CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
@@ -38,21 +37,11 @@
             Me.DataGridView1.Size = New System.Drawing.Size(752, 321)
             Me.DataGridView1.TabIndex = 0
             '
-            'Button1
-            '
-            Me.Button1.Location = New System.Drawing.Point(343, 339)
-            Me.Button1.Name = "Button1"
-            Me.Button1.Size = New System.Drawing.Size(75, 23)
-            Me.Button1.TabIndex = 1
-            Me.Button1.Text = "Menu Principal"
-            Me.Button1.UseVisualStyleBackColor = True
-            '
             'AdministrarVacaciones
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.ClientSize = New System.Drawing.Size(800, 388)
-            Me.Controls.Add(Me.Button1)
             Me.Controls.Add(Me.DataGridView1)
             Me.Name = "AdministrarVacaciones"
             Me.Text = "Administrar Vacaciones"
@@ -61,7 +50,6 @@
 
         End Sub
         Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-        Friend WithEvents Button1 As System.Windows.Forms.Button
 
     End Class
 End Namespace

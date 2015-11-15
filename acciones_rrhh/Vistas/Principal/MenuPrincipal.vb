@@ -16,7 +16,7 @@ Namespace Vistas
         End Sub
 
         Private Sub AdministrarVacacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministrarVacacionesToolStripMenuItem.Click
-            Dim administrarVacaciones As New Vistas.Solicitar_Vacaciones()
+            Dim administrarVacaciones As New Vistas.AdministrarVacaciones()
             administrarVacaciones.MdiParent = Me
             administrarVacaciones.Show()
         End Sub
