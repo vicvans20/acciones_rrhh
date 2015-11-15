@@ -23,54 +23,96 @@
         'No lo modifique con el editor de código.
         <System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Me.Label1 = New System.Windows.Forms.Label()
-            Me.Button1 = New System.Windows.Forms.Button()
-            Me.Button2 = New System.Windows.Forms.Button()
+            Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+            Me.NóminaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.EmpleadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.AccionesRRHHToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.VacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.SolicitarVacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.AdministrarVacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.MenuStrip1.SuspendLayout()
             Me.SuspendLayout()
             '
-            'Label1
+            'MenuStrip1
             '
-            Me.Label1.AutoSize = True
-            Me.Label1.Location = New System.Drawing.Point(283, 18)
-            Me.Label1.Name = "Label1"
-            Me.Label1.Size = New System.Drawing.Size(193, 13)
-            Me.Label1.TabIndex = 0
-            Me.Label1.Text = "Menu Temporal de Acciones de RRHH"
+            Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ControlLight
+            Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NóminaToolStripMenuItem, Me.AccionesRRHHToolStripMenuItem, Me.AyudaToolStripMenuItem})
+            Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+            Me.MenuStrip1.Name = "MenuStrip1"
+            Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
+            Me.MenuStrip1.TabIndex = 0
+            Me.MenuStrip1.Text = "Acciones RRHH"
             '
-            'Button1
+            'NóminaToolStripMenuItem
             '
-            Me.Button1.Location = New System.Drawing.Point(286, 83)
-            Me.Button1.Name = "Button1"
-            Me.Button1.Size = New System.Drawing.Size(190, 23)
-            Me.Button1.TabIndex = 1
-            Me.Button1.Text = "Solicitar Vacaciones"
-            Me.Button1.UseVisualStyleBackColor = True
+            Me.NóminaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EmpleadoToolStripMenuItem})
+            Me.NóminaToolStripMenuItem.Name = "NóminaToolStripMenuItem"
+            Me.NóminaToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
+            Me.NóminaToolStripMenuItem.Text = "Nómina"
             '
-            'Button2
+            'EmpleadoToolStripMenuItem
             '
-            Me.Button2.Location = New System.Drawing.Point(286, 133)
-            Me.Button2.Name = "Button2"
-            Me.Button2.Size = New System.Drawing.Size(190, 23)
-            Me.Button2.TabIndex = 2
-            Me.Button2.Text = "Manejar Vacaciones"
-            Me.Button2.UseVisualStyleBackColor = True
+            Me.EmpleadoToolStripMenuItem.Name = "EmpleadoToolStripMenuItem"
+            Me.EmpleadoToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+            Me.EmpleadoToolStripMenuItem.Text = "Empleado"
+            '
+            'AccionesRRHHToolStripMenuItem
+            '
+            Me.AccionesRRHHToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VacacionesToolStripMenuItem})
+            Me.AccionesRRHHToolStripMenuItem.Name = "AccionesRRHHToolStripMenuItem"
+            Me.AccionesRRHHToolStripMenuItem.Size = New System.Drawing.Size(102, 20)
+            Me.AccionesRRHHToolStripMenuItem.Text = "Acciones RRHH"
+            '
+            'VacacionesToolStripMenuItem
+            '
+            Me.VacacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SolicitarVacacionesToolStripMenuItem, Me.AdministrarVacacionesToolStripMenuItem})
+            Me.VacacionesToolStripMenuItem.Name = "VacacionesToolStripMenuItem"
+            Me.VacacionesToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+            Me.VacacionesToolStripMenuItem.Text = "Vacaciones"
+            '
+            'SolicitarVacacionesToolStripMenuItem
+            '
+            Me.SolicitarVacacionesToolStripMenuItem.Name = "SolicitarVacacionesToolStripMenuItem"
+            Me.SolicitarVacacionesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
+            Me.SolicitarVacacionesToolStripMenuItem.Text = "Solicitar Vacaciones"
+            '
+            'AdministrarVacacionesToolStripMenuItem
+            '
+            Me.AdministrarVacacionesToolStripMenuItem.Name = "AdministrarVacacionesToolStripMenuItem"
+            Me.AdministrarVacacionesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
+            Me.AdministrarVacacionesToolStripMenuItem.Text = "Administrar Vacaciones"
+            '
+            'AyudaToolStripMenuItem
+            '
+            Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
+            Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
+            Me.AyudaToolStripMenuItem.Text = "Ayuda"
             '
             'MenuPrincipal
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.ClientSize = New System.Drawing.Size(784, 438)
-            Me.Controls.Add(Me.Button2)
-            Me.Controls.Add(Me.Button1)
-            Me.Controls.Add(Me.Label1)
+            Me.Controls.Add(Me.MenuStrip1)
+            Me.IsMdiContainer = True
+            Me.MainMenuStrip = Me.MenuStrip1
             Me.Name = "MenuPrincipal"
             Me.Text = "Acciones de Recursos Humanos"
+            Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+            Me.MenuStrip1.ResumeLayout(False)
+            Me.MenuStrip1.PerformLayout()
             Me.ResumeLayout(False)
             Me.PerformLayout()
 
         End Sub
-        Friend WithEvents Label1 As System.Windows.Forms.Label
-        Friend WithEvents Button1 As System.Windows.Forms.Button
-        Friend WithEvents Button2 As System.Windows.Forms.Button
+        Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+        Friend WithEvents NóminaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents EmpleadoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents AccionesRRHHToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents VacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents SolicitarVacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents AdministrarVacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents AyudaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     End Class
 End Namespace
