@@ -11,6 +11,10 @@
         End Sub
         ' Enviar solicitud
         Private Sub bSend_Click(sender As Object, e As EventArgs) Handles bSend.Click
+            If (Me.dateInicio.Value > Me.dateFin.Value) Then
+                MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha de fin.")
+                Return
+            End If
             Dim sal = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
             Try
                 If DateDiff(DateInterval.Day, Me.dateInicio.Value, Me.dateFin.Value) > sal Then

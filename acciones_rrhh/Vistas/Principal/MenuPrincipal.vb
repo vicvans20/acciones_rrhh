@@ -20,5 +20,11 @@ Namespace Vistas
             administrarVacaciones.MdiParent = Me
             administrarVacaciones.Show()
         End Sub
+
+        Private Sub PermisosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PermisosToolStripMenuItem.Click
+            Dim registrarPermisos As New Vistas.RegistrarPermisos()
+            registrarPermisos.MdiParent = Me
+            registrarPermisos.Show()
+        End Sub
     End Class
 End Namespace
