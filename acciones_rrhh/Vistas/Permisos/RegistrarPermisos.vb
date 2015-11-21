@@ -3,10 +3,10 @@
 
         Private Sub RegistrarPermisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Using context As New DB_Recursos_HumanosEntities
-                Dim empList = (From emp In context.Empleadoes Select emp.Nombre, emp.Apellido, emp.Id_Empleado).ToList
+                Dim empList = (From emp In context.Empleadoes Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
-                cbEmpleados.DisplayMember = "Nombre"
-                cbEmpleados.ValueMember = "Id_Empleado"
+                cbEmpleados.DisplayMember = "nombreC"
+                cbEmpleados.ValueMember = "id"
             End Using
             Dim categories() As String = {"Permiso Administrativo", "Permiso Especial", "Subsidio"}
             Dim categoryList As New Generic.List(Of String)(categories)
@@ -14,14 +14,20 @@
         End Sub
 
         Private Sub btsave_Click(sender As Object, e As EventArgs) Handles btsave.Click
-            If (Me.dtInicio.Value > Me.dtFin.Value) Then
-                MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha de fin.")
+           
+            ' Convert time and date to datetime
+            Dim dtInicio As DateTime = Me.dtDInicio.Value.ToShortDateString
+            dtInicio = dtInicio + dtTInicio.Value.TimeOfDay
+            Dim dtFin As DateTime = Me.dtDFin.Value.ToShortDateString
+            dtFin = dtFin + dtTFin.Value.TimeOfDay
+            If (dtInicio >= dtFin) Then
+                MessageBox.Show("La fecha de inicio no puede ser mayor o igual que la fecha de fin.")
                 Return
             End If
             Using context As New DB_Recursos_HumanosEntities
                 Dim p As New permiso
-                p.fecha_inicio = dtInicio.Value
-                p.fecha_fin = dtFin.Value
+                p.fecha_inicio = dtInicio
+                p.fecha_fin = dtFin
                 p.descripcion = RichTextBox1.Text
                 p.categoria = ComboBox1.SelectedValue
                 p.Id_Empleado = cbEmpleados.SelectedValue
