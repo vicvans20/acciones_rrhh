@@ -382,6 +382,7 @@
     <None Include="Resources\icon.png" />
     <Content Include="Scripts\database_gen.sql" />
     <Content Include="Scripts\insert_catalogs.sql" />
+    <Content Include="Scripts\rrhh1-2.sql" />
     <Content Include="Scripts\ScriptActualizadoRRHHVersion1.sql" />
   </ItemGroup>
   <ItemGroup>
