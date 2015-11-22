@@ -14,7 +14,7 @@ Partial Public Class encuesta
     Public Property ID As Integer
     Public Property ID_pregunta As Integer
 
-    Public Overridable Property capacitacions As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
+    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
     Public Overridable Property pregunta As pregunta
 
 End Class

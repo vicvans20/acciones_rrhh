@@ -17,8 +17,8 @@ Partial Public Class Cargo
     Public Property Descripcion As String
     Public Property Id_Oficina As Nullable(Of Integer)
 
-    Public Overridable Property Empleadoes As ICollection(Of Empleado) = New HashSet(Of Empleado)
+    Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
     Public Overridable Property Oficina As Oficina
-    Public Overridable Property Contratoes As ICollection(Of Contrato) = New HashSet(Of Contrato)
+    Public Overridable Property Contrato As ICollection(Of Contrato) = New HashSet(Of Contrato)
 
 End Class

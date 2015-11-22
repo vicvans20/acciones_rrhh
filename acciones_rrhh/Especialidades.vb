@@ -10,13 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Resultado
-    Public Property Id_Resultados As Integer
-    Public Property Id_Indicador As Integer
-    Public Property Resultado_Final As String
-    Public Property Id_Empleado As Integer
+Partial Public Class Especialidades
+    Public Property Id_Especialidad As Integer
+    Public Property DetalleEspecialidad As Nullable(Of Integer)
 
-    Public Overridable Property Empleado As Empleado
-    Public Overridable Property Indicadore As Indicadore
+    Public Overridable Property Candidato As ICollection(Of Candidato) = New HashSet(Of Candidato)
+    Public Overridable Property DetEspecialidadesCand As DetEspecialidadesCand
 
 End Class

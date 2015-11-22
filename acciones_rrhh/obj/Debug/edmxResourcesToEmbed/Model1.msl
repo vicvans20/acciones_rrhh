@@ -2,15 +2,15 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DB_Recursos_HumanosModelStoreContainer" CdmEntityContainer="DB_Recursos_HumanosEntities">
     <EntitySetMapping Name="Antecedentes">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Antecedente">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Antecedentes">
         <MappingFragment StoreEntitySet="Antecedentes">
           <ScalarProperty Name="Id_Antecedente" ColumnName="Id_Antecedente" />
-          <ScalarProperty Name="Antecedente1" ColumnName="Antecedente" />
+          <ScalarProperty Name="Antecedente" ColumnName="Antecedente" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="areas">
+    <EntitySetMapping Name="area">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.area">
         <MappingFragment StoreEntitySet="area">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -18,7 +18,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Candidatoes">
+    <EntitySetMapping Name="Candidato">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Candidato">
         <MappingFragment StoreEntitySet="Candidato">
           <ScalarProperty Name="ID_Candidato" ColumnName="ID_Candidato" />
@@ -44,7 +44,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="capacitacions">
+    <EntitySetMapping Name="capacitacion">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.capacitacion">
         <MappingFragment StoreEntitySet="capacitacion">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -58,7 +58,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Cargoes">
+    <EntitySetMapping Name="Cargo">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Cargo">
         <MappingFragment StoreEntitySet="Cargo">
           <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
@@ -77,7 +77,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Contratoes">
+    <EntitySetMapping Name="Contrato">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Contrato">
         <MappingFragment StoreEntitySet="Contrato">
           <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
@@ -90,14 +90,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Debilidades">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Debilidade">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Debilidades">
         <MappingFragment StoreEntitySet="Debilidades">
           <ScalarProperty Name="Id_Debilidades" ColumnName="Id_Debilidades" />
           <ScalarProperty Name="Nombre_Debilidades" ColumnName="Nombre_Debilidades" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetEspecialidadesCands">
+    <EntitySetMapping Name="DetEspecialidadesCand">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetEspecialidadesCand">
         <MappingFragment StoreEntitySet="DetEspecialidadesCand">
           <ScalarProperty Name="Id_DetalleEspecialistaCandidato" ColumnName="Id_DetalleEspecialistaCandidato" />
@@ -106,7 +106,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetEspecialidadesReqs">
+    <EntitySetMapping Name="DetEspecialidadesReq">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetEspecialidadesReq">
         <MappingFragment StoreEntitySet="DetEspecialidadesReq">
           <ScalarProperty Name="ID_EspecialidadesReq" ColumnName="ID_EspecialidadesReq" />
@@ -115,7 +115,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetIdiomasCands">
+    <EntitySetMapping Name="DetIdiomasCand">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetIdiomasCand">
         <MappingFragment StoreEntitySet="DetIdiomasCand">
           <ScalarProperty Name="ID_DetCandidatosIdioma" ColumnName="ID_DetCandidatosIdioma" />
@@ -124,7 +124,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetIdiomasReqs">
+    <EntitySetMapping Name="DetIdiomasReq">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetIdiomasReq">
         <MappingFragment StoreEntitySet="DetIdiomasReq">
           <ScalarProperty Name="ID_IdiomaReq" ColumnName="ID_IdiomaReq" />
@@ -133,7 +133,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Documentacions">
+    <EntitySetMapping Name="Documentacion">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Documentacion">
         <MappingFragment StoreEntitySet="Documentacion">
           <ScalarProperty Name="Id_Documento" ColumnName="Id_Documento" />
@@ -142,7 +142,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Empleadoes">
+    <EntitySetMapping Name="Empleado">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Empleado">
         <MappingFragment StoreEntitySet="Empleado">
           <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -162,7 +162,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="encuestas">
+    <EntitySetMapping Name="encuesta">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.encuesta">
         <MappingFragment StoreEntitySet="encuesta">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -171,7 +171,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="entradas">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.entrada">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.entradas">
         <MappingFragment StoreEntitySet="entradas">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -182,14 +182,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Especialidades">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Especialidade">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Especialidades">
         <MappingFragment StoreEntitySet="Especialidades">
           <ScalarProperty Name="Id_Especialidad" ColumnName="Id_Especialidad" />
           <ScalarProperty Name="DetalleEspecialidad" ColumnName="DetalleEspecialidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EspecialidadesReqs">
+    <EntitySetMapping Name="EspecialidadesReq">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.EspecialidadesReq">
         <MappingFragment StoreEntitySet="EspecialidadesReq">
           <ScalarProperty Name="tb_EspecialidadesReq_id" ColumnName="tb_EspecialidadesReq_id" />
@@ -198,7 +198,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Fortalezas">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Fortaleza">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Fortalezas">
         <MappingFragment StoreEntitySet="Fortalezas">
           <ScalarProperty Name="Id_Fortalezas" ColumnName="Id_Fortalezas" />
           <ScalarProperty Name="Nombre_Fortalezas" ColumnName="Nombre_Fortalezas" />
@@ -206,7 +206,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Idiomas">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Idioma">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Idiomas">
         <MappingFragment StoreEntitySet="Idiomas">
           <ScalarProperty Name="tb_idiomas_id" ColumnName="tb_idiomas_id" />
           <ScalarProperty Name="DetalleIdiomaCandidato" ColumnName="DetalleIdiomaCandidato" />
@@ -214,7 +214,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="IdiomasRequeridos">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.IdiomasRequerido">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.IdiomasRequeridos">
         <MappingFragment StoreEntitySet="IdiomasRequeridos">
           <ScalarProperty Name="tb_idiomasReq_id" ColumnName="tb_idiomasReq_id" />
           <ScalarProperty Name="ID_DetalleIdiomaReq" ColumnName="ID_DetalleIdiomaReq" />
@@ -222,7 +222,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Indicadores">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Indicadore">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Indicadores">
         <MappingFragment StoreEntitySet="Indicadores">
           <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
           <ScalarProperty Name="Nombre_Indicador" ColumnName="Nombre_Indicador" />
@@ -243,7 +243,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="liquidaciones">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.liquidacione">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.liquidaciones">
         <MappingFragment StoreEntitySet="liquidaciones">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -270,7 +270,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Oficinas">
+    <EntitySetMapping Name="Oficina">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Oficina">
         <MappingFragment StoreEntitySet="Oficina">
           <ScalarProperty Name="Id_Oficina" ColumnName="Id_Oficina" />
@@ -280,7 +280,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="permisos">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.permiso">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.permisos">
         <MappingFragment StoreEntitySet="permisos">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -302,7 +302,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="preguntas">
+    <EntitySetMapping Name="pregunta">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.pregunta">
         <MappingFragment StoreEntitySet="pregunta">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -311,7 +311,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Profesiones">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Profesione">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Profesiones">
         <MappingFragment StoreEntitySet="Profesiones">
           <ScalarProperty Name="Id_Profesion" ColumnName="Id_Profesion" />
           <ScalarProperty Name="Profesion" ColumnName="Profesion" />
@@ -319,7 +319,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="respuestas">
+    <EntitySetMapping Name="respuesta">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.respuesta">
         <MappingFragment StoreEntitySet="respuesta">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -330,7 +330,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Resultados">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultado">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultados">
         <MappingFragment StoreEntitySet="Resultados">
           <ScalarProperty Name="Id_Resultados" ColumnName="Id_Resultados" />
           <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
@@ -340,13 +340,24 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="salidas">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.salida">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.salidas">
         <MappingFragment StoreEntitySet="salidas">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
           <ScalarProperty Name="id_entrada" ColumnName="id_entrada" />
           <ScalarProperty Name="hora_marcado" ColumnName="hora_marcado" />
           <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -520,7 +531,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="temas">
+    <EntitySetMapping Name="tema">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.tema">
         <MappingFragment StoreEntitySet="tema">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -537,7 +548,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vacaciones">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.vacacione">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.vacaciones">
         <MappingFragment StoreEntitySet="vacaciones">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -546,11 +557,13 @@
           <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
           <ScalarProperty Name="aceptado" ColumnName="aceptado" />
           <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="pagado" ColumnName="pagado" />
+          <ScalarProperty Name="pendiente_por_pagar" ColumnName="pendiente_por_pagar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vacantes">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Vacante">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Vacantes">
         <MappingFragment StoreEntitySet="Vacantes">
           <ScalarProperty Name="ID_Vacante" ColumnName="ID_Vacante" />
           <ScalarProperty Name="tb_Vacantes_cargo" ColumnName="tb_Vacantes_cargo" />
@@ -575,5 +588,29 @@
         <ScalarProperty Name="Id_Empleado" ColumnName="Id_empleado" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_Recursos_HumanosModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_Recursos_HumanosModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_Recursos_HumanosModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

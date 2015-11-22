@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Vacante
+Partial Public Class Vacantes
     Public Property ID_Vacante As Integer
     Public Property tb_Vacantes_cargo As String
     Public Property tb_Vacantes_genero As String
@@ -25,6 +25,6 @@ Partial Public Class Vacante
     Public Property tb_Vacantes_notaMinTestTecnico As Nullable(Of Double)
 
     Public Overridable Property EspecialidadesReq As EspecialidadesReq
-    Public Overridable Property IdiomasRequerido As IdiomasRequerido
+    Public Overridable Property IdiomasRequeridos As IdiomasRequeridos
 
 End Class

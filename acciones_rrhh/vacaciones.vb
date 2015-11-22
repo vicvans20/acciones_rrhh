@@ -10,21 +10,16 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class liquidacione
+Partial Public Class vacaciones
     Public Property id As Integer
     Public Property Id_Empleado As Integer
-    Public Property fecha_egreso As Date
     Public Property fecha_creacion As Date
-    Public Property total_aguinaldo As Double
-    Public Property total_vacaciones As Double
-    Public Property total_indemnizacion As Double
-    Public Property total_salarios_restantes As Double
-    Public Property deduccion_inss As Double
-    Public Property deduccion_prestamo_personales As Double
-    Public Property deduccion_otros As Double
-    Public Property descripcion_otros As String
-    Public Property pago_total As Double
+    Public Property fecha_inicio As Date
+    Public Property fecha_fin As Date
+    Public Property aceptado As Boolean
     Public Property timestamp As Byte()
+    Public Property pagado As Boolean
+    Public Property pendiente_por_pagar As Boolean
 
     Public Overridable Property Empleado As Empleado
 

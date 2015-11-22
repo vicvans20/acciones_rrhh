@@ -10,11 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Antecedente
-    Public Property Id_Antecedente As Integer
-    Public Property Antecedente1 As String
+Partial Public Class Profesiones
+    Public Property Id_Profesion As Integer
+    Public Property Profesion As String
     Public Property Descripcion As String
 
-    Public Overridable Property Empleadoes As ICollection(Of Empleado) = New HashSet(Of Empleado)
+    Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
 
 End Class

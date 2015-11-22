@@ -10,11 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Especialidade
-    Public Property Id_Especialidad As Integer
-    Public Property DetalleEspecialidad As Nullable(Of Integer)
+Partial Public Class salidas
+    Public Property id As Integer
+    Public Property Id_Empleado As Integer
+    Public Property id_entrada As Integer
+    Public Property hora_marcado As System.TimeSpan
+    Public Property timestamp As Byte()
 
-    Public Overridable Property Candidatoes As ICollection(Of Candidato) = New HashSet(Of Candidato)
-    Public Overridable Property DetEspecialidadesCand As DetEspecialidadesCand
+    Public Overridable Property Empleado As Empleado
+    Public Overridable Property entradas As entradas
 
 End Class

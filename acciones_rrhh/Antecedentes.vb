@@ -10,14 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class entrada
-    Public Property id As Integer
-    Public Property Id_Empleado As Integer
-    Public Property fecha As Date
-    Public Property hora_marcado As System.TimeSpan
-    Public Property timestamp As Byte()
+Partial Public Class Antecedentes
+    Public Property Id_Antecedente As Integer
+    Public Property Antecedente As String
+    Public Property Descripcion As String
 
-    Public Overridable Property Empleado As Empleado
-    Public Overridable Property salidas As ICollection(Of salida) = New HashSet(Of salida)
+    Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
 
 End Class

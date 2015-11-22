@@ -79,7 +79,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Antecedente.vb">
+    <Compile Include="Antecedentes.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="area.vb">
@@ -100,7 +100,7 @@
     <Compile Include="Contrato.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Debilidade.vb">
+    <Compile Include="Debilidades.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DetEspecialidadesCand.vb">
@@ -124,31 +124,31 @@
     <Compile Include="encuesta.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="entrada.vb">
+    <Compile Include="entradas.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Especialidade.vb">
+    <Compile Include="Especialidades.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EspecialidadesReq.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Fortaleza.vb">
+    <Compile Include="Fortalezas.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Idioma.vb">
+    <Compile Include="Idiomas.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="IdiomasRequerido.vb">
+    <Compile Include="IdiomasRequeridos.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Indicadore.vb">
+    <Compile Include="Indicadores.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Informacion_Academica.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="liquidacione.vb">
+    <Compile Include="liquidaciones.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.vb">
@@ -173,7 +173,7 @@
     <Compile Include="Oficina.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="permiso.vb">
+    <Compile Include="permisos.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="plan_estudio.vb">
@@ -182,16 +182,25 @@
     <Compile Include="pregunta.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Profesione.vb">
+    <Compile Include="Profesiones.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="respuesta.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Resultado.vb">
+    <Compile Include="Resultados.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="salida.vb">
+    <Compile Include="salidas.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_Adm_Contenido.vb">
@@ -248,10 +257,10 @@
     <Compile Include="tema_plan.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="vacacione.vb">
+    <Compile Include="vacaciones.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vacante.vb">
+    <Compile Include="Vacantes.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Permisos\RegistrarPermisos.Designer.vb">

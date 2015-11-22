@@ -9,15 +9,14 @@
         Private Sub UpdateDataGridV(empId As Integer)
             Using context As New DB_Recursos_HumanosEntities
                 'Dim vList = (From v In context.vacaciones Select v.id, v.fecha_fin, v.fecha_fin).ToList
-                Dim vList = (From v In context.vacaciones Where v.Id_Empleado = empId Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin}).ToList
-                'DataGridView1.DataSource = Nothing
+                Dim vList = (From v In context.vacaciones Where v.Id_Empleado = empId Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
                 DataGridView1.Columns.Clear()
                 DataGridView1.AutoGenerateColumns = True
                 DataGridView1.DataSource = vList
                 'Luego de cada clear, agrega la columna para debito
                 DataGridView1.Columns.Add(newC)
                 For Each r As DataGridViewRow In DataGridView1.Rows
-                    r.Cells(2).Value = DateDiff(DateInterval.Day, r.Cells(0).Value, r.Cells(1).Value)
+                    r.Cells(3).Value = DateDiff(DateInterval.Day, r.Cells(0).Value, r.Cells(1).Value) + 1
                 Next
             End Using
         End Sub
@@ -27,7 +26,7 @@
             newC.CellTemplate = New DataGridViewTextBoxCell()
 
             Using context As New DB_Recursos_HumanosEntities
-                Dim empList = (From emp In context.Empleadoes Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
+                Dim empList = (From emp In context.Empleado Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "nombreC"
                 cbEmpleados.ValueMember = "id"

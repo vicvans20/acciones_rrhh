@@ -3,7 +3,7 @@
         Private Sub UpdateDataGridV()
             Using context As New DB_Recursos_HumanosEntities
                 ' Solo las vacaciones cuya fecha de fin sea mayor que la fecha actual
-                Dim empVList = (From emp In context.Empleadoes Join v In context.vacaciones On emp.Id_Empleado Equals v.Id_Empleado Where v.aceptado = False And v.fecha_fin > Date.Today Select emp.Nombre, emp.Apellido, emp.Cedula, v.fecha_inicio, v.fecha_fin, v.id).ToList
+                Dim empVList = (From emp In context.Empleado Join v In context.vacaciones On emp.Id_Empleado Equals v.Id_Empleado Where v.aceptado = False And v.fecha_fin > Date.Today Select emp.Nombre, emp.Apellido, emp.Cedula, v.fecha_inicio, v.fecha_fin, v.id).ToList
                 DataGridView1.DataSource = empVList
             End Using
         End Sub
@@ -28,7 +28,7 @@
                             Dim vac = context.vacaciones.Find(vid)
                             ' Si el empleado no tiene suficiente saldo para cumplir la vacacion
                             If (Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado) <
-                                (DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin))) Then
+                                (DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin)) + 1) Then
                                 Throw New ArgumentException("El empleado no cuenta con suficiente saldo.")
                             End If
                             vac.aceptado = True

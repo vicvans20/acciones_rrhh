@@ -15,6 +15,6 @@ Partial Public Class EspecialidadesReq
     Public Property ID_DetalleEspecReq As Nullable(Of Integer)
 
     Public Overridable Property DetEspecialidadesReq As DetEspecialidadesReq
-    Public Overridable Property Vacantes As ICollection(Of Vacante) = New HashSet(Of Vacante)
+    Public Overridable Property Vacantes As ICollection(Of Vacantes) = New HashSet(Of Vacantes)
 
 End Class

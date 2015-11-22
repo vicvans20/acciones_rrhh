@@ -14,6 +14,6 @@ Partial Public Class Niveles_Evaluativos
     Public Property Id_Nivel_Evaluativo As Integer
     Public Property Tipo_Nivel_Evaluativo As String
 
-    Public Overridable Property Indicadores As ICollection(Of Indicadore) = New HashSet(Of Indicadore)
+    Public Overridable Property Indicadores As ICollection(Of Indicadores) = New HashSet(Of Indicadores)
 
 End Class

@@ -15,6 +15,6 @@ Partial Public Class DetIdiomasCand
     Public Property tb_DetIdiCan_idioma As String
     Public Property tb_DetIdiCan_dominio As Nullable(Of Double)
 
-    Public Overridable Property Idiomas As ICollection(Of Idioma) = New HashSet(Of Idioma)
+    Public Overridable Property Idiomas As ICollection(Of Idiomas) = New HashSet(Of Idiomas)
 
 End Class

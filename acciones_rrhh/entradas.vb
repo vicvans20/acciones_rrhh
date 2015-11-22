@@ -10,11 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class IdiomasRequerido
-    Public Property tb_idiomasReq_id As Integer
-    Public Property ID_DetalleIdiomaReq As Nullable(Of Integer)
+Partial Public Class entradas
+    Public Property id As Integer
+    Public Property Id_Empleado As Integer
+    Public Property fecha As Date
+    Public Property hora_marcado As System.TimeSpan
+    Public Property timestamp As Byte()
 
-    Public Overridable Property DetIdiomasReq As DetIdiomasReq
-    Public Overridable Property Vacantes As ICollection(Of Vacante) = New HashSet(Of Vacante)
+    Public Overridable Property Empleado As Empleado
+    Public Overridable Property salidas As ICollection(Of salidas) = New HashSet(Of salidas)
 
 End Class

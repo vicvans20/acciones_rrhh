@@ -10,11 +10,8 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class DetIdiomasReq
-    Public Property ID_IdiomaReq As Integer
-    Public Property tb_DetIdiomasReq_titulo As String
-    Public Property tb_DetIdiomasReq_dominio As Nullable(Of Double)
-
-    Public Overridable Property IdiomasRequeridos As ICollection(Of IdiomasRequeridos) = New HashSet(Of IdiomasRequeridos)
+Partial Public Class sp_helpdiagramdefinition_Result
+    Public Property version As Nullable(Of Integer)
+    Public Property definition As Byte()
 
 End Class

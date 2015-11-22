@@ -10,10 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Debilidade
-    Public Property Id_Debilidades As Integer
-    Public Property Nombre_Debilidades As String
-
-    Public Overridable Property Indicadores As ICollection(Of Indicadore) = New HashSet(Of Indicadore)
+Partial Public Class sysdiagrams
+    Public Property name As String
+    Public Property principal_id As Integer
+    Public Property diagram_id As Integer
+    Public Property version As Nullable(Of Integer)
+    Public Property definition As Byte()
 
 End Class

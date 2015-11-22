@@ -10,11 +10,10 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class DetIdiomasReq
-    Public Property ID_IdiomaReq As Integer
-    Public Property tb_DetIdiomasReq_titulo As String
-    Public Property tb_DetIdiomasReq_dominio As Nullable(Of Double)
+Partial Public Class Fortalezas
+    Public Property Id_Fortalezas As Integer
+    Public Property Nombre_Fortalezas As String
 
-    Public Overridable Property IdiomasRequeridos As ICollection(Of IdiomasRequeridos) = New HashSet(Of IdiomasRequeridos)
+    Public Overridable Property Indicadores As ICollection(Of Indicadores) = New HashSet(Of Indicadores)
 
 End Class

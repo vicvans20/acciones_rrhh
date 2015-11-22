@@ -3,7 +3,7 @@
 
         Private Sub RegistrarPermisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Using context As New DB_Recursos_HumanosEntities
-                Dim empList = (From emp In context.Empleadoes Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
+                Dim empList = (From emp In context.Empleado Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "nombreC"
                 cbEmpleados.ValueMember = "id"
@@ -25,7 +25,7 @@
                 Return
             End If
             Using context As New DB_Recursos_HumanosEntities
-                Dim p As New permiso
+                Dim p As New permisos
                 p.fecha_inicio = dtInicio
                 p.fecha_fin = dtFin
                 p.descripcion = RichTextBox1.Text

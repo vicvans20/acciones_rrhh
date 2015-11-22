@@ -10,14 +10,22 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class salida
+Partial Public Class liquidaciones
     Public Property id As Integer
     Public Property Id_Empleado As Integer
-    Public Property id_entrada As Integer
-    Public Property hora_marcado As System.TimeSpan
+    Public Property fecha_egreso As Date
+    Public Property fecha_creacion As Date
+    Public Property total_aguinaldo As Double
+    Public Property total_vacaciones As Double
+    Public Property total_indemnizacion As Double
+    Public Property total_salarios_restantes As Double
+    Public Property deduccion_inss As Double
+    Public Property deduccion_prestamo_personales As Double
+    Public Property deduccion_otros As Double
+    Public Property descripcion_otros As String
+    Public Property pago_total As Double
     Public Property timestamp As Byte()
 
     Public Overridable Property Empleado As Empleado
-    Public Overridable Property entrada As entrada
 
 End Class

@@ -15,6 +15,6 @@ Partial Public Class Informacion_Academica
     Public Property Tipo_Estudio As String
     Public Property Descripcion As String
 
-    Public Overridable Property Empleadoes As ICollection(Of Empleado) = New HashSet(Of Empleado)
+    Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
 
 End Class

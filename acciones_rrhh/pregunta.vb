@@ -14,7 +14,7 @@ Partial Public Class pregunta
     Public Property ID As Integer
     Public Property pregunta1 As String
 
-    Public Overridable Property encuestas As ICollection(Of encuesta) = New HashSet(Of encuesta)
-    Public Overridable Property respuestas As ICollection(Of respuesta) = New HashSet(Of respuesta)
+    Public Overridable Property encuesta As ICollection(Of encuesta) = New HashSet(Of encuesta)
+    Public Overridable Property respuesta As ICollection(Of respuesta) = New HashSet(Of respuesta)
 
 End Class

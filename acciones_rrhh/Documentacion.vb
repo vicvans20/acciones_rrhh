@@ -15,6 +15,6 @@ Partial Public Class Documentacion
     Public Property Tipo_Documento As String
     Public Property Descripcion As String
 
-    Public Overridable Property Contratoes As ICollection(Of Contrato) = New HashSet(Of Contrato)
+    Public Overridable Property Contrato As ICollection(Of Contrato) = New HashSet(Of Contrato)
 
 End Class

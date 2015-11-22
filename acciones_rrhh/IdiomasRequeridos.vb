@@ -10,16 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class permiso
-    Public Property id As Integer
-    Public Property Id_Empleado As Integer
-    Public Property fecha_creacion As Date
-    Public Property fecha_inicio As Date
-    Public Property fecha_fin As Date
-    Public Property descripcion As String
-    Public Property categoria As String
-    Public Property timestamp As Byte()
+Partial Public Class IdiomasRequeridos
+    Public Property tb_idiomasReq_id As Integer
+    Public Property ID_DetalleIdiomaReq As Nullable(Of Integer)
 
-    Public Overridable Property Empleado As Empleado
+    Public Overridable Property DetIdiomasReq As DetIdiomasReq
+    Public Overridable Property Vacantes As ICollection(Of Vacantes) = New HashSet(Of Vacantes)
 
 End Class

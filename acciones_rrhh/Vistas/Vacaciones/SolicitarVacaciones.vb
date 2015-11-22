@@ -3,7 +3,7 @@
         ' Cargar combo box al iniciar el form
         Private Sub Solicitar_Vacaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Using context As New DB_Recursos_HumanosEntities
-                Dim empList = (From emp In context.Empleadoes Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
+                Dim empList = (From emp In context.Empleado Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "nombreC"
                 cbEmpleados.ValueMember = "id"
@@ -11,19 +11,19 @@
         End Sub
         ' Enviar solicitud
         Private Sub bSend_Click(sender As Object, e As EventArgs) Handles bSend.Click
-            If (Me.dateInicio.Value > Me.dateFin.Value) Then
+            If (Me.dateInicio.SelectionStart > Me.dateFin.SelectionStart) Then
                 MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha de fin.")
                 Return
             End If
             Dim sal = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
             Try
-                If DateDiff(DateInterval.Day, Me.dateInicio.Value, Me.dateFin.Value) > sal Then
+                If DateDiff(DateInterval.Day, Me.dateInicio.SelectionStart, Me.dateFin.SelectionStart) + 1 > sal Then
                     Throw New ArgumentException("Su saldo de disponible no es suficiente para completar la solicitud.")
                 End If
                 Using context As New DB_Recursos_HumanosEntities
-                    Dim vac As New vacacione
-                    vac.fecha_inicio = dateInicio.Value
-                    vac.fecha_fin = dateFin.Value
+                    Dim vac As New vacaciones
+                    vac.fecha_inicio = dateInicio.SelectionStart
+                    vac.fecha_fin = dateFin.SelectionStart
                     vac.Id_Empleado = cbEmpleados.SelectedValue
                     vac.fecha_creacion = Today
                     context.vacaciones.Add(vac)
@@ -36,10 +36,9 @@
                 MessageBox.Show(ex.Message)
             End Try
         End Sub
-        ' Retorna el saldo disponible
-        Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-            Dim sal = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
-            MessageBox.Show(CType(sal, String) + " dias")
+
+        Private Sub cbEmpleados_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbEmpleados.SelectionChangeCommitted
+            Me.TextBox1.Text = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
         End Sub
     End Class
 End Namespace

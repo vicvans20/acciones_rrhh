@@ -32,7 +32,7 @@ Partial Public Class Candidato
     Public Property tb_Candidatos_notaTestPsicometrico As Nullable(Of Double)
     Public Property tb_Candidatos_notaTestTecnico As Nullable(Of Double)
 
-    Public Overridable Property Especialidade As Especialidade
-    Public Overridable Property Idioma As Idioma
+    Public Overridable Property Especialidades As Especialidades
+    Public Overridable Property Idiomas As Idiomas
 
 End Class

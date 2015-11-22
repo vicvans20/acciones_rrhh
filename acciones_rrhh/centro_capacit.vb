@@ -14,6 +14,6 @@ Partial Public Class centro_capacit
     Public Property ID As Integer
     Public Property nombre As String
 
-    Public Overridable Property capacitacions As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
+    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
 
 End Class

@@ -15,6 +15,6 @@ Partial Public Class Oficina
     Public Property Nombre As String
     Public Property Descripcion As String
 
-    Public Overridable Property Cargoes As ICollection(Of Cargo) = New HashSet(Of Cargo)
+    Public Overridable Property Cargo As ICollection(Of Cargo) = New HashSet(Of Cargo)
 
 End Class

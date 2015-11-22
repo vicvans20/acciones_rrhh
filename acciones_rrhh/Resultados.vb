@@ -10,11 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Idioma
-    Public Property tb_idiomas_id As Integer
-    Public Property DetalleIdiomaCandidato As Nullable(Of Integer)
+Partial Public Class Resultados
+    Public Property Id_Resultados As Integer
+    Public Property Id_Indicador As Integer
+    Public Property Resultado_Final As String
+    Public Property Id_Empleado As Integer
 
-    Public Overridable Property Candidatoes As ICollection(Of Candidato) = New HashSet(Of Candidato)
-    Public Overridable Property DetIdiomasCand As DetIdiomasCand
+    Public Overridable Property Empleado As Empleado
+    Public Overridable Property Indicadores As Indicadores
 
 End Class

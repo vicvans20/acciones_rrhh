@@ -24,6 +24,6 @@ Partial Public Class capacitacion
     Public Overridable Property centro_capacit As centro_capacit
     Public Overridable Property encuesta As encuesta
     Public Overridable Property plan_estudio As plan_estudio
-    Public Overridable Property Empleadoes As ICollection(Of Empleado) = New HashSet(Of Empleado)
+    Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
 
 End Class

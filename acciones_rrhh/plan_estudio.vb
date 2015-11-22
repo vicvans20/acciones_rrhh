@@ -15,7 +15,7 @@ Partial Public Class plan_estudio
     Public Property ID_tema_plan As Integer
     Public Property anio As String
 
-    Public Overridable Property capacitacions As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
+    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
     Public Overridable Property tema_plan As tema_plan
 
 End Class

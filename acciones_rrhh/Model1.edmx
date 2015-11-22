@@ -331,6 +331,16 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="hora_marcado" Type="time" Precision="7" Nullable="false" />
           <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TB_Adm_Contenido">
           <Key>
             <PropertyRef Name="id_contenido" />
@@ -511,6 +521,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="fecha_fin" Type="date" Nullable="false" />
           <Property Name="aceptado" Type="bit" Nullable="false" />
           <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="pagado" Type="bit" Nullable="false" />
+          <Property Name="pendiente_por_pagar" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Vacantes">
           <Key>
@@ -1225,6 +1237,37 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DB_Recursos_HumanosModelStoreContainer">
           <EntitySet Name="Antecedentes" EntityType="Self.Antecedentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
@@ -1259,6 +1302,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <EntitySet Name="respuesta" EntityType="Self.respuesta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resultados" EntityType="Self.Resultados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="salidas" EntityType="Self.salidas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_Adm_Contenido" EntityType="Self.TB_Adm_Contenido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_Adm_OpcionesSistema" EntityType="Self.TB_Adm_OpcionesSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_Adm_RolesDeUsuario" EntityType="Self.TB_Adm_RolesDeUsuario" Schema="dbo" store:Type="Tables" />
@@ -1523,14 +1567,14 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_Recursos_HumanosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Antecedente">
+        <EntityType Name="Antecedentes">
           <Key>
             <PropertyRef Name="Id_Antecedente" />
           </Key>
           <Property Name="Id_Antecedente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Antecedente1" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Antecedente" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Antecedente_Empleado" FromRole="Antecedentes" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Antecedente_Empleado" FromRole="Antecedentes" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="area">
           <Key>
@@ -1538,8 +1582,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_ar__59063A47" FromRole="area" ToRole="capacitacion" />
-          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Area_Empleado" FromRole="area" ToRole="Empleado" />
+          <NavigationProperty Name="capacitacion" Relationship="Self.FK__capacitac__ID_ar__59063A47" FromRole="area" ToRole="capacitacion" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Area_Empleado" FromRole="area" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Candidato">
           <Key>
@@ -1565,8 +1609,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="tb_Candidatos_notaTestPsicologico" Type="Double" />
           <Property Name="tb_Candidatos_notaTestPsicometrico" Type="Double" />
           <Property Name="tb_Candidatos_notaTestTecnico" Type="Double" />
-          <NavigationProperty Name="Especialidade" Relationship="Self.FK_Candidato_Especialidades" FromRole="Candidato" ToRole="Especialidades" />
-          <NavigationProperty Name="Idioma" Relationship="Self.FK_Candidato_Idiomas" FromRole="Candidato" ToRole="Idiomas" />
+          <NavigationProperty Name="Especialidades" Relationship="Self.FK_Candidato_Especialidades" FromRole="Candidato" ToRole="Especialidades" />
+          <NavigationProperty Name="Idiomas" Relationship="Self.FK_Candidato_Idiomas" FromRole="Candidato" ToRole="Idiomas" />
         </EntityType>
         <EntityType Name="capacitacion">
           <Key>
@@ -1584,7 +1628,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="centro_capacit" Relationship="Self.FK__capacitac__ID_ce__571DF1D5" FromRole="capacitacion" ToRole="centro_capacit" />
           <NavigationProperty Name="encuesta" Relationship="Self.FK__capacitac__ID_en__5812160E" FromRole="capacitacion" ToRole="encuesta" />
           <NavigationProperty Name="plan_estudio" Relationship="Self.FK__capacitac__ID_pl__5629CD9C" FromRole="capacitacion" ToRole="plan_estudio" />
-          <NavigationProperty Name="Empleadoes" Relationship="Self.capacitacion_empleado" FromRole="capacitacion" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.capacitacion_empleado" FromRole="capacitacion" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Cargo">
           <Key>
@@ -1595,9 +1639,9 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Salario" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id_Oficina" Type="Int32" />
-          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Cargo_Empleado" FromRole="Cargo" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Cargo_Empleado" FromRole="Cargo" ToRole="Empleado" />
           <NavigationProperty Name="Oficina" Relationship="Self.FK_Cargo_Oficina" FromRole="Cargo" ToRole="Oficina" />
-          <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Cargo" FromRole="Cargo" ToRole="Contrato" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK_Contrato_Cargo" FromRole="Cargo" ToRole="Contrato" />
         </EntityType>
         <EntityType Name="centro_capacit">
           <Key>
@@ -1605,7 +1649,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_ce__571DF1D5" FromRole="centro_capacit" ToRole="capacitacion" />
+          <NavigationProperty Name="capacitacion" Relationship="Self.FK__capacitac__ID_ce__571DF1D5" FromRole="centro_capacit" ToRole="capacitacion" />
         </EntityType>
         <EntityType Name="Contrato">
           <Key>
@@ -1621,7 +1665,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="Documentacion" Relationship="Self.FK_Contrato_Documentacion" FromRole="Contrato" ToRole="Documentacion" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Contrato_Empleado" FromRole="Contrato" ToRole="Empleado" />
         </EntityType>
-        <EntityType Name="Debilidade">
+        <EntityType Name="Debilidades">
           <Key>
             <PropertyRef Name="Id_Debilidades" />
           </Key>
@@ -1645,7 +1689,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="ID_EspecialidadesReq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tb_DetEspecialidadesReq_titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tb_DetespecialidadesReq_aniosExp" Type="Int32" />
-          <NavigationProperty Name="EspecialidadesReqs" Relationship="Self.FK_EspecialidadesReq_DetEspecialidadesReq" FromRole="DetEspecialidadesReq" ToRole="EspecialidadesReq" />
+          <NavigationProperty Name="EspecialidadesReq" Relationship="Self.FK_EspecialidadesReq_DetEspecialidadesReq" FromRole="DetEspecialidadesReq" ToRole="EspecialidadesReq" />
         </EntityType>
         <EntityType Name="DetIdiomasCand">
           <Key>
@@ -1672,7 +1716,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Id_Documento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo_Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Documentacion" FromRole="Documentacion" ToRole="Contrato" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK_Contrato_Documentacion" FromRole="Documentacion" ToRole="Contrato" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -1692,10 +1736,10 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Id_Antecendete" Type="Int32" Nullable="false" />
           <Property Name="Id_area" Type="Int32" Nullable="false" />
           <Property Name="Id_Cargo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Antecedente" Relationship="Self.FK_Antecedente_Empleado" FromRole="Empleado" ToRole="Antecedentes" />
+          <NavigationProperty Name="Antecedentes" Relationship="Self.FK_Antecedente_Empleado" FromRole="Empleado" ToRole="Antecedentes" />
           <NavigationProperty Name="area" Relationship="Self.FK_Area_Empleado" FromRole="Empleado" ToRole="area" />
           <NavigationProperty Name="Cargo" Relationship="Self.FK_Cargo_Empleado" FromRole="Empleado" ToRole="Cargo" />
-          <NavigationProperty Name="Contratoes" Relationship="Self.FK_Contrato_Empleado" FromRole="Empleado" ToRole="Contrato" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK_Contrato_Empleado" FromRole="Empleado" ToRole="Contrato" />
           <NavigationProperty Name="entradas" Relationship="Self.FK__entradas__Id_Emp__75A278F5" FromRole="Empleado" ToRole="entradas" />
           <NavigationProperty Name="liquidaciones" Relationship="Self.FK__liquidaci__Id_Em__7D439ABD" FromRole="Empleado" ToRole="liquidaciones" />
           <NavigationProperty Name="permisos" Relationship="Self.FK__permisos__Id_Emp__71D1E811" FromRole="Empleado" ToRole="permisos" />
@@ -1705,11 +1749,11 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="TB_MOVIMIENTO_DEDUCCION" Relationship="Self.FK__TB_MOVIMI__EMPLE__07C12930" FromRole="Empleado" ToRole="TB_MOVIMIENTO_DEDUCCION" />
           <NavigationProperty Name="vacaciones" Relationship="Self.FK__vacacione__Id_Em__6E01572D" FromRole="Empleado" ToRole="vacaciones" />
           <NavigationProperty Name="Informacion_Academica" Relationship="Self.FK_Empleado_Informacion_Academica" FromRole="Empleado" ToRole="Informacion_Academica" />
-          <NavigationProperty Name="Profesione" Relationship="Self.FK_Empleado_Profesiones" FromRole="Empleado" ToRole="Profesiones" />
+          <NavigationProperty Name="Profesiones" Relationship="Self.FK_Empleado_Profesiones" FromRole="Empleado" ToRole="Profesiones" />
           <NavigationProperty Name="Resultados" Relationship="Self.FK_Resultados_Empleados" FromRole="Empleado" ToRole="Resultados" />
           <NavigationProperty Name="TB_PRESTAMO" Relationship="Self.FK_TB_PRESTAMO_Empleado" FromRole="Empleado" ToRole="TB_PRESTAMO" />
           <NavigationProperty Name="TB_RECIBO_CUOTA" Relationship="Self.FK_TB_RECIBO_CUOTA_Empleado" FromRole="Empleado" ToRole="TB_RECIBO_CUOTA" />
-          <NavigationProperty Name="capacitacions" Relationship="Self.capacitacion_empleado" FromRole="Empleado" ToRole="capacitacion" />
+          <NavigationProperty Name="capacitacion" Relationship="Self.capacitacion_empleado" FromRole="Empleado" ToRole="capacitacion" />
         </EntityType>
         <EntityType Name="encuesta">
           <Key>
@@ -1717,10 +1761,10 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="ID_pregunta" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_en__5812160E" FromRole="encuesta" ToRole="capacitacion" />
+          <NavigationProperty Name="capacitacion" Relationship="Self.FK__capacitac__ID_en__5812160E" FromRole="encuesta" ToRole="capacitacion" />
           <NavigationProperty Name="pregunta" Relationship="Self.FK__encuesta__ID_pre__4BAC3F29" FromRole="encuesta" ToRole="pregunta" />
         </EntityType>
-        <EntityType Name="entrada">
+        <EntityType Name="entradas">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -1732,13 +1776,13 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="Empleado" Relationship="Self.FK__entradas__Id_Emp__75A278F5" FromRole="entradas" ToRole="Empleado" />
           <NavigationProperty Name="salidas" Relationship="Self.FK__salidas__id_entr__797309D9" FromRole="entradas" ToRole="salidas" />
         </EntityType>
-        <EntityType Name="Especialidade">
+        <EntityType Name="Especialidades">
           <Key>
             <PropertyRef Name="Id_Especialidad" />
           </Key>
           <Property Name="Id_Especialidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DetalleEspecialidad" Type="Int32" />
-          <NavigationProperty Name="Candidatoes" Relationship="Self.FK_Candidato_Especialidades" FromRole="Especialidades" ToRole="Candidato" />
+          <NavigationProperty Name="Candidato" Relationship="Self.FK_Candidato_Especialidades" FromRole="Especialidades" ToRole="Candidato" />
           <NavigationProperty Name="DetEspecialidadesCand" Relationship="Self.FK_Especialidades_DetEspecialidadesCand" FromRole="Especialidades" ToRole="DetEspecialidadesCand" />
         </EntityType>
         <EntityType Name="EspecialidadesReq">
@@ -1750,7 +1794,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="DetEspecialidadesReq" Relationship="Self.FK_EspecialidadesReq_DetEspecialidadesReq" FromRole="EspecialidadesReq" ToRole="DetEspecialidadesReq" />
           <NavigationProperty Name="Vacantes" Relationship="Self.FK_Vacantes_EspecialidadesReq" FromRole="EspecialidadesReq" ToRole="Vacantes" />
         </EntityType>
-        <EntityType Name="Fortaleza">
+        <EntityType Name="Fortalezas">
           <Key>
             <PropertyRef Name="Id_Fortalezas" />
           </Key>
@@ -1758,16 +1802,16 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Nombre_Fortalezas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Indicadores" Relationship="Self.FK_Indicadores_Fortalezas" FromRole="Fortalezas" ToRole="Indicadores" />
         </EntityType>
-        <EntityType Name="Idioma">
+        <EntityType Name="Idiomas">
           <Key>
             <PropertyRef Name="tb_idiomas_id" />
           </Key>
           <Property Name="tb_idiomas_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DetalleIdiomaCandidato" Type="Int32" />
-          <NavigationProperty Name="Candidatoes" Relationship="Self.FK_Candidato_Idiomas" FromRole="Idiomas" ToRole="Candidato" />
+          <NavigationProperty Name="Candidato" Relationship="Self.FK_Candidato_Idiomas" FromRole="Idiomas" ToRole="Candidato" />
           <NavigationProperty Name="DetIdiomasCand" Relationship="Self.FK_Idiomas_DetIdiomasCand" FromRole="Idiomas" ToRole="DetIdiomasCand" />
         </EntityType>
-        <EntityType Name="IdiomasRequerido">
+        <EntityType Name="IdiomasRequeridos">
           <Key>
             <PropertyRef Name="tb_idiomasReq_id" />
           </Key>
@@ -1776,7 +1820,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="DetIdiomasReq" Relationship="Self.FK_IdiomasRequeridos_DetIdiomasReq" FromRole="IdiomasRequeridos" ToRole="DetIdiomasReq" />
           <NavigationProperty Name="Vacantes" Relationship="Self.FK_Vacantes_IdiomasRequeridos" FromRole="IdiomasRequeridos" ToRole="Vacantes" />
         </EntityType>
-        <EntityType Name="Indicadore">
+        <EntityType Name="Indicadores">
           <Key>
             <PropertyRef Name="Id_Indicador" />
           </Key>
@@ -1786,8 +1830,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Id_Fortalezas" Type="Int32" Nullable="false" />
           <Property Name="Id_Debilidades" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Evaluacion" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Debilidade" Relationship="Self.FK_Indicadores_Debilidades" FromRole="Indicadores" ToRole="Debilidades" />
-          <NavigationProperty Name="Fortaleza" Relationship="Self.FK_Indicadores_Fortalezas" FromRole="Indicadores" ToRole="Fortalezas" />
+          <NavigationProperty Name="Debilidades" Relationship="Self.FK_Indicadores_Debilidades" FromRole="Indicadores" ToRole="Debilidades" />
+          <NavigationProperty Name="Fortalezas" Relationship="Self.FK_Indicadores_Fortalezas" FromRole="Indicadores" ToRole="Fortalezas" />
           <NavigationProperty Name="Niveles_Evaluativos" Relationship="Self.FK_Indicadores_Niveles_Evaluativos" FromRole="Indicadores" ToRole="Niveles_Evaluativos" />
           <NavigationProperty Name="Resultados" Relationship="Self.FK_Resultados_Indicadores1" FromRole="Indicadores" ToRole="Resultados" />
         </EntityType>
@@ -1798,9 +1842,9 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Id_hist_academico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo_Estudio" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Informacion_Academica" FromRole="Informacion_Academica" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Informacion_Academica" FromRole="Informacion_Academica" ToRole="Empleado" />
         </EntityType>
-        <EntityType Name="liquidacione">
+        <EntityType Name="liquidaciones">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -1835,9 +1879,9 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Id_Oficina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cargoes" Relationship="Self.FK_Cargo_Oficina" FromRole="Oficina" ToRole="Cargo" />
+          <NavigationProperty Name="Cargo" Relationship="Self.FK_Cargo_Oficina" FromRole="Oficina" ToRole="Cargo" />
         </EntityType>
-        <EntityType Name="permiso">
+        <EntityType Name="permisos">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -1858,7 +1902,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="ID_tema_plan" Type="Int32" Nullable="false" />
           <Property Name="anio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="capacitacions" Relationship="Self.FK__capacitac__ID_pl__5629CD9C" FromRole="plan_estudio" ToRole="capacitacion" />
+          <NavigationProperty Name="capacitacion" Relationship="Self.FK__capacitac__ID_pl__5629CD9C" FromRole="plan_estudio" ToRole="capacitacion" />
           <NavigationProperty Name="tema_plan" Relationship="Self.FK__plan_estu__ID_te__534D60F1" FromRole="plan_estudio" ToRole="tema_plan" />
         </EntityType>
         <EntityType Name="pregunta">
@@ -1867,17 +1911,17 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="pregunta1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="encuestas" Relationship="Self.FK__encuesta__ID_pre__4BAC3F29" FromRole="pregunta" ToRole="encuesta" />
-          <NavigationProperty Name="respuestas" Relationship="Self.FK__respuesta__ID_pr__48CFD27E" FromRole="pregunta" ToRole="respuesta" />
+          <NavigationProperty Name="encuesta" Relationship="Self.FK__encuesta__ID_pre__4BAC3F29" FromRole="pregunta" ToRole="encuesta" />
+          <NavigationProperty Name="respuesta" Relationship="Self.FK__respuesta__ID_pr__48CFD27E" FromRole="pregunta" ToRole="respuesta" />
         </EntityType>
-        <EntityType Name="Profesione">
+        <EntityType Name="Profesiones">
           <Key>
             <PropertyRef Name="Id_Profesion" />
           </Key>
           <Property Name="Id_Profesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Profesiones" FromRole="Profesiones" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Profesiones" FromRole="Profesiones" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="respuesta">
           <Key>
@@ -1889,7 +1933,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="correcta" Type="Int32" Nullable="false" />
           <NavigationProperty Name="pregunta" Relationship="Self.FK__respuesta__ID_pr__48CFD27E" FromRole="respuesta" ToRole="pregunta" />
         </EntityType>
-        <EntityType Name="Resultado">
+        <EntityType Name="Resultados">
           <Key>
             <PropertyRef Name="Id_Resultados" />
           </Key>
@@ -1898,9 +1942,9 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="Resultado_Final" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Resultados_Empleados" FromRole="Resultados" ToRole="Empleado" />
-          <NavigationProperty Name="Indicadore" Relationship="Self.FK_Resultados_Indicadores1" FromRole="Resultados" ToRole="Indicadores" />
+          <NavigationProperty Name="Indicadores" Relationship="Self.FK_Resultados_Indicadores1" FromRole="Resultados" ToRole="Indicadores" />
         </EntityType>
-        <EntityType Name="salida">
+        <EntityType Name="salidas">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -1910,7 +1954,17 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="hora_marcado" Type="Time" Nullable="false" Precision="7" />
           <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK__salidas__Id_Empl__787EE5A0" FromRole="salidas" ToRole="Empleado" />
-          <NavigationProperty Name="entrada" Relationship="Self.FK__salidas__id_entr__797309D9" FromRole="salidas" ToRole="entradas" />
+          <NavigationProperty Name="entradas" Relationship="Self.FK__salidas__id_entr__797309D9" FromRole="salidas" ToRole="entradas" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TB_Adm_Contenido">
           <Key>
@@ -2119,7 +2173,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <NavigationProperty Name="plan_estudio" Relationship="Self.FK__plan_estu__ID_te__534D60F1" FromRole="tema_plan" ToRole="plan_estudio" />
           <NavigationProperty Name="tema" Relationship="Self.FK__tema_plan__ID_te__5070F446" FromRole="tema_plan" ToRole="tema" />
         </EntityType>
-        <EntityType Name="vacacione">
+        <EntityType Name="vacaciones">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -2130,9 +2184,11 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="aceptado" Type="Boolean" Nullable="false" />
           <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="pagado" Type="Boolean" Nullable="false" />
+          <Property Name="pendiente_por_pagar" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK__vacacione__Id_Em__6E01572D" FromRole="vacaciones" ToRole="Empleado" />
         </EntityType>
-        <EntityType Name="Vacante">
+        <EntityType Name="Vacantes">
           <Key>
             <PropertyRef Name="ID_Vacante" />
           </Key>
@@ -2149,10 +2205,10 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <Property Name="tb_Vacantes_notaMinTestPsicometrico" Type="Double" />
           <Property Name="tb_Vacantes_notaMinTestTecnico" Type="Double" />
           <NavigationProperty Name="EspecialidadesReq" Relationship="Self.FK_Vacantes_EspecialidadesReq" FromRole="Vacantes" ToRole="EspecialidadesReq" />
-          <NavigationProperty Name="IdiomasRequerido" Relationship="Self.FK_Vacantes_IdiomasRequeridos" FromRole="Vacantes" ToRole="IdiomasRequeridos" />
+          <NavigationProperty Name="IdiomasRequeridos" Relationship="Self.FK_Vacantes_IdiomasRequeridos" FromRole="Vacantes" ToRole="IdiomasRequeridos" />
         </EntityType>
         <Association Name="FK_Antecedente_Empleado">
-          <End Role="Antecedentes" Type="Self.Antecedente" Multiplicity="1" />
+          <End Role="Antecedentes" Type="Self.Antecedentes" Multiplicity="1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Antecedentes">
@@ -2188,7 +2244,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Candidato_Especialidades">
-          <End Role="Especialidades" Type="Self.Especialidade" Multiplicity="0..1" />
+          <End Role="Especialidades" Type="Self.Especialidades" Multiplicity="0..1" />
           <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especialidades">
@@ -2200,7 +2256,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Candidato_Idiomas">
-          <End Role="Idiomas" Type="Self.Idioma" Multiplicity="0..1" />
+          <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="0..1" />
           <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Idiomas">
@@ -2308,8 +2364,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Indicadores_Debilidades">
-          <End Role="Debilidades" Type="Self.Debilidade" Multiplicity="1" />
-          <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="*" />
+          <End Role="Debilidades" Type="Self.Debilidades" Multiplicity="1" />
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Debilidades">
               <PropertyRef Name="Id_Debilidades" />
@@ -2321,7 +2377,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK_Especialidades_DetEspecialidadesCand">
           <End Role="DetEspecialidadesCand" Type="Self.DetEspecialidadesCand" Multiplicity="0..1" />
-          <End Role="Especialidades" Type="Self.Especialidade" Multiplicity="*" />
+          <End Role="Especialidades" Type="Self.Especialidades" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DetEspecialidadesCand">
               <PropertyRef Name="Id_DetalleEspecialistaCandidato" />
@@ -2345,7 +2401,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK_Idiomas_DetIdiomasCand">
           <End Role="DetIdiomasCand" Type="Self.DetIdiomasCand" Multiplicity="0..1" />
-          <End Role="Idiomas" Type="Self.Idioma" Multiplicity="*" />
+          <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DetIdiomasCand">
               <PropertyRef Name="ID_DetCandidatosIdioma" />
@@ -2357,7 +2413,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK_IdiomasRequeridos_DetIdiomasReq">
           <End Role="DetIdiomasReq" Type="Self.DetIdiomasReq" Multiplicity="0..1" />
-          <End Role="IdiomasRequeridos" Type="Self.IdiomasRequerido" Multiplicity="*" />
+          <End Role="IdiomasRequeridos" Type="Self.IdiomasRequeridos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DetIdiomasReq">
               <PropertyRef Name="ID_IdiomaReq" />
@@ -2369,7 +2425,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK__entradas__Id_Emp__75A278F5">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="entradas" Type="Self.entrada" Multiplicity="*" />
+          <End Role="entradas" Type="Self.entradas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id_Empleado" />
@@ -2381,7 +2437,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK__liquidaci__Id_Em__7D439ABD">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="liquidaciones" Type="Self.liquidacione" Multiplicity="*" />
+          <End Role="liquidaciones" Type="Self.liquidaciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id_Empleado" />
@@ -2393,7 +2449,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK__permisos__Id_Emp__71D1E811">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="permisos" Type="Self.permiso" Multiplicity="*" />
+          <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id_Empleado" />
@@ -2405,7 +2461,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK__salidas__Id_Empl__787EE5A0">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="salidas" Type="Self.salida" Multiplicity="*" />
+          <End Role="salidas" Type="Self.salidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id_Empleado" />
@@ -2453,7 +2509,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK__vacacione__Id_Em__6E01572D">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="vacaciones" Type="Self.vacacione" Multiplicity="*" />
+          <End Role="vacaciones" Type="Self.vacaciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id_Empleado" />
@@ -2476,7 +2532,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Empleado_Profesiones">
-          <End Role="Profesiones" Type="Self.Profesione" Multiplicity="1" />
+          <End Role="Profesiones" Type="Self.Profesiones" Multiplicity="1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Profesiones">
@@ -2489,7 +2545,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK_Resultados_Empleados">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="Resultados" Type="Self.Resultado" Multiplicity="*" />
+          <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id_Empleado" />
@@ -2536,8 +2592,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__salidas__id_entr__797309D9">
-          <End Role="entradas" Type="Self.entrada" Multiplicity="1" />
-          <End Role="salidas" Type="Self.salida" Multiplicity="*" />
+          <End Role="entradas" Type="Self.entradas" Multiplicity="1" />
+          <End Role="salidas" Type="Self.salidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="entradas">
               <PropertyRef Name="id" />
@@ -2549,7 +2605,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK_Vacantes_EspecialidadesReq">
           <End Role="EspecialidadesReq" Type="Self.EspecialidadesReq" Multiplicity="0..1" />
-          <End Role="Vacantes" Type="Self.Vacante" Multiplicity="*" />
+          <End Role="Vacantes" Type="Self.Vacantes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EspecialidadesReq">
               <PropertyRef Name="tb_EspecialidadesReq_id" />
@@ -2560,8 +2616,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Indicadores_Fortalezas">
-          <End Role="Fortalezas" Type="Self.Fortaleza" Multiplicity="1" />
-          <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="*" />
+          <End Role="Fortalezas" Type="Self.Fortalezas" Multiplicity="1" />
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fortalezas">
               <PropertyRef Name="Id_Fortalezas" />
@@ -2572,8 +2628,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Vacantes_IdiomasRequeridos">
-          <End Role="IdiomasRequeridos" Type="Self.IdiomasRequerido" Multiplicity="0..1" />
-          <End Role="Vacantes" Type="Self.Vacante" Multiplicity="*" />
+          <End Role="IdiomasRequeridos" Type="Self.IdiomasRequeridos" Multiplicity="0..1" />
+          <End Role="Vacantes" Type="Self.Vacantes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="IdiomasRequeridos">
               <PropertyRef Name="tb_idiomasReq_id" />
@@ -2585,7 +2641,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         </Association>
         <Association Name="FK_Indicadores_Niveles_Evaluativos">
           <End Role="Niveles_Evaluativos" Type="Self.Niveles_Evaluativos" Multiplicity="1" />
-          <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="*" />
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Niveles_Evaluativos">
               <PropertyRef Name="Id_Nivel_Evaluativo" />
@@ -2596,8 +2652,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Resultados_Indicadores1">
-          <End Role="Indicadores" Type="Self.Indicadore" Multiplicity="1" />
-          <End Role="Resultados" Type="Self.Resultado" Multiplicity="*" />
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="1" />
+          <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Indicadores">
               <PropertyRef Name="Id_Indicador" />
@@ -2828,39 +2884,40 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DB_Recursos_HumanosEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Antecedentes" EntityType="Self.Antecedente" />
-          <EntitySet Name="areas" EntityType="Self.area" />
-          <EntitySet Name="Candidatoes" EntityType="Self.Candidato" />
-          <EntitySet Name="capacitacions" EntityType="Self.capacitacion" />
-          <EntitySet Name="Cargoes" EntityType="Self.Cargo" />
+          <EntitySet Name="Antecedentes" EntityType="Self.Antecedentes" />
+          <EntitySet Name="area" EntityType="Self.area" />
+          <EntitySet Name="Candidato" EntityType="Self.Candidato" />
+          <EntitySet Name="capacitacion" EntityType="Self.capacitacion" />
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" />
           <EntitySet Name="centro_capacit" EntityType="Self.centro_capacit" />
-          <EntitySet Name="Contratoes" EntityType="Self.Contrato" />
-          <EntitySet Name="Debilidades" EntityType="Self.Debilidade" />
-          <EntitySet Name="DetEspecialidadesCands" EntityType="Self.DetEspecialidadesCand" />
-          <EntitySet Name="DetEspecialidadesReqs" EntityType="Self.DetEspecialidadesReq" />
-          <EntitySet Name="DetIdiomasCands" EntityType="Self.DetIdiomasCand" />
-          <EntitySet Name="DetIdiomasReqs" EntityType="Self.DetIdiomasReq" />
-          <EntitySet Name="Documentacions" EntityType="Self.Documentacion" />
-          <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
-          <EntitySet Name="encuestas" EntityType="Self.encuesta" />
-          <EntitySet Name="entradas" EntityType="Self.entrada" />
-          <EntitySet Name="Especialidades" EntityType="Self.Especialidade" />
-          <EntitySet Name="EspecialidadesReqs" EntityType="Self.EspecialidadesReq" />
-          <EntitySet Name="Fortalezas" EntityType="Self.Fortaleza" />
-          <EntitySet Name="Idiomas" EntityType="Self.Idioma" />
-          <EntitySet Name="IdiomasRequeridos" EntityType="Self.IdiomasRequerido" />
-          <EntitySet Name="Indicadores" EntityType="Self.Indicadore" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" />
+          <EntitySet Name="Debilidades" EntityType="Self.Debilidades" />
+          <EntitySet Name="DetEspecialidadesCand" EntityType="Self.DetEspecialidadesCand" />
+          <EntitySet Name="DetEspecialidadesReq" EntityType="Self.DetEspecialidadesReq" />
+          <EntitySet Name="DetIdiomasCand" EntityType="Self.DetIdiomasCand" />
+          <EntitySet Name="DetIdiomasReq" EntityType="Self.DetIdiomasReq" />
+          <EntitySet Name="Documentacion" EntityType="Self.Documentacion" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="encuesta" EntityType="Self.encuesta" />
+          <EntitySet Name="entradas" EntityType="Self.entradas" />
+          <EntitySet Name="Especialidades" EntityType="Self.Especialidades" />
+          <EntitySet Name="EspecialidadesReq" EntityType="Self.EspecialidadesReq" />
+          <EntitySet Name="Fortalezas" EntityType="Self.Fortalezas" />
+          <EntitySet Name="Idiomas" EntityType="Self.Idiomas" />
+          <EntitySet Name="IdiomasRequeridos" EntityType="Self.IdiomasRequeridos" />
+          <EntitySet Name="Indicadores" EntityType="Self.Indicadores" />
           <EntitySet Name="Informacion_Academica" EntityType="Self.Informacion_Academica" />
-          <EntitySet Name="liquidaciones" EntityType="Self.liquidacione" />
+          <EntitySet Name="liquidaciones" EntityType="Self.liquidaciones" />
           <EntitySet Name="Niveles_Evaluativos" EntityType="Self.Niveles_Evaluativos" />
-          <EntitySet Name="Oficinas" EntityType="Self.Oficina" />
-          <EntitySet Name="permisos" EntityType="Self.permiso" />
+          <EntitySet Name="Oficina" EntityType="Self.Oficina" />
+          <EntitySet Name="permisos" EntityType="Self.permisos" />
           <EntitySet Name="plan_estudio" EntityType="Self.plan_estudio" />
-          <EntitySet Name="preguntas" EntityType="Self.pregunta" />
-          <EntitySet Name="Profesiones" EntityType="Self.Profesione" />
-          <EntitySet Name="respuestas" EntityType="Self.respuesta" />
-          <EntitySet Name="Resultados" EntityType="Self.Resultado" />
-          <EntitySet Name="salidas" EntityType="Self.salida" />
+          <EntitySet Name="pregunta" EntityType="Self.pregunta" />
+          <EntitySet Name="Profesiones" EntityType="Self.Profesiones" />
+          <EntitySet Name="respuesta" EntityType="Self.respuesta" />
+          <EntitySet Name="Resultados" EntityType="Self.Resultados" />
+          <EntitySet Name="salidas" EntityType="Self.salidas" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TB_Adm_Contenido" EntityType="Self.TB_Adm_Contenido" />
           <EntitySet Name="TB_Adm_OpcionesSistema" EntityType="Self.TB_Adm_OpcionesSistema" />
           <EntitySet Name="TB_Adm_RolesDeUsuario" EntityType="Self.TB_Adm_RolesDeUsuario" />
@@ -2877,144 +2934,144 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
           <EntitySet Name="TB_PLAZO_PAGO" EntityType="Self.TB_PLAZO_PAGO" />
           <EntitySet Name="TB_PRESTAMO" EntityType="Self.TB_PRESTAMO" />
           <EntitySet Name="TB_RECIBO_CUOTA" EntityType="Self.TB_RECIBO_CUOTA" />
-          <EntitySet Name="temas" EntityType="Self.tema" />
+          <EntitySet Name="tema" EntityType="Self.tema" />
           <EntitySet Name="tema_plan" EntityType="Self.tema_plan" />
-          <EntitySet Name="vacaciones" EntityType="Self.vacacione" />
-          <EntitySet Name="Vacantes" EntityType="Self.Vacante" />
+          <EntitySet Name="vacaciones" EntityType="Self.vacaciones" />
+          <EntitySet Name="Vacantes" EntityType="Self.Vacantes" />
           <AssociationSet Name="FK_Antecedente_Empleado" Association="Self.FK_Antecedente_Empleado">
             <End Role="Antecedentes" EntitySet="Antecedentes" />
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK__capacitac__ID_ar__59063A47" Association="Self.FK__capacitac__ID_ar__59063A47">
-            <End Role="area" EntitySet="areas" />
-            <End Role="capacitacion" EntitySet="capacitacions" />
+            <End Role="area" EntitySet="area" />
+            <End Role="capacitacion" EntitySet="capacitacion" />
           </AssociationSet>
           <AssociationSet Name="FK_Area_Empleado" Association="Self.FK_Area_Empleado">
-            <End Role="area" EntitySet="areas" />
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="area" EntitySet="area" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_Candidato_Especialidades" Association="Self.FK_Candidato_Especialidades">
             <End Role="Especialidades" EntitySet="Especialidades" />
-            <End Role="Candidato" EntitySet="Candidatoes" />
+            <End Role="Candidato" EntitySet="Candidato" />
           </AssociationSet>
           <AssociationSet Name="FK_Candidato_Idiomas" Association="Self.FK_Candidato_Idiomas">
             <End Role="Idiomas" EntitySet="Idiomas" />
-            <End Role="Candidato" EntitySet="Candidatoes" />
+            <End Role="Candidato" EntitySet="Candidato" />
           </AssociationSet>
           <AssociationSet Name="FK__capacitac__ID_ce__571DF1D5" Association="Self.FK__capacitac__ID_ce__571DF1D5">
             <End Role="centro_capacit" EntitySet="centro_capacit" />
-            <End Role="capacitacion" EntitySet="capacitacions" />
+            <End Role="capacitacion" EntitySet="capacitacion" />
           </AssociationSet>
           <AssociationSet Name="FK__capacitac__ID_en__5812160E" Association="Self.FK__capacitac__ID_en__5812160E">
-            <End Role="encuesta" EntitySet="encuestas" />
-            <End Role="capacitacion" EntitySet="capacitacions" />
+            <End Role="encuesta" EntitySet="encuesta" />
+            <End Role="capacitacion" EntitySet="capacitacion" />
           </AssociationSet>
           <AssociationSet Name="FK__capacitac__ID_pl__5629CD9C" Association="Self.FK__capacitac__ID_pl__5629CD9C">
             <End Role="plan_estudio" EntitySet="plan_estudio" />
-            <End Role="capacitacion" EntitySet="capacitacions" />
+            <End Role="capacitacion" EntitySet="capacitacion" />
           </AssociationSet>
           <AssociationSet Name="FK_Cargo_Empleado" Association="Self.FK_Cargo_Empleado">
-            <End Role="Cargo" EntitySet="Cargoes" />
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_Cargo_Oficina" Association="Self.FK_Cargo_Oficina">
-            <End Role="Oficina" EntitySet="Oficinas" />
-            <End Role="Cargo" EntitySet="Cargoes" />
+            <End Role="Oficina" EntitySet="Oficina" />
+            <End Role="Cargo" EntitySet="Cargo" />
           </AssociationSet>
           <AssociationSet Name="FK_Contrato_Cargo" Association="Self.FK_Contrato_Cargo">
-            <End Role="Cargo" EntitySet="Cargoes" />
-            <End Role="Contrato" EntitySet="Contratoes" />
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
           <AssociationSet Name="FK_Contrato_Documentacion" Association="Self.FK_Contrato_Documentacion">
-            <End Role="Documentacion" EntitySet="Documentacions" />
-            <End Role="Contrato" EntitySet="Contratoes" />
+            <End Role="Documentacion" EntitySet="Documentacion" />
+            <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
           <AssociationSet Name="FK_Contrato_Empleado" Association="Self.FK_Contrato_Empleado">
-            <End Role="Empleado" EntitySet="Empleadoes" />
-            <End Role="Contrato" EntitySet="Contratoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
           <AssociationSet Name="FK_Indicadores_Debilidades" Association="Self.FK_Indicadores_Debilidades">
             <End Role="Debilidades" EntitySet="Debilidades" />
             <End Role="Indicadores" EntitySet="Indicadores" />
           </AssociationSet>
           <AssociationSet Name="FK_Especialidades_DetEspecialidadesCand" Association="Self.FK_Especialidades_DetEspecialidadesCand">
-            <End Role="DetEspecialidadesCand" EntitySet="DetEspecialidadesCands" />
+            <End Role="DetEspecialidadesCand" EntitySet="DetEspecialidadesCand" />
             <End Role="Especialidades" EntitySet="Especialidades" />
           </AssociationSet>
           <AssociationSet Name="FK_EspecialidadesReq_DetEspecialidadesReq" Association="Self.FK_EspecialidadesReq_DetEspecialidadesReq">
-            <End Role="DetEspecialidadesReq" EntitySet="DetEspecialidadesReqs" />
-            <End Role="EspecialidadesReq" EntitySet="EspecialidadesReqs" />
+            <End Role="DetEspecialidadesReq" EntitySet="DetEspecialidadesReq" />
+            <End Role="EspecialidadesReq" EntitySet="EspecialidadesReq" />
           </AssociationSet>
           <AssociationSet Name="FK_Idiomas_DetIdiomasCand" Association="Self.FK_Idiomas_DetIdiomasCand">
-            <End Role="DetIdiomasCand" EntitySet="DetIdiomasCands" />
+            <End Role="DetIdiomasCand" EntitySet="DetIdiomasCand" />
             <End Role="Idiomas" EntitySet="Idiomas" />
           </AssociationSet>
           <AssociationSet Name="FK_IdiomasRequeridos_DetIdiomasReq" Association="Self.FK_IdiomasRequeridos_DetIdiomasReq">
-            <End Role="DetIdiomasReq" EntitySet="DetIdiomasReqs" />
+            <End Role="DetIdiomasReq" EntitySet="DetIdiomasReq" />
             <End Role="IdiomasRequeridos" EntitySet="IdiomasRequeridos" />
           </AssociationSet>
           <AssociationSet Name="FK__entradas__Id_Emp__75A278F5" Association="Self.FK__entradas__Id_Emp__75A278F5">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="entradas" EntitySet="entradas" />
           </AssociationSet>
           <AssociationSet Name="FK__liquidaci__Id_Em__7D439ABD" Association="Self.FK__liquidaci__Id_Em__7D439ABD">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="liquidaciones" EntitySet="liquidaciones" />
           </AssociationSet>
           <AssociationSet Name="FK__permisos__Id_Emp__71D1E811" Association="Self.FK__permisos__Id_Emp__71D1E811">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="permisos" EntitySet="permisos" />
           </AssociationSet>
           <AssociationSet Name="FK__salidas__Id_Empl__787EE5A0" Association="Self.FK__salidas__Id_Empl__787EE5A0">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="salidas" EntitySet="salidas" />
           </AssociationSet>
           <AssociationSet Name="FK__TB_Adm_Us__Id_Em__1F98B2C1" Association="Self.FK__TB_Adm_Us__Id_Em__1F98B2C1">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
           </AssociationSet>
           <AssociationSet Name="FK__TB_MOVIMI__EMPLE__03F0984C" Association="Self.FK__TB_MOVIMI__EMPLE__03F0984C">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="TB_MOVIMIENTO_DEVENGADO" EntitySet="TB_MOVIMIENTO_DEVENGADO" />
           </AssociationSet>
           <AssociationSet Name="FK__TB_MOVIMI__EMPLE__07C12930" Association="Self.FK__TB_MOVIMI__EMPLE__07C12930">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="TB_MOVIMIENTO_DEDUCCION" EntitySet="TB_MOVIMIENTO_DEDUCCION" />
           </AssociationSet>
           <AssociationSet Name="FK__vacacione__Id_Em__6E01572D" Association="Self.FK__vacacione__Id_Em__6E01572D">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="vacaciones" EntitySet="vacaciones" />
           </AssociationSet>
           <AssociationSet Name="FK_Empleado_Informacion_Academica" Association="Self.FK_Empleado_Informacion_Academica">
             <End Role="Informacion_Academica" EntitySet="Informacion_Academica" />
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_Empleado_Profesiones" Association="Self.FK_Empleado_Profesiones">
             <End Role="Profesiones" EntitySet="Profesiones" />
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_Resultados_Empleados" Association="Self.FK_Resultados_Empleados">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Resultados" EntitySet="Resultados" />
           </AssociationSet>
           <AssociationSet Name="FK_TB_PRESTAMO_Empleado" Association="Self.FK_TB_PRESTAMO_Empleado">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
           </AssociationSet>
           <AssociationSet Name="FK_TB_RECIBO_CUOTA_Empleado" Association="Self.FK_TB_RECIBO_CUOTA_Empleado">
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="TB_RECIBO_CUOTA" EntitySet="TB_RECIBO_CUOTA" />
           </AssociationSet>
           <AssociationSet Name="FK__encuesta__ID_pre__4BAC3F29" Association="Self.FK__encuesta__ID_pre__4BAC3F29">
-            <End Role="pregunta" EntitySet="preguntas" />
-            <End Role="encuesta" EntitySet="encuestas" />
+            <End Role="pregunta" EntitySet="pregunta" />
+            <End Role="encuesta" EntitySet="encuesta" />
           </AssociationSet>
           <AssociationSet Name="FK__salidas__id_entr__797309D9" Association="Self.FK__salidas__id_entr__797309D9">
             <End Role="entradas" EntitySet="entradas" />
             <End Role="salidas" EntitySet="salidas" />
           </AssociationSet>
           <AssociationSet Name="FK_Vacantes_EspecialidadesReq" Association="Self.FK_Vacantes_EspecialidadesReq">
-            <End Role="EspecialidadesReq" EntitySet="EspecialidadesReqs" />
+            <End Role="EspecialidadesReq" EntitySet="EspecialidadesReq" />
             <End Role="Vacantes" EntitySet="Vacantes" />
           </AssociationSet>
           <AssociationSet Name="FK_Indicadores_Fortalezas" Association="Self.FK_Indicadores_Fortalezas">
@@ -3038,8 +3095,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             <End Role="plan_estudio" EntitySet="plan_estudio" />
           </AssociationSet>
           <AssociationSet Name="FK__respuesta__ID_pr__48CFD27E" Association="Self.FK__respuesta__ID_pr__48CFD27E">
-            <End Role="pregunta" EntitySet="preguntas" />
-            <End Role="respuesta" EntitySet="respuestas" />
+            <End Role="pregunta" EntitySet="pregunta" />
+            <End Role="respuesta" EntitySet="respuesta" />
           </AssociationSet>
           <AssociationSet Name="FK_TB_Adm_Contenido_TB_Adm_Sesion" Association="Self.FK_TB_Adm_Contenido_TB_Adm_Sesion">
             <End Role="TB_Adm_Sesion" EntitySet="TB_Adm_Sesion" />
@@ -3102,14 +3159,55 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             <End Role="TB_RECIBO_CUOTA" EntitySet="TB_RECIBO_CUOTA" />
           </AssociationSet>
           <AssociationSet Name="FK__tema_plan__ID_te__5070F446" Association="Self.FK__tema_plan__ID_te__5070F446">
-            <End Role="tema" EntitySet="temas" />
+            <End Role="tema" EntitySet="tema" />
             <End Role="tema_plan" EntitySet="tema_plan" />
           </AssociationSet>
           <AssociationSet Name="capacitacion_empleado" Association="Self.capacitacion_empleado">
-            <End Role="capacitacion" EntitySet="capacitacions" />
-            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="capacitacion" EntitySet="capacitacion" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_Recursos_HumanosModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DB_Recursos_HumanosModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3117,15 +3215,15 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DB_Recursos_HumanosModelStoreContainer" CdmEntityContainer="DB_Recursos_HumanosEntities">
           <EntitySetMapping Name="Antecedentes">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Antecedente">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Antecedentes">
               <MappingFragment StoreEntitySet="Antecedentes">
                 <ScalarProperty Name="Id_Antecedente" ColumnName="Id_Antecedente" />
-                <ScalarProperty Name="Antecedente1" ColumnName="Antecedente" />
+                <ScalarProperty Name="Antecedente" ColumnName="Antecedente" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="areas">
+          <EntitySetMapping Name="area">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.area">
               <MappingFragment StoreEntitySet="area">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3133,7 +3231,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Candidatoes">
+          <EntitySetMapping Name="Candidato">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Candidato">
               <MappingFragment StoreEntitySet="Candidato">
                 <ScalarProperty Name="ID_Candidato" ColumnName="ID_Candidato" />
@@ -3159,7 +3257,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="capacitacions">
+          <EntitySetMapping Name="capacitacion">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.capacitacion">
               <MappingFragment StoreEntitySet="capacitacion">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3173,7 +3271,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Cargoes">
+          <EntitySetMapping Name="Cargo">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Cargo">
               <MappingFragment StoreEntitySet="Cargo">
                 <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
@@ -3192,7 +3290,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Contratoes">
+          <EntitySetMapping Name="Contrato">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Contrato">
               <MappingFragment StoreEntitySet="Contrato">
                 <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
@@ -3205,14 +3303,14 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Debilidades">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Debilidade">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Debilidades">
               <MappingFragment StoreEntitySet="Debilidades">
                 <ScalarProperty Name="Id_Debilidades" ColumnName="Id_Debilidades" />
                 <ScalarProperty Name="Nombre_Debilidades" ColumnName="Nombre_Debilidades" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetEspecialidadesCands">
+          <EntitySetMapping Name="DetEspecialidadesCand">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetEspecialidadesCand">
               <MappingFragment StoreEntitySet="DetEspecialidadesCand">
                 <ScalarProperty Name="Id_DetalleEspecialistaCandidato" ColumnName="Id_DetalleEspecialistaCandidato" />
@@ -3221,7 +3319,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetEspecialidadesReqs">
+          <EntitySetMapping Name="DetEspecialidadesReq">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetEspecialidadesReq">
               <MappingFragment StoreEntitySet="DetEspecialidadesReq">
                 <ScalarProperty Name="ID_EspecialidadesReq" ColumnName="ID_EspecialidadesReq" />
@@ -3230,7 +3328,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetIdiomasCands">
+          <EntitySetMapping Name="DetIdiomasCand">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetIdiomasCand">
               <MappingFragment StoreEntitySet="DetIdiomasCand">
                 <ScalarProperty Name="ID_DetCandidatosIdioma" ColumnName="ID_DetCandidatosIdioma" />
@@ -3239,7 +3337,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetIdiomasReqs">
+          <EntitySetMapping Name="DetIdiomasReq">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.DetIdiomasReq">
               <MappingFragment StoreEntitySet="DetIdiomasReq">
                 <ScalarProperty Name="ID_IdiomaReq" ColumnName="ID_IdiomaReq" />
@@ -3248,7 +3346,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Documentacions">
+          <EntitySetMapping Name="Documentacion">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Documentacion">
               <MappingFragment StoreEntitySet="Documentacion">
                 <ScalarProperty Name="Id_Documento" ColumnName="Id_Documento" />
@@ -3257,7 +3355,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Empleadoes">
+          <EntitySetMapping Name="Empleado">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Empleado">
               <MappingFragment StoreEntitySet="Empleado">
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -3277,7 +3375,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="encuestas">
+          <EntitySetMapping Name="encuesta">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.encuesta">
               <MappingFragment StoreEntitySet="encuesta">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3286,7 +3384,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="entradas">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.entrada">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.entradas">
               <MappingFragment StoreEntitySet="entradas">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -3297,14 +3395,14 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Especialidades">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Especialidade">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Especialidades">
               <MappingFragment StoreEntitySet="Especialidades">
                 <ScalarProperty Name="Id_Especialidad" ColumnName="Id_Especialidad" />
                 <ScalarProperty Name="DetalleEspecialidad" ColumnName="DetalleEspecialidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EspecialidadesReqs">
+          <EntitySetMapping Name="EspecialidadesReq">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.EspecialidadesReq">
               <MappingFragment StoreEntitySet="EspecialidadesReq">
                 <ScalarProperty Name="tb_EspecialidadesReq_id" ColumnName="tb_EspecialidadesReq_id" />
@@ -3313,7 +3411,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fortalezas">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Fortaleza">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Fortalezas">
               <MappingFragment StoreEntitySet="Fortalezas">
                 <ScalarProperty Name="Id_Fortalezas" ColumnName="Id_Fortalezas" />
                 <ScalarProperty Name="Nombre_Fortalezas" ColumnName="Nombre_Fortalezas" />
@@ -3321,7 +3419,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Idiomas">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Idioma">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Idiomas">
               <MappingFragment StoreEntitySet="Idiomas">
                 <ScalarProperty Name="tb_idiomas_id" ColumnName="tb_idiomas_id" />
                 <ScalarProperty Name="DetalleIdiomaCandidato" ColumnName="DetalleIdiomaCandidato" />
@@ -3329,7 +3427,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IdiomasRequeridos">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.IdiomasRequerido">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.IdiomasRequeridos">
               <MappingFragment StoreEntitySet="IdiomasRequeridos">
                 <ScalarProperty Name="tb_idiomasReq_id" ColumnName="tb_idiomasReq_id" />
                 <ScalarProperty Name="ID_DetalleIdiomaReq" ColumnName="ID_DetalleIdiomaReq" />
@@ -3337,7 +3435,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Indicadores">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Indicadore">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Indicadores">
               <MappingFragment StoreEntitySet="Indicadores">
                 <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
                 <ScalarProperty Name="Nombre_Indicador" ColumnName="Nombre_Indicador" />
@@ -3358,7 +3456,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="liquidaciones">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.liquidacione">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.liquidaciones">
               <MappingFragment StoreEntitySet="liquidaciones">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -3385,7 +3483,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Oficinas">
+          <EntitySetMapping Name="Oficina">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Oficina">
               <MappingFragment StoreEntitySet="Oficina">
                 <ScalarProperty Name="Id_Oficina" ColumnName="Id_Oficina" />
@@ -3395,7 +3493,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="permisos">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.permiso">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.permisos">
               <MappingFragment StoreEntitySet="permisos">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -3417,7 +3515,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="preguntas">
+          <EntitySetMapping Name="pregunta">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.pregunta">
               <MappingFragment StoreEntitySet="pregunta">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3426,7 +3524,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Profesiones">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Profesione">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Profesiones">
               <MappingFragment StoreEntitySet="Profesiones">
                 <ScalarProperty Name="Id_Profesion" ColumnName="Id_Profesion" />
                 <ScalarProperty Name="Profesion" ColumnName="Profesion" />
@@ -3434,7 +3532,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="respuestas">
+          <EntitySetMapping Name="respuesta">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.respuesta">
               <MappingFragment StoreEntitySet="respuesta">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3445,7 +3543,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Resultados">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultado">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultados">
               <MappingFragment StoreEntitySet="Resultados">
                 <ScalarProperty Name="Id_Resultados" ColumnName="Id_Resultados" />
                 <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
@@ -3455,13 +3553,24 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="salidas">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.salida">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.salidas">
               <MappingFragment StoreEntitySet="salidas">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
                 <ScalarProperty Name="id_entrada" ColumnName="id_entrada" />
                 <ScalarProperty Name="hora_marcado" ColumnName="hora_marcado" />
                 <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3635,7 +3744,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="temas">
+          <EntitySetMapping Name="tema">
             <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.tema">
               <MappingFragment StoreEntitySet="tema">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3652,7 +3761,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vacaciones">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.vacacione">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.vacaciones">
               <MappingFragment StoreEntitySet="vacaciones">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
@@ -3661,11 +3770,13 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
                 <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
                 <ScalarProperty Name="aceptado" ColumnName="aceptado" />
                 <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="pagado" ColumnName="pagado" />
+                <ScalarProperty Name="pendiente_por_pagar" ColumnName="pendiente_por_pagar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vacantes">
-            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Vacante">
+            <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Vacantes">
               <MappingFragment StoreEntitySet="Vacantes">
                 <ScalarProperty Name="ID_Vacante" ColumnName="ID_Vacante" />
                 <ScalarProperty Name="tb_Vacantes_cargo" ColumnName="tb_Vacantes_cargo" />
@@ -3690,6 +3801,30 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
               <ScalarProperty Name="Id_Empleado" ColumnName="Id_empleado" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_Recursos_HumanosModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_Recursos_HumanosModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_Recursos_HumanosModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3704,7 +3839,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

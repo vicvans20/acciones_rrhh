@@ -14,7 +14,7 @@ Partial Public Class area
     Public Property ID As Integer
     Public Property nombre As String
 
-    Public Overridable Property capacitacions As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
-    Public Overridable Property Empleadoes As ICollection(Of Empleado) = New HashSet(Of Empleado)
+    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
+    Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
 
 End Class

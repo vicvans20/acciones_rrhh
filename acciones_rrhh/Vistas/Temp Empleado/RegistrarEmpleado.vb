@@ -1,7 +1,7 @@
 ﻿Namespace Vistas
     Public Class RegistrarEmpleado
         Private Sub UpdateDataGrid(ByVal context As DB_Recursos_HumanosEntities, ByVal dg As DataGridView)
-            Dim empList = (From emp In context.Empleadoes Select emp.Cedula, emp.Nombre, emp.Apellido, emp.Domicilio, emp.Cargo.Salario).ToList
+            Dim empList = (From emp In context.Empleado Select emp.Cedula, emp.Nombre, emp.Apellido, emp.Domicilio, emp.Cargo.Salario).ToList
             dg.DataSource = empList
         End Sub
         Private Sub RegistrarEmpleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,8 +10,8 @@
                 Dim profesionList = (From p In context.Profesiones Select p).ToList
                 Dim infoAcademyList = (From ia In context.Informacion_Academica Select ia).ToList
                 Dim antecedentesList = (From a In context.Antecedentes Select a).ToList
-                Dim areaList = (From a In context.areas Select a).ToList
-                Dim cargoList = (From c In context.Cargoes Select c).ToList
+                Dim areaList = (From a In context.area Select a).ToList
+                Dim cargoList = (From c In context.Cargo Select c).ToList
 
                 empProfesion.DataSource = profesionList
                 empProfesion.DisplayMember = "Profesion"
@@ -51,7 +51,7 @@
                 emp.Id_Antecendete = empAntecedente.SelectedValue
                 emp.Id_area = empArea.SelectedValue
                 emp.Id_Cargo = empCargo.SelectedValue
-                context.Empleadoes.Add(emp)
+                context.Empleado.Add(emp)
                 Try
                     context.SaveChanges()
                     MessageBox.Show("Guardado exitoso")

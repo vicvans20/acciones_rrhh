@@ -26,23 +26,23 @@ Partial Public Class Empleado
     Public Property Id_area As Integer
     Public Property Id_Cargo As Integer
 
-    Public Overridable Property Antecedente As Antecedente
+    Public Overridable Property Antecedentes As Antecedentes
     Public Overridable Property area As area
     Public Overridable Property Cargo As Cargo
-    Public Overridable Property Contratoes As ICollection(Of Contrato) = New HashSet(Of Contrato)
-    Public Overridable Property entradas As ICollection(Of entrada) = New HashSet(Of entrada)
-    Public Overridable Property liquidaciones As ICollection(Of liquidacione) = New HashSet(Of liquidacione)
-    Public Overridable Property permisos As ICollection(Of permiso) = New HashSet(Of permiso)
-    Public Overridable Property salidas As ICollection(Of salida) = New HashSet(Of salida)
+    Public Overridable Property Contrato As ICollection(Of Contrato) = New HashSet(Of Contrato)
+    Public Overridable Property entradas As ICollection(Of entradas) = New HashSet(Of entradas)
+    Public Overridable Property liquidaciones As ICollection(Of liquidaciones) = New HashSet(Of liquidaciones)
+    Public Overridable Property permisos As ICollection(Of permisos) = New HashSet(Of permisos)
+    Public Overridable Property salidas As ICollection(Of salidas) = New HashSet(Of salidas)
     Public Overridable Property TB_Adm_Usuario As ICollection(Of TB_Adm_Usuario) = New HashSet(Of TB_Adm_Usuario)
     Public Overridable Property TB_MOVIMIENTO_DEVENGADO As ICollection(Of TB_MOVIMIENTO_DEVENGADO) = New HashSet(Of TB_MOVIMIENTO_DEVENGADO)
     Public Overridable Property TB_MOVIMIENTO_DEDUCCION As ICollection(Of TB_MOVIMIENTO_DEDUCCION) = New HashSet(Of TB_MOVIMIENTO_DEDUCCION)
-    Public Overridable Property vacaciones As ICollection(Of vacacione) = New HashSet(Of vacacione)
+    Public Overridable Property vacaciones As ICollection(Of vacaciones) = New HashSet(Of vacaciones)
     Public Overridable Property Informacion_Academica As Informacion_Academica
-    Public Overridable Property Profesione As Profesione
-    Public Overridable Property Resultados As ICollection(Of Resultado) = New HashSet(Of Resultado)
+    Public Overridable Property Profesiones As Profesiones
+    Public Overridable Property Resultados As ICollection(Of Resultados) = New HashSet(Of Resultados)
     Public Overridable Property TB_PRESTAMO As ICollection(Of TB_PRESTAMO) = New HashSet(Of TB_PRESTAMO)
     Public Overridable Property TB_RECIBO_CUOTA As ICollection(Of TB_RECIBO_CUOTA) = New HashSet(Of TB_RECIBO_CUOTA)
-    Public Overridable Property capacitacions As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
+    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
 
 End Class

@@ -15,6 +15,6 @@ Partial Public Class DetEspecialidadesCand
     Public Property tb_DetEspeCan_titulo As String
     Public Property tb_DetEspeCan_aniosExpe As Nullable(Of Integer)
 
-    Public Overridable Property Especialidades As ICollection(Of Especialidade) = New HashSet(Of Especialidade)
+    Public Overridable Property Especialidades As ICollection(Of Especialidades) = New HashSet(Of Especialidades)
 
 End Class
