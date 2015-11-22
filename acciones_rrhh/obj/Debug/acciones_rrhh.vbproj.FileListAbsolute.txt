@@ -18,4 +18,4 @@ C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_r
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.exe
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.xml
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\acciones_rrhh.pdb
-C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Reporte_Vacaciones.resources
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.Reporte_Vacaciones.resources

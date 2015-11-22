@@ -26,5 +26,11 @@ Namespace Vistas
             registrarPermisos.MdiParent = Me
             registrarPermisos.Show()
         End Sub
+
+        Private Sub ReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteToolStripMenuItem.Click
+            Dim reporteV As New Vistas.Reporte_Vacaciones
+            reporteV.MdiParent = Me
+            reporteV.Show()
+        End Sub
     End Class
 End Namespace
