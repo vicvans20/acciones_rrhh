@@ -1,7 +1,11 @@
 ﻿Namespace Vistas
     Public Class Reporte_Vacaciones
         Dim newC As New DataGridViewColumn
-                
+        Private Sub UpdateAvalaibleVacations(empId As Integer)
+            Using context As New DB_Recursos_HumanosEntities
+                Me.tbVaA.Text = Modelos.VacacionModel.calcular_saldo_vacaciones(empId)
+            End Using
+        End Sub
         Private Sub UpdateDataGridV(empId As Integer)
             Using context As New DB_Recursos_HumanosEntities
                 'Dim vList = (From v In context.vacaciones Select v.id, v.fecha_fin, v.fecha_fin).ToList
@@ -32,9 +36,10 @@
 
         Private Sub cbEmpleados_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbEmpleados.SelectionChangeCommitted
             UpdateDataGridV(cbEmpleados.SelectedValue)
+            UpdateAvalaibleVacations(cbEmpleados.SelectedValue)
         End Sub
 
-        Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Private Sub Button1_Click(sender As Object, e As EventArgs)
             MessageBox.Show(cbEmpleados.SelectedValue)
         End Sub
     End Class

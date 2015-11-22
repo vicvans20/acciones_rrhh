@@ -26,16 +26,17 @@
             Me.cbEmpleados = New System.Windows.Forms.ComboBox()
             Me.DataGridView1 = New System.Windows.Forms.DataGridView()
             Me.Label1 = New System.Windows.Forms.Label()
-            Me.Button1 = New System.Windows.Forms.Button()
+            Me.tbVaA = New System.Windows.Forms.TextBox()
+            Me.Label2 = New System.Windows.Forms.Label()
             CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             'cbEmpleados
             '
             Me.cbEmpleados.FormattingEnabled = True
-            Me.cbEmpleados.Location = New System.Drawing.Point(136, 27)
+            Me.cbEmpleados.Location = New System.Drawing.Point(136, 12)
             Me.cbEmpleados.Name = "cbEmpleados"
-            Me.cbEmpleados.Size = New System.Drawing.Size(595, 21)
+            Me.cbEmpleados.Size = New System.Drawing.Size(359, 21)
             Me.cbEmpleados.TabIndex = 0
             '
             'DataGridView1
@@ -54,27 +55,36 @@
             'Label1
             '
             Me.Label1.AutoSize = True
-            Me.Label1.Location = New System.Drawing.Point(382, 61)
+            Me.Label1.Location = New System.Drawing.Point(378, 53)
             Me.Label1.Name = "Label1"
             Me.Label1.Size = New System.Drawing.Size(117, 13)
             Me.Label1.TabIndex = 2
             Me.Label1.Text = "Vacaciones Aprobadas"
             '
-            'Button1
+            'tbVaA
             '
-            Me.Button1.Location = New System.Drawing.Point(13, 87)
-            Me.Button1.Name = "Button1"
-            Me.Button1.Size = New System.Drawing.Size(75, 23)
-            Me.Button1.TabIndex = 3
-            Me.Button1.Text = "Button1"
-            Me.Button1.UseVisualStyleBackColor = True
+            Me.tbVaA.Location = New System.Drawing.Point(584, 12)
+            Me.tbVaA.Name = "tbVaA"
+            Me.tbVaA.ReadOnly = True
+            Me.tbVaA.Size = New System.Drawing.Size(147, 20)
+            Me.tbVaA.TabIndex = 3
+            '
+            'Label2
+            '
+            Me.Label2.AutoSize = True
+            Me.Label2.Location = New System.Drawing.Point(544, 15)
+            Me.Label2.Name = "Label2"
+            Me.Label2.Size = New System.Drawing.Size(34, 13)
+            Me.Label2.TabIndex = 4
+            Me.Label2.Text = "Saldo"
             '
             'Reporte_Vacaciones
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.ClientSize = New System.Drawing.Size(851, 407)
-            Me.Controls.Add(Me.Button1)
+            Me.Controls.Add(Me.Label2)
+            Me.Controls.Add(Me.tbVaA)
             Me.Controls.Add(Me.Label1)
             Me.Controls.Add(Me.DataGridView1)
             Me.Controls.Add(Me.cbEmpleados)
@@ -88,6 +98,7 @@
         Friend WithEvents cbEmpleados As System.Windows.Forms.ComboBox
         Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
         Friend WithEvents Label1 As System.Windows.Forms.Label
-        Friend WithEvents Button1 As System.Windows.Forms.Button
+        Friend WithEvents tbVaA As System.Windows.Forms.TextBox
+        Friend WithEvents Label2 As System.Windows.Forms.Label
     End Class
 End Namespace
