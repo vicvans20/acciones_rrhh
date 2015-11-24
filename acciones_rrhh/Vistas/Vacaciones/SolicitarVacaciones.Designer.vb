@@ -31,6 +31,7 @@
             Me.Label3 = New System.Windows.Forms.Label()
             Me.dateInicio = New System.Windows.Forms.MonthCalendar()
             Me.dateFin = New System.Windows.Forms.MonthCalendar()
+            Me.cbPagada = New System.Windows.Forms.CheckBox()
             Me.SuspendLayout()
             '
             'cbEmpleados
@@ -43,7 +44,7 @@
             '
             'bSend
             '
-            Me.bSend.Location = New System.Drawing.Point(374, 314)
+            Me.bSend.Location = New System.Drawing.Point(378, 329)
             Me.bSend.Name = "bSend"
             Me.bSend.Size = New System.Drawing.Size(75, 23)
             Me.bSend.TabIndex = 1
@@ -99,11 +100,22 @@
             Me.dateFin.Name = "dateFin"
             Me.dateFin.TabIndex = 10
             '
+            'cbPagada
+            '
+            Me.cbPagada.AutoSize = True
+            Me.cbPagada.Location = New System.Drawing.Point(378, 303)
+            Me.cbPagada.Name = "cbPagada"
+            Me.cbPagada.Size = New System.Drawing.Size(74, 17)
+            Me.cbPagada.TabIndex = 11
+            Me.cbPagada.Text = "Pagadas?"
+            Me.cbPagada.UseVisualStyleBackColor = True
+            '
             'Solicitar_Vacaciones
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.ClientSize = New System.Drawing.Size(838, 364)
+            Me.Controls.Add(Me.cbPagada)
             Me.Controls.Add(Me.dateFin)
             Me.Controls.Add(Me.dateInicio)
             Me.Controls.Add(Me.Label3)
@@ -126,5 +138,6 @@
         Friend WithEvents Label3 As System.Windows.Forms.Label
         Friend WithEvents dateInicio As System.Windows.Forms.MonthCalendar
         Friend WithEvents dateFin As System.Windows.Forms.MonthCalendar
+        Friend WithEvents cbPagada As System.Windows.Forms.CheckBox
     End Class
 End Namespace

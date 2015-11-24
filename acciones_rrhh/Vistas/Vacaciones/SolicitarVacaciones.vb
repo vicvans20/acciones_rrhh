@@ -18,19 +18,27 @@
             Dim sal = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
             Try
                 If DateDiff(DateInterval.Day, Me.dateInicio.SelectionStart, Me.dateFin.SelectionStart) + 1 > sal Then
-                    Throw New ArgumentException("Su saldo de disponible no es suficiente para completar la solicitud.")
+                    Throw New ConstraintException("Su saldo de disponible no es suficiente para completar la solicitud.")
                 End If
                 Using context As New DB_Recursos_HumanosEntities
+                    Dim emp As New Empleado
+                    emp = context.Empleado.Find(cbEmpleados.SelectedValue)
+                    If dateFin.SelectionStart > emp.Contrato.Last.Fecha_Fin Then
+                        Throw New ConstraintException("La fecha de fin no puede exceder la fecha final del contrato.")
+                    End If
                     Dim vac As New vacaciones
                     vac.fecha_inicio = dateInicio.SelectionStart
                     vac.fecha_fin = dateFin.SelectionStart
                     vac.Id_Empleado = cbEmpleados.SelectedValue
+                    vac.pagado = cbPagada.Checked
                     vac.fecha_creacion = Today
                     context.vacaciones.Add(vac)
                     context.SaveChanges()
                     MessageBox.Show("Solicitud guardada")
                 End Using
             Catch ex As ArgumentException
+                MessageBox.Show(ex.Message)
+            Catch ex As ConstraintException
                 MessageBox.Show(ex.Message)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)

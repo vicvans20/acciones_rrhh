@@ -5,13 +5,14 @@
             Using context As New DB_Recursos_HumanosEntities
                 Dim emp As New Empleado
                 emp = context.Empleado.Find(eid)
-                Dim vList = (From v In context.vacaciones Select v Where v.Id_Empleado = eid And v.aceptado = True).ToList
+                Dim lc = emp.Contrato.Last.Fecha_Contratacion
+                Dim vList = (From v In context.vacaciones Select v Where v.Id_Empleado = eid And v.aceptado = True And v.fecha_inicio > lc).ToList
                 Dim vDebitado As Double = 0
                 For Each v In vList
                     vDebitado = vDebitado + (DateDiff(DateInterval.Day, v.fecha_inicio, v.fecha_fin) + 1)
                 Next
                 Try
-                    Dim vAcumulado = DateDiff(DateInterval.Month, CType(emp.Contrato.Last.Fecha_Contratacion, Date), Date.Today) * 2.5
+                    Dim vAcumulado = DateDiff(DateInterval.Month, CType(lc, Date), Date.Today) * 2.5
                     Dim saldo = vAcumulado - vDebitado
                     Return saldo
                 Catch ex As System.InvalidOperationException
