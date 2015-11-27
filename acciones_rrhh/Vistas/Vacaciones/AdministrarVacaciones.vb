@@ -23,17 +23,18 @@
                 Using context As New DB_Recursos_HumanosEntities
                     Dim vid = Integer.Parse(DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString)
                     Dim vac = context.vacaciones.Find(vid)
-                    MessageBox.Show("Se debitaran " + CType((DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin) + 1), String) + " días")
-                    MessageBox.Show("La persona cuenta con " + CType(Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado), String) + " días de vacaciones")
+                    MessageBox.Show("Se debitaran " + CType((DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin) + 1), String) + " días." +
+                                   Environment.NewLine + "La persona cuenta con " + CType(Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado), String) + " días disponibles.")
+                    ' MessageBox.Show("La persona cuenta con " + CType(Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado), String) + " días de vacaciones")
+                    ' Si el empleado no tiene suficiente saldo para cumplir la vacacion
+                    If (Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado) <
+                        (DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin)) + 1) Then
+                        MessageBox.Show("El empleado no cuenta con suficiente saldo.")
+                        Return
+                    End If
                     Dim result = MessageBox.Show("Aprobar vacación?", "Confirmation", MessageBoxButtons.OKCancel)
                     If result = Windows.Forms.DialogResult.OK Then
                         Try
-
-                            ' Si el empleado no tiene suficiente saldo para cumplir la vacacion
-                            If (Modelos.VacacionModel.calcular_saldo_vacaciones(vac.Id_Empleado) <
-                                (DateDiff(DateInterval.Day, vac.fecha_inicio, vac.fecha_fin)) + 1) Then
-                                Throw New ArgumentException("El empleado no cuenta con suficiente saldo.")
-                            End If
                             vac.aceptado = True
                             context.SaveChanges()
                             DataGridView1.CurrentCell = Nothing
