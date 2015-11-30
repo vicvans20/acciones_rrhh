@@ -11,13 +11,12 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class TB_Adm_Sesion
-    Public Property id_sesion As Short
-    Public Property id_user As Short
+    Public Property id_sesion As Integer
+    Public Property id_user As Integer
     Public Property fechaSesion As Date
-    Public Property horaIngreso As Date
-    Public Property horaFinalizado As Date
+    Public Property horaIngreso As System.TimeSpan
+    Public Property horaFinalizado As Nullable(Of System.TimeSpan)
 
-    Public Overridable Property TB_Adm_Contenido As ICollection(Of TB_Adm_Contenido) = New HashSet(Of TB_Adm_Contenido)
     Public Overridable Property TB_Adm_Usuario As TB_Adm_Usuario
 
 End Class

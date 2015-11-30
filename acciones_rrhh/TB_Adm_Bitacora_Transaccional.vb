@@ -10,11 +10,16 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class tema_plan
-    Public Property ID_plan As Integer
-    Public Property ID_tema As Integer
-
-    Public Overridable Property plan_estudio As ICollection(Of plan_estudio) = New HashSet(Of plan_estudio)
-    Public Overridable Property tema As tema
+Partial Public Class TB_Adm_Bitacora_Transaccional
+    Public Property id_bitacora_transaccional As Integer
+    Public Property id_sesion As String
+    Public Property usuario As String
+    Public Property Tipo_Registro As String
+    Public Property Tabla_Asociada As String
+    Public Property Identificador_Registro As String
+    Public Property Campos As String
+    Public Property Antiguos_Registros As String
+    Public Property Nuevos_Registros As String
+    Public Property Fecha As Nullable(Of Date)
 
 End Class

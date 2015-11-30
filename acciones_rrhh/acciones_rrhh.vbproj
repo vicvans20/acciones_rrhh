@@ -121,9 +121,6 @@
     <Compile Include="Empleado.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="encuesta.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="entradas.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -170,6 +167,9 @@
     <Compile Include="Niveles_Evaluativos.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="OBTENER_VACACIONES_QUINCENA_Result.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Oficina.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -179,31 +179,16 @@
     <Compile Include="plan_estudio.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="pregunta.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Profesiones.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="respuesta.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Resultados.vb">
+    <Compile Include="Resultados_Evaluacion.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="salidas.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_Contenido.vb">
+    <Compile Include="TB_Adm_Bitacora_Transaccional.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_Adm_OpcionesSistema.vb">
@@ -242,6 +227,9 @@
     <Compile Include="TB_MOVIMIENTO_DEVENGADO.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="TB_NOMINA.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="TB_PLAZO_PAGO.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -252,9 +240,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="tema.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tema_plan.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="vacaciones.vb">
@@ -274,6 +259,9 @@
     </Compile>
     <Compile Include="Vistas\Principal\MenuPrincipal.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Principal\MenuRRHH.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vistas\Temp Empleado\RegistrarEmpleado.Designer.vb">
       <DependentUpon>RegistrarEmpleado.vb</DependentUpon>
@@ -314,6 +302,30 @@
     </Compile>
     <Compile Include="Vistas\Vacaciones\SolicitarVacaciones.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VW_DEDUCCIONES.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_DEVENGADOS.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_DIAS_TRABAJO_EMP.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_EMP.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_ENTRADA_SALIDA.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_NOMINA.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_NOMINA_AGUINALDO.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_QUINCENA_TRABAJO_EMP.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

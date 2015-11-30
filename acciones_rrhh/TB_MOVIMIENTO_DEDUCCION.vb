@@ -12,13 +12,14 @@ Imports System.Collections.Generic
 
 Partial Public Class TB_MOVIMIENTO_DEDUCCION
     Public Property ID As Integer
+    Public Property ID_DEDUCCION As Integer
     Public Property EMPLEADO As Integer
     Public Property AÑO As Integer
     Public Property MES As Integer
     Public Property DIA_INICIO As Integer
     Public Property DIA_FIN As Integer
     Public Property MONTO As Decimal
-    Public Property ID_DEDUCCION As Integer
+    Public Property DESCRIPCION As String
 
     Public Overridable Property Empleado1 As Empleado
     Public Overridable Property TB_DEDUCCION As TB_DEDUCCION

@@ -38,7 +38,6 @@ Partial Public Class DB_Recursos_HumanosEntities
     Public Overridable Property DetIdiomasReq() As DbSet(Of DetIdiomasReq)
     Public Overridable Property Documentacion() As DbSet(Of Documentacion)
     Public Overridable Property Empleado() As DbSet(Of Empleado)
-    Public Overridable Property encuesta() As DbSet(Of encuesta)
     Public Overridable Property entradas() As DbSet(Of entradas)
     Public Overridable Property Especialidades() As DbSet(Of Especialidades)
     Public Overridable Property EspecialidadesReq() As DbSet(Of EspecialidadesReq)
@@ -52,13 +51,8 @@ Partial Public Class DB_Recursos_HumanosEntities
     Public Overridable Property Oficina() As DbSet(Of Oficina)
     Public Overridable Property permisos() As DbSet(Of permisos)
     Public Overridable Property plan_estudio() As DbSet(Of plan_estudio)
-    Public Overridable Property pregunta() As DbSet(Of pregunta)
     Public Overridable Property Profesiones() As DbSet(Of Profesiones)
-    Public Overridable Property respuesta() As DbSet(Of respuesta)
-    Public Overridable Property Resultados() As DbSet(Of Resultados)
     Public Overridable Property salidas() As DbSet(Of salidas)
-    Public Overridable Property sysdiagrams() As DbSet(Of sysdiagrams)
-    Public Overridable Property TB_Adm_Contenido() As DbSet(Of TB_Adm_Contenido)
     Public Overridable Property TB_Adm_OpcionesSistema() As DbSet(Of TB_Adm_OpcionesSistema)
     Public Overridable Property TB_Adm_RolesDeUsuario() As DbSet(Of TB_Adm_RolesDeUsuario)
     Public Overridable Property TB_Adm_Sesion() As DbSet(Of TB_Adm_Sesion)
@@ -71,74 +65,37 @@ Partial Public Class DB_Recursos_HumanosEntities
     Public Overridable Property TB_ESTADO() As DbSet(Of TB_ESTADO)
     Public Overridable Property TB_MOVIMIENTO_DEDUCCION() As DbSet(Of TB_MOVIMIENTO_DEDUCCION)
     Public Overridable Property TB_MOVIMIENTO_DEVENGADO() As DbSet(Of TB_MOVIMIENTO_DEVENGADO)
+    Public Overridable Property TB_NOMINA() As DbSet(Of TB_NOMINA)
     Public Overridable Property TB_PLAZO_PAGO() As DbSet(Of TB_PLAZO_PAGO)
     Public Overridable Property TB_PRESTAMO() As DbSet(Of TB_PRESTAMO)
     Public Overridable Property TB_RECIBO_CUOTA() As DbSet(Of TB_RECIBO_CUOTA)
     Public Overridable Property tema() As DbSet(Of tema)
-    Public Overridable Property tema_plan() As DbSet(Of tema_plan)
     Public Overridable Property vacaciones() As DbSet(Of vacaciones)
     Public Overridable Property Vacantes() As DbSet(Of Vacantes)
+    Public Overridable Property Resultados_Evaluacion() As DbSet(Of Resultados_Evaluacion)
+    Public Overridable Property TB_Adm_Bitacora_Transaccional() As DbSet(Of TB_Adm_Bitacora_Transaccional)
+    Public Overridable Property VW_DEDUCCIONES() As DbSet(Of VW_DEDUCCIONES)
+    Public Overridable Property VW_DEVENGADOS() As DbSet(Of VW_DEVENGADOS)
+    Public Overridable Property VW_DIAS_TRABAJO_EMP() As DbSet(Of VW_DIAS_TRABAJO_EMP)
+    Public Overridable Property VW_EMP() As DbSet(Of VW_EMP)
+    Public Overridable Property VW_ENTRADA_SALIDA() As DbSet(Of VW_ENTRADA_SALIDA)
+    Public Overridable Property VW_NOMINA() As DbSet(Of VW_NOMINA)
+    Public Overridable Property VW_NOMINA_AGUINALDO() As DbSet(Of VW_NOMINA_AGUINALDO)
+    Public Overridable Property VW_QUINCENA_TRABAJO_EMP() As DbSet(Of VW_QUINCENA_TRABAJO_EMP)
 
-    Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
+    <DbFunction("DB_Recursos_HumanosEntities", "OBTENER_VACACIONES_QUINCENA")>
+    Public Overridable Function OBTENER_VACACIONES_QUINCENA(eMPLEADO As Nullable(Of Integer), aÑO As Nullable(Of Integer), mES As Nullable(Of Integer), dIA_INICIO As Nullable(Of Integer), dIA_FIN As Nullable(Of Integer)) As IQueryable(Of OBTENER_VACACIONES_QUINCENA_Result)
+        Dim eMPLEADOParameter As ObjectParameter = If(eMPLEADO.HasValue, New ObjectParameter("EMPLEADO", eMPLEADO), New ObjectParameter("EMPLEADO", GetType(Integer)))
 
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
+        Dim aÑOParameter As ObjectParameter = If(aÑO.HasValue, New ObjectParameter("AÑO", aÑO), New ObjectParameter("AÑO", GetType(Integer)))
 
-        Dim versionParameter As ObjectParameter = If(version.HasValue, New ObjectParameter("version", version), New ObjectParameter("version", GetType(Integer)))
+        Dim mESParameter As ObjectParameter = If(mES.HasValue, New ObjectParameter("MES", mES), New ObjectParameter("MES", GetType(Integer)))
 
-        Dim definitionParameter As ObjectParameter = If(definition IsNot Nothing, New ObjectParameter("definition", definition), New ObjectParameter("definition", GetType(Byte())))
+        Dim dIA_INICIOParameter As ObjectParameter = If(dIA_INICIO.HasValue, New ObjectParameter("DIA_INICIO", dIA_INICIO), New ObjectParameter("DIA_INICIO", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter)
-    End Function
+        Dim dIA_FINParameter As ObjectParameter = If(dIA_FIN.HasValue, New ObjectParameter("DIA_FIN", dIA_FIN), New ObjectParameter("DIA_FIN", GetType(Integer)))
 
-    Public Overridable Function sp_creatediagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Dim versionParameter As ObjectParameter = If(version.HasValue, New ObjectParameter("version", version), New ObjectParameter("version", GetType(Integer)))
-
-        Dim definitionParameter As ObjectParameter = If(definition IsNot Nothing, New ObjectParameter("definition", definition), New ObjectParameter("definition", GetType(Byte())))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter)
-    End Function
-
-    Public Overridable Function sp_dropdiagram(diagramname As String, owner_id As Nullable(Of Integer)) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter)
-    End Function
-
-    Public Overridable Function sp_helpdiagramdefinition(diagramname As String, owner_id As Nullable(Of Integer)) As ObjectResult(Of sp_helpdiagramdefinition_Result)
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sp_helpdiagramdefinition_Result)("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter)
-    End Function
-
-    Public Overridable Function sp_helpdiagrams(diagramname As String, owner_id As Nullable(Of Integer)) As ObjectResult(Of sp_helpdiagrams_Result)
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sp_helpdiagrams_Result)("sp_helpdiagrams", diagramnameParameter, owner_idParameter)
-    End Function
-
-    Public Overridable Function sp_renamediagram(diagramname As String, owner_id As Nullable(Of Integer), new_diagramname As String) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Dim new_diagramnameParameter As ObjectParameter = If(new_diagramname IsNot Nothing, New ObjectParameter("new_diagramname", new_diagramname), New ObjectParameter("new_diagramname", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter)
-    End Function
-
-    Public Overridable Function sp_upgraddiagrams() As Integer
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_upgraddiagrams")
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of OBTENER_VACACIONES_QUINCENA_Result)("[DB_Recursos_HumanosEntities].[OBTENER_VACACIONES_QUINCENA](@EMPLEADO, @AÑO, @MES, @DIA_INICIO, @DIA_FIN)", eMPLEADOParameter, aÑOParameter, mESParameter, dIA_INICIOParameter, dIA_FINParameter)
     End Function
 
 End Class

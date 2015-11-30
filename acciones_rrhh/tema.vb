@@ -13,7 +13,8 @@ Imports System.Collections.Generic
 Partial Public Class tema
     Public Property ID As Integer
     Public Property nombre As String
+    Public Property ID_plan As Integer
 
-    Public Overridable Property tema_plan As ICollection(Of tema_plan) = New HashSet(Of tema_plan)
+    Public Overridable Property plan_estudio As plan_estudio
 
 End Class

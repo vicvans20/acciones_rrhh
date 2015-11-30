@@ -11,9 +11,10 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Niveles_Evaluativos
-    Public Property Id_Nivel_Evaluativo As Integer
     Public Property Tipo_Nivel_Evaluativo As String
+    Public Property Significado_Nivel_Evaluativo As String
+    Public Property Equivalente_Nivel_Evaluativo As String
 
-    Public Overridable Property Indicadores As ICollection(Of Indicadores) = New HashSet(Of Indicadores)
+    Public Overridable Property Resultados_Evaluacion As ICollection(Of Resultados_Evaluacion) = New HashSet(Of Resultados_Evaluacion)
 
 End Class

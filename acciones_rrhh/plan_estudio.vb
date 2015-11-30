@@ -12,10 +12,9 @@ Imports System.Collections.Generic
 
 Partial Public Class plan_estudio
     Public Property ID As Integer
-    Public Property ID_tema_plan As Integer
-    Public Property anio As String
+    Public Property anio As Date
 
     Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
-    Public Overridable Property tema_plan As tema_plan
+    Public Overridable Property tema As ICollection(Of tema) = New HashSet(Of tema)
 
 End Class

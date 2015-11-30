@@ -12,18 +12,20 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="40" Nullable="false" />
   </EntityType>
   <EntityType Name="Candidato">
     <Key>
-      <PropertyRef Name="ID_Candidato" />
+      <PropertyRef Name="tb_Candidato_id" />
     </Key>
-    <Property Name="ID_Candidato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tb_Candidato_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tb_Candidatos_FecSolicitud" Type="date" Nullable="false" />
+    <Property Name="tb_Candidatos_cargoAspirar" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="tb_Candidatos_nombres" Type="varchar(max)" />
-    <Property Name="tb_Candidatos_apellidos" Type="varbinary(max)" />
+    <Property Name="tb_Candidatos_apellidos" Type="varchar" MaxLength="50" />
     <Property Name="tb_Candidatos_genero" Type="bit" />
-    <Property Name="tb_Candidatos_cedula" Type="varchar" MaxLength="50" />
+    <Property Name="tb_Candidatos_cedula" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="tb_Candidatos_fecNac" Type="date" />
     <Property Name="tb_Candidatos_estadoCivil" Type="varchar" MaxLength="50" />
     <Property Name="tb_Candidatos_domicilio" Type="varchar(max)" />
@@ -44,23 +46,22 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_plan" Type="int" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="fecha" Type="date" Nullable="false" />
     <Property Name="duracion" Type="int" Nullable="false" />
     <Property Name="ID_centro_cap" Type="int" Nullable="false" />
-    <Property Name="ID_encuesta" Type="int" Nullable="false" />
     <Property Name="ID_area" Type="int" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_empleado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="capacitacion_empleado">
     <Key>
-      <PropertyRef Name="Id_empleado" />
+      <PropertyRef Name="ID_empleado" />
       <PropertyRef Name="ID_capacitacion" />
     </Key>
-    <Property Name="Id_empleado" Type="int" Nullable="false" />
+    <Property Name="ID_empleado" Type="int" Nullable="false" />
     <Property Name="ID_capacitacion" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Cargo">
@@ -77,7 +78,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Contrato">
@@ -93,9 +94,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
   </EntityType>
   <EntityType Name="Debilidades">
     <Key>
-      <PropertyRef Name="Id_Debilidades" />
+      <PropertyRef Name="Nombre_Debilidades" />
     </Key>
-    <Property Name="Id_Debilidades" Type="int" Nullable="false" />
     <Property Name="Nombre_Debilidades" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="DetEspecialidadesCand">
@@ -157,13 +157,6 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Property Name="Id_area" Type="int" Nullable="false" />
     <Property Name="Id_Cargo" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="encuesta">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="ID_pregunta" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="entradas">
     <Key>
       <PropertyRef Name="id" />
@@ -190,9 +183,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
   </EntityType>
   <EntityType Name="Fortalezas">
     <Key>
-      <PropertyRef Name="Id_Fortalezas" />
+      <PropertyRef Name="Nombre_Fortalezas" />
     </Key>
-    <Property Name="Id_Fortalezas" Type="int" Nullable="false" />
     <Property Name="Nombre_Fortalezas" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Idiomas">
@@ -211,14 +203,9 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
   </EntityType>
   <EntityType Name="Indicadores">
     <Key>
-      <PropertyRef Name="Id_Indicador" />
+      <PropertyRef Name="Nombre_Indicador" />
     </Key>
-    <Property Name="Id_Indicador" Type="int" Nullable="false" />
     <Property Name="Nombre_Indicador" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Id_Nivel_Evaluativo" Type="int" Nullable="false" />
-    <Property Name="Id_Fortalezas" Type="int" Nullable="false" />
-    <Property Name="Id_Debilidades" Type="int" Nullable="false" />
-    <Property Name="Fecha_Evaluacion" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Informacion_Academica">
     <Key>
@@ -249,10 +236,11 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
   </EntityType>
   <EntityType Name="Niveles_Evaluativos">
     <Key>
-      <PropertyRef Name="Id_Nivel_Evaluativo" />
+      <PropertyRef Name="Tipo_Nivel_Evaluativo" />
     </Key>
-    <Property Name="Id_Nivel_Evaluativo" Type="int" Nullable="false" />
     <Property Name="Tipo_Nivel_Evaluativo" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Significado_Nivel_Evaluativo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Equivalente_Nivel_Evaluativo" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Oficina">
     <Key>
@@ -279,16 +267,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="ID_tema_plan" Type="int" Nullable="false" />
-    <Property Name="anio" Type="varchar" MaxLength="10" Nullable="false" />
-  </EntityType>
-  <EntityType Name="pregunta">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="pregunta" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="anio" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Profesiones">
     <Key>
@@ -298,23 +278,23 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Property Name="Profesion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
   </EntityType>
-  <EntityType Name="respuesta">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.Resultados_Evaluacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Resultados_Evaluacion">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id_Empleado" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="ID_pregunta" Type="int" Nullable="false" />
-    <Property Name="respuesta" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="correcta" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Resultados">
-    <Key>
-      <PropertyRef Name="Id_Resultados" />
-    </Key>
-    <Property Name="Id_Resultados" Type="int" Nullable="false" />
-    <Property Name="Id_Indicador" Type="int" Nullable="false" />
-    <Property Name="Resultado_Final" Type="nchar" MaxLength="10" />
+    <Property Name="Numero_Evaluacion" Type="int" />
     <Property Name="Id_Empleado" Type="int" Nullable="false" />
+    <Property Name="Nombre_Indicador" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tipo_Nivel_Evaluativo" Type="nchar" MaxLength="10" />
+    <Property Name="Nombre_Fortalezas" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nombre_Debilidades" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fecha_Evaluacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nota_Indicador" Type="int" />
+    <Property Name="Total_Evaluacion" Type="int" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="50" />
+    <Property Name="cod" Type="int" />
   </EntityType>
   <EntityType Name="salidas">
     <Key>
@@ -326,33 +306,28 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Property Name="hora_marcado" Type="time" Precision="7" Nullable="false" />
     <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.TB_Adm_Bitacora_Transaccional' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TB_Adm_Bitacora_Transaccional">
     <Key>
-      <PropertyRef Name="diagram_id" />
+      <PropertyRef Name="id_bitacora_transaccional" />
     </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
-  <EntityType Name="TB_Adm_Contenido">
-    <Key>
-      <PropertyRef Name="id_contenido" />
-    </Key>
-    <Property Name="id_contenido" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_sesion" Type="smallint" Nullable="false" />
-    <Property Name="id_user" Type="smallint" Nullable="false" />
-    <Property Name="tabla_registro" Type="varchar" MaxLength="50" />
-    <Property Name="registros_creados" Type="nvarchar(max)" />
-    <Property Name="tabla_cambios" Type="varchar" MaxLength="50" />
-    <Property Name="cambios_realizados" Type="nvarchar(max)" />
+    <Property Name="id_bitacora_transaccional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sesion" Type="varchar" MaxLength="15" />
+    <Property Name="usuario" Type="varchar" MaxLength="35" />
+    <Property Name="Tipo_Registro" Type="varchar" MaxLength="13" />
+    <Property Name="Tabla_Asociada" Type="varchar" MaxLength="80" />
+    <Property Name="Identificador_Registro" Type="varchar" MaxLength="1000" />
+    <Property Name="Campos" Type="varchar" MaxLength="128" />
+    <Property Name="Antiguos_Registros" Type="varchar(max)" />
+    <Property Name="Nuevos_Registros" Type="varchar(max)" />
+    <Property Name="Fecha" Type="datetime" />
   </EntityType>
   <EntityType Name="TB_Adm_OpcionesSistema">
     <Key>
       <PropertyRef Name="id_opciones" />
     </Key>
-    <Property Name="id_opciones" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_opciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre_opciones" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="desc_opciones" Type="varchar(max)" Nullable="false" />
     <Property Name="modulo" Type="varchar(max)" Nullable="false" />
@@ -361,25 +336,26 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Key>
       <PropertyRef Name="id_rolUsuario" />
     </Key>
-    <Property Name="id_rolUsuario" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_rolUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="rol_usuario" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="descripcion_rol" Type="varchar(max)" Nullable="false" />
+    <Property Name="moduloRol" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="TB_Adm_Sesion">
     <Key>
       <PropertyRef Name="id_sesion" />
     </Key>
-    <Property Name="id_sesion" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_user" Type="smallint" Nullable="false" />
+    <Property Name="id_sesion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="int" Nullable="false" />
     <Property Name="fechaSesion" Type="date" Nullable="false" />
-    <Property Name="horaIngreso" Type="date" Nullable="false" />
-    <Property Name="horaFinalizado" Type="date" Nullable="false" />
+    <Property Name="horaIngreso" Type="time" Precision="7" Nullable="false" />
+    <Property Name="horaFinalizado" Type="time" Precision="7" />
   </EntityType>
   <EntityType Name="TB_Adm_Usuario">
     <Key>
       <PropertyRef Name="id_user" />
     </Key>
-    <Property Name="id_user" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Id_Empleado" Type="int" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="35" Nullable="false" />
     <Property Name="passUser" Type="varchar" MaxLength="30" Nullable="false" />
@@ -388,17 +364,17 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Key>
       <PropertyRef Name="id_userOpciones" />
     </Key>
-    <Property Name="id_userOpciones" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_user" Type="smallint" Nullable="false" />
-    <Property Name="id_opciones" Type="smallint" Nullable="false" />
+    <Property Name="id_userOpciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="id_opciones" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TB_Adm_Usuario_Roles">
     <Key>
       <PropertyRef Name="id_userRoles" />
     </Key>
-    <Property Name="id_userRoles" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_user" Type="smallint" Nullable="false" />
-    <Property Name="id_rolUsuario" Type="smallint" Nullable="false" />
+    <Property Name="id_userRoles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="id_rolUsuario" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TB_CUOTA">
     <Key>
@@ -439,26 +415,62 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DEDUCCION" Type="int" Nullable="false" />
     <Property Name="EMPLEADO" Type="int" Nullable="false" />
     <Property Name="AÑO" Type="int" Nullable="false" />
     <Property Name="MES" Type="int" Nullable="false" />
     <Property Name="DIA_INICIO" Type="int" Nullable="false" />
     <Property Name="DIA_FIN" Type="int" Nullable="false" />
     <Property Name="MONTO" Type="money" Nullable="false" />
-    <Property Name="ID_DEDUCCION" Type="int" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TB_MOVIMIENTO_DEVENGADO">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DEVENGADO" Type="int" Nullable="false" />
     <Property Name="EMPLEADO" Type="int" Nullable="false" />
     <Property Name="AÑO" Type="int" Nullable="false" />
     <Property Name="MES" Type="int" Nullable="false" />
     <Property Name="DIA_INICIO" Type="int" Nullable="false" />
     <Property Name="DIA_FIN" Type="int" Nullable="false" />
     <Property Name="MONTO" Type="money" Nullable="false" />
-    <Property Name="ID_DEVENGADOS" Type="int" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TB_NOMINA">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="AÑO" />
+      <PropertyRef Name="MES" />
+      <PropertyRef Name="DIA_INICIO" />
+      <PropertyRef Name="DIA_FIN" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="AÑO" Type="int" Nullable="false" />
+    <Property Name="MES" Type="int" Nullable="false" />
+    <Property Name="DIA_INICIO" Type="int" Nullable="false" />
+    <Property Name="DIA_FIN" Type="int" Nullable="false" />
+    <Property Name="FECHA_INTEGRACION" Type="date" Nullable="false" />
+    <Property Name="TITULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SALARIO_HORA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TOTAL_HORAS_TRABAJADAS" Type="int" />
+    <Property Name="TOTAL_HORAS_EXTRA" Type="int" Nullable="false" />
+    <Property Name="TOTAL_HORAS_AUSENTE" Type="int" Nullable="false" />
+    <Property Name="TOTAL_HORAS_PERMISO" Type="int" Nullable="false" />
+    <Property Name="TOTAL_DIAS_VACACIONES" Type="int" Nullable="false" />
+    <Property Name="SALARIO_BASE" Type="int" Nullable="false" />
+    <Property Name="IR" Type="int" Nullable="false" />
+    <Property Name="INSS" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+    <Property Name="AGUINALDO" Type="money" Nullable="false" />
+    <Property Name="TOTAL_PRESTAMOS" Type="float" Nullable="false" />
+    <Property Name="MOVIMIENTOS_DEVENGADOS" Type="money" Nullable="false" />
+    <Property Name="MOVIMIENTOS_DEDUCCIONES" Type="money" Nullable="false" />
+    <Property Name="TOTAL_DEVENGADOS" Type="money" Nullable="false" />
+    <Property Name="TOTAL_DEDUCCIONES" Type="money" Nullable="false" />
+    <Property Name="PAGO_NETO" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="TB_PLAZO_PAGO">
     <Key>
@@ -495,15 +507,9 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tema_plan">
-    <Key>
-      <PropertyRef Name="ID_plan" />
-    </Key>
     <Property Name="ID_plan" Type="int" Nullable="false" />
-    <Property Name="ID_tema" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="vacaciones">
     <Key>
@@ -515,16 +521,16 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Property Name="fecha_inicio" Type="date" Nullable="false" />
     <Property Name="fecha_fin" Type="date" Nullable="false" />
     <Property Name="aceptado" Type="bit" Nullable="false" />
-    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="pagado" Type="bit" Nullable="false" />
     <Property Name="pendiente_por_pagar" Type="bit" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
   <EntityType Name="Vacantes">
     <Key>
-      <PropertyRef Name="ID_Vacante" />
+      <PropertyRef Name="tb_Vacante_id" />
     </Key>
-    <Property Name="ID_Vacante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tb_Vacantes_cargo" Type="varchar(max)" />
+    <Property Name="tb_Vacante_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tb_Vacantes_cargo" Type="varchar" MaxLength="50" />
     <Property Name="tb_Vacantes_genero" Type="varchar" MaxLength="50" />
     <Property Name="tb_Vacantes_edadMax" Type="int" />
     <Property Name="tb_Vacantes_edadMin" Type="int" />
@@ -536,7 +542,226 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <Property Name="tb_Vacantes_notaMinTestPsicometrico" Type="float" />
     <Property Name="tb_Vacantes_notaMinTestTecnico" Type="float" />
   </EntityType>
-  <Association Name="FK__capacitac__ID_ar__59063A47">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_DEDUCCIONES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_DEDUCCIONES">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="AÑO" />
+      <PropertyRef Name="MES" />
+      <PropertyRef Name="DIA_INICIO" />
+      <PropertyRef Name="DIA_FIN" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="MONTO" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="AÑO" Type="int" Nullable="false" />
+    <Property Name="MES" Type="int" Nullable="false" />
+    <Property Name="DIA_INICIO" Type="int" Nullable="false" />
+    <Property Name="DIA_FIN" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MONTO" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_DEVENGADOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_DEVENGADOS">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="AÑO" />
+      <PropertyRef Name="MES" />
+      <PropertyRef Name="DIA_INICIO" />
+      <PropertyRef Name="DIA_FIN" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="MONTO" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="AÑO" Type="int" Nullable="false" />
+    <Property Name="MES" Type="int" Nullable="false" />
+    <Property Name="DIA_INICIO" Type="int" Nullable="false" />
+    <Property Name="DIA_FIN" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MONTO" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_DIAS_TRABAJO_EMP' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_DIAS_TRABAJO_EMP">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="HORAS_PERMISO" />
+      <PropertyRef Name="TITULO" />
+      <PropertyRef Name="SALARIO_HORA" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="TOTAL_HORAS" Type="int" />
+    <Property Name="TOTAL_HORAS_EXTRA" Type="int" />
+    <Property Name="TOTAL_HORAS_AUSENTE" Type="int" />
+    <Property Name="HORAS_PERMISO" Type="int" Nullable="false" />
+    <Property Name="FECHA_INTEGRACION" Type="date" />
+    <Property Name="TITULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SALARIO_HORA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_EMP' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_EMP">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="SALARIO_HORA" />
+      <PropertyRef Name="TITULO" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="TELEFONO" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FECHA_INTEGRACION" Type="date" />
+    <Property Name="SALARIO_HORA" Type="int" Nullable="false" />
+    <Property Name="TITULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="DIRECCION" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_ENTRADA_SALIDA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_ENTRADA_SALIDA">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="FECHA" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="TOTAL_HORAS" Type="int" />
+    <Property Name="HORAS_EXTRA" Type="int" />
+    <Property Name="HORAS_AUSENTE" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_NOMINA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_NOMINA">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="DIA_INICIO" />
+      <PropertyRef Name="TITULO" />
+      <PropertyRef Name="SALARIO_HORA" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="TOTAL_DIAS_VACACIONES" />
+      <PropertyRef Name="TOTAL_PRESTAMOS" />
+      <PropertyRef Name="MOVIMIENTOS_DEVENGADOS" />
+      <PropertyRef Name="MOVIMIENTOS_DEDUCCIONES" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="AÑO" Type="int" />
+    <Property Name="MES" Type="int" />
+    <Property Name="DIA_INICIO" Type="int" Nullable="false" />
+    <Property Name="DIA_FIN" Type="int" />
+    <Property Name="FECHA_INTEGRACION" Type="date" />
+    <Property Name="TITULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SALARIO_HORA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TOTAL_HORAS_TRABAJADAS" Type="int" />
+    <Property Name="TOTAL_HORAS_EXTRA" Type="int" />
+    <Property Name="TOTAL_HORAS_AUSENTE" Type="int" />
+    <Property Name="TOTAL_HORAS_PERMISO" Type="int" />
+    <Property Name="TOTAL_DIAS_VACACIONES" Type="int" Nullable="false" />
+    <Property Name="SALARIO_BASE" Type="int" />
+    <Property Name="IR" Type="int" />
+    <Property Name="INSS" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="AGUINALDO" Type="numeric" Precision="20" Scale="9" />
+    <Property Name="TOTAL_PRESTAMOS" Type="float" Nullable="false" />
+    <Property Name="MOVIMIENTOS_DEVENGADOS" Type="money" Nullable="false" />
+    <Property Name="MOVIMIENTOS_DEDUCCIONES" Type="money" Nullable="false" />
+    <Property Name="TOTAL_DEVENGADOS" Type="money" />
+    <Property Name="TOTAL_DEDUCCIONES" Type="float" />
+    <Property Name="PAGO_NETO" Type="float" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_NOMINA_AGUINALDO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_NOMINA_AGUINALDO">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="AÑO" />
+      <PropertyRef Name="MES" />
+      <PropertyRef Name="DIA_INICIO" />
+      <PropertyRef Name="DIA_FIN" />
+      <PropertyRef Name="FECHA_INTEGRACION" />
+      <PropertyRef Name="TITULO" />
+      <PropertyRef Name="SALARIO_HORA" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="TOTAL_HORAS_TRABAJADAS" />
+      <PropertyRef Name="TOTAL_HORAS_EXTRA" />
+      <PropertyRef Name="TOTAL_HORAS_AUSENTE" />
+      <PropertyRef Name="TOTAL_HORAS_PERMISO" />
+      <PropertyRef Name="TOTAL_DIAS_VACACIONES" />
+      <PropertyRef Name="IR" />
+      <PropertyRef Name="INSS" />
+      <PropertyRef Name="AGUINALDO" />
+      <PropertyRef Name="TOTAL_PRESTAMOS" />
+      <PropertyRef Name="MOVIMIENTOS_DEVENGADOS" />
+      <PropertyRef Name="MOVIMIENTOS_DEDUCCIONES" />
+      <PropertyRef Name="TOTAL_DEDUCCIONES" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="AÑO" Type="int" Nullable="false" />
+    <Property Name="MES" Type="int" Nullable="false" />
+    <Property Name="DIA_INICIO" Type="int" Nullable="false" />
+    <Property Name="DIA_FIN" Type="int" Nullable="false" />
+    <Property Name="FECHA_INTEGRACION" Type="date" Nullable="false" />
+    <Property Name="TITULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SALARIO_HORA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TOTAL_HORAS_TRABAJADAS" Type="int" Nullable="false" />
+    <Property Name="TOTAL_HORAS_EXTRA" Type="int" Nullable="false" />
+    <Property Name="TOTAL_HORAS_AUSENTE" Type="int" Nullable="false" />
+    <Property Name="TOTAL_HORAS_PERMISO" Type="int" Nullable="false" />
+    <Property Name="TOTAL_DIAS_VACACIONES" Type="int" Nullable="false" />
+    <Property Name="SALARIO_BASE" Type="money" />
+    <Property Name="IR" Type="int" Nullable="false" />
+    <Property Name="INSS" Type="int" Nullable="false" />
+    <Property Name="AGUINALDO" Type="int" Nullable="false" />
+    <Property Name="TOTAL_PRESTAMOS" Type="int" Nullable="false" />
+    <Property Name="MOVIMIENTOS_DEVENGADOS" Type="int" Nullable="false" />
+    <Property Name="MOVIMIENTOS_DEDUCCIONES" Type="int" Nullable="false" />
+    <Property Name="TOTAL_DEVENGADOS" Type="money" />
+    <Property Name="TOTAL_DEDUCCIONES" Type="int" Nullable="false" />
+    <Property Name="PAGO_NETO" Type="money" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_QUINCENA_TRABAJO_EMP' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_QUINCENA_TRABAJO_EMP">
+    <Key>
+      <PropertyRef Name="EMPLEADO" />
+      <PropertyRef Name="DIA_INICIO" />
+      <PropertyRef Name="TITULO" />
+      <PropertyRef Name="SALARIO_HORA" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="TOTAL_DIAS_VACACIONES" />
+    </Key>
+    <Property Name="EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="AÑO" Type="int" />
+    <Property Name="MES" Type="int" />
+    <Property Name="DIA_INICIO" Type="int" Nullable="false" />
+    <Property Name="DIA_FIN" Type="int" />
+    <Property Name="FECHA_INTEGRACION" Type="date" />
+    <Property Name="TITULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SALARIO_HORA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TOTAL_HORAS_TRABAJADAS" Type="int" />
+    <Property Name="TOTAL_HORAS_EXTRA" Type="int" />
+    <Property Name="TOTAL_HORAS_AUSENTE" Type="int" />
+    <Property Name="TOTAL_HORAS_PERMISO" Type="int" />
+    <Property Name="TOTAL_DIAS_VACACIONES" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__capacitac__ID_ar__4D94879B">
     <End Role="area" Type="Self.area" Multiplicity="1" />
     <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -548,7 +773,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__capacitac__ID_ca__5BE2A6F2">
+  <Association Name="FK__capacitac__ID_ca__5070F446">
     <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="1" />
     <End Role="capacitacion_empleado" Type="Self.capacitacion_empleado" Multiplicity="*" />
     <ReferentialConstraint>
@@ -560,7 +785,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__capacitac__ID_ce__571DF1D5">
+  <Association Name="FK__capacitac__ID_ce__4CA06362">
     <End Role="centro_capacit" Type="Self.centro_capacit" Multiplicity="1" />
     <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -572,7 +797,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__capacitac__Id_em__5AEE82B9">
+  <Association Name="FK__capacitac__ID_em__4F7CD00D">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="capacitacion_empleado" Type="Self.capacitacion_empleado" Multiplicity="*" />
     <ReferentialConstraint>
@@ -580,23 +805,11 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         <PropertyRef Name="Id_Empleado" />
       </Principal>
       <Dependent Role="capacitacion_empleado">
-        <PropertyRef Name="Id_empleado" />
+        <PropertyRef Name="ID_empleado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__capacitac__ID_en__5812160E">
-    <End Role="encuesta" Type="Self.encuesta" Multiplicity="1" />
-    <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="encuesta">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="capacitacion">
-        <PropertyRef Name="ID_encuesta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__capacitac__ID_pl__5629CD9C">
+  <Association Name="FK__capacitac__ID_pl__4BAC3F29">
     <End Role="plan_estudio" Type="Self.plan_estudio" Multiplicity="1" />
     <End Role="capacitacion" Type="Self.capacitacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -608,19 +821,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__encuesta__ID_pre__4BAC3F29">
-    <End Role="pregunta" Type="Self.pregunta" Multiplicity="1" />
-    <End Role="encuesta" Type="Self.encuesta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="pregunta">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="encuesta">
-        <PropertyRef Name="ID_pregunta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__entradas__Id_Emp__75A278F5">
+  <Association Name="FK__entradas__Id_Emp__6B24EA82">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="entradas" Type="Self.entradas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -632,7 +833,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__liquidaci__Id_Em__7D439ABD">
+  <Association Name="FK__liquidaci__Id_Em__72C60C4A">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="liquidaciones" Type="Self.liquidaciones" Multiplicity="*" />
     <ReferentialConstraint>
@@ -644,7 +845,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__permisos__Id_Emp__71D1E811">
+  <Association Name="FK__permisos__Id_Emp__6754599E">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
     <ReferentialConstraint>
@@ -656,31 +857,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__plan_estu__ID_te__534D60F1">
-    <End Role="tema_plan" Type="Self.tema_plan" Multiplicity="1" />
-    <End Role="plan_estudio" Type="Self.plan_estudio" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tema_plan">
-        <PropertyRef Name="ID_plan" />
-      </Principal>
-      <Dependent Role="plan_estudio">
-        <PropertyRef Name="ID_tema_plan" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__respuesta__ID_pr__48CFD27E">
-    <End Role="pregunta" Type="Self.pregunta" Multiplicity="1" />
-    <End Role="respuesta" Type="Self.respuesta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="pregunta">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="respuesta">
-        <PropertyRef Name="ID_pregunta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__salidas__Id_Empl__787EE5A0">
+  <Association Name="FK__salidas__Id_Empl__6E01572D">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="salidas" Type="Self.salidas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -692,7 +869,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__salidas__id_entr__797309D9">
+  <Association Name="FK__salidas__id_entr__6EF57B66">
     <End Role="entradas" Type="Self.entradas" Multiplicity="1" />
     <End Role="salidas" Type="Self.salidas" Multiplicity="*" />
     <ReferentialConstraint>
@@ -704,7 +881,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TB_Adm_Us__Id_Em__1F98B2C1">
+  <Association Name="FK__TB_Adm_Us__Id_Em__17F790F9">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="*" />
     <ReferentialConstraint>
@@ -716,7 +893,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TB_MOVIMI__EMPLE__03F0984C">
+  <Association Name="FK__TB_MOVIMI__EMPLE__7A672E12">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="TB_MOVIMIENTO_DEVENGADO" Type="Self.TB_MOVIMIENTO_DEVENGADO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -728,7 +905,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TB_MOVIMI__EMPLE__07C12930">
+  <Association Name="FK__TB_MOVIMI__EMPLE__7E37BEF6">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="TB_MOVIMIENTO_DEDUCCION" Type="Self.TB_MOVIMIENTO_DEDUCCION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -740,7 +917,7 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TB_MOVIMI__ID_DE__04E4BC85">
+  <Association Name="FK__TB_MOVIMI__ID_DE__797309D9">
     <End Role="TB_DEVENGADO" Type="Self.TB_DEVENGADO" Multiplicity="1" />
     <End Role="TB_MOVIMIENTO_DEVENGADO" Type="Self.TB_MOVIMIENTO_DEVENGADO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -748,11 +925,11 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="TB_MOVIMIENTO_DEVENGADO">
-        <PropertyRef Name="ID_DEVENGADOS" />
+        <PropertyRef Name="ID_DEVENGADO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TB_MOVIMI__ID_DE__08B54D69">
+  <Association Name="FK__TB_MOVIMI__ID_DE__7D439ABD">
     <End Role="TB_DEDUCCION" Type="Self.TB_DEDUCCION" Multiplicity="1" />
     <End Role="TB_MOVIMIENTO_DEDUCCION" Type="Self.TB_MOVIMIENTO_DEDUCCION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -764,19 +941,33 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tema_plan__ID_te__5070F446">
-    <End Role="tema" Type="Self.tema" Multiplicity="1" />
-    <End Role="tema_plan" Type="Self.tema_plan" Multiplicity="*" />
+  <Association Name="FK__TB_NOMINA__EMPLE__01142BA1">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="TB_NOMINA" Type="Self.TB_NOMINA" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tema">
-        <PropertyRef Name="ID" />
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id_Empleado" />
       </Principal>
-      <Dependent Role="tema_plan">
-        <PropertyRef Name="ID_tema" />
+      <Dependent Role="TB_NOMINA">
+        <PropertyRef Name="EMPLEADO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__vacacione__Id_Em__6E01572D">
+  <Association Name="FK__tema__ID_plan__48CFD27E">
+    <End Role="plan_estudio" Type="Self.plan_estudio" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tema" Type="Self.tema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plan_estudio">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tema">
+        <PropertyRef Name="ID_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vacacione__Id_Em__6383C8BA">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="vacaciones" Type="Self.vacaciones" Multiplicity="*" />
     <ReferentialConstraint>
@@ -968,42 +1159,6 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Indicadores_Debilidades">
-    <End Role="Debilidades" Type="Self.Debilidades" Multiplicity="1" />
-    <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Debilidades">
-        <PropertyRef Name="Id_Debilidades" />
-      </Principal>
-      <Dependent Role="Indicadores">
-        <PropertyRef Name="Id_Debilidades" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Indicadores_Fortalezas">
-    <End Role="Fortalezas" Type="Self.Fortalezas" Multiplicity="1" />
-    <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Fortalezas">
-        <PropertyRef Name="Id_Fortalezas" />
-      </Principal>
-      <Dependent Role="Indicadores">
-        <PropertyRef Name="Id_Fortalezas" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Indicadores_Niveles_Evaluativos">
-    <End Role="Niveles_Evaluativos" Type="Self.Niveles_Evaluativos" Multiplicity="1" />
-    <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Niveles_Evaluativos">
-        <PropertyRef Name="Id_Nivel_Evaluativo" />
-      </Principal>
-      <Dependent Role="Indicadores">
-        <PropertyRef Name="Id_Nivel_Evaluativo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_prestamo_pagoPlazo">
     <End Role="TB_PLAZO_PAGO" Type="Self.TB_PLAZO_PAGO" Multiplicity="1" />
     <End Role="TB_PRESTAMO" Type="Self.TB_PRESTAMO" Multiplicity="*" />
@@ -1016,51 +1171,63 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Resultados_Empleados">
+  <Association Name="FK_Resultados_Evaluacion_Debilidades">
+    <End Role="Debilidades" Type="Self.Debilidades" Multiplicity="0..1" />
+    <End Role="Resultados_Evaluacion" Type="Self.Resultados_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Debilidades">
+        <PropertyRef Name="Nombre_Debilidades" />
+      </Principal>
+      <Dependent Role="Resultados_Evaluacion">
+        <PropertyRef Name="Nombre_Debilidades" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resultados_Evaluacion_Empleados">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-    <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
+    <End Role="Resultados_Evaluacion" Type="Self.Resultados_Evaluacion" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Empleado">
         <PropertyRef Name="Id_Empleado" />
       </Principal>
-      <Dependent Role="Resultados">
+      <Dependent Role="Resultados_Evaluacion">
         <PropertyRef Name="Id_Empleado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Resultados_Indicadores1">
-    <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="1" />
-    <End Role="Resultados" Type="Self.Resultados" Multiplicity="*" />
+  <Association Name="FK_Resultados_Evaluacion_Fortalezas">
+    <End Role="Fortalezas" Type="Self.Fortalezas" Multiplicity="0..1" />
+    <End Role="Resultados_Evaluacion" Type="Self.Resultados_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fortalezas">
+        <PropertyRef Name="Nombre_Fortalezas" />
+      </Principal>
+      <Dependent Role="Resultados_Evaluacion">
+        <PropertyRef Name="Nombre_Fortalezas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resultados_Evaluacion_Indicadores">
+    <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="0..1" />
+    <End Role="Resultados_Evaluacion" Type="Self.Resultados_Evaluacion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Indicadores">
-        <PropertyRef Name="Id_Indicador" />
+        <PropertyRef Name="Nombre_Indicador" />
       </Principal>
-      <Dependent Role="Resultados">
-        <PropertyRef Name="Id_Indicador" />
+      <Dependent Role="Resultados_Evaluacion">
+        <PropertyRef Name="Nombre_Indicador" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TB_Adm_Contenido_TB_Adm_Sesion">
-    <End Role="TB_Adm_Sesion" Type="Self.TB_Adm_Sesion" Multiplicity="1" />
-    <End Role="TB_Adm_Contenido" Type="Self.TB_Adm_Contenido" Multiplicity="*" />
+  <Association Name="FK_Resultados_Evaluacion_Niveles_Evaluativos">
+    <End Role="Niveles_Evaluativos" Type="Self.Niveles_Evaluativos" Multiplicity="0..1" />
+    <End Role="Resultados_Evaluacion" Type="Self.Resultados_Evaluacion" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TB_Adm_Sesion">
-        <PropertyRef Name="id_sesion" />
+      <Principal Role="Niveles_Evaluativos">
+        <PropertyRef Name="Tipo_Nivel_Evaluativo" />
       </Principal>
-      <Dependent Role="TB_Adm_Contenido">
-        <PropertyRef Name="id_sesion" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TB_Adm_Contenido_TB_Adm_Usuario">
-    <End Role="TB_Adm_Usuario" Type="Self.TB_Adm_Usuario" Multiplicity="1" />
-    <End Role="TB_Adm_Contenido" Type="Self.TB_Adm_Contenido" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Adm_Usuario">
-        <PropertyRef Name="id_user" />
-      </Principal>
-      <Dependent Role="TB_Adm_Contenido">
-        <PropertyRef Name="id_user" />
+      <Dependent Role="Resultados_Evaluacion">
+        <PropertyRef Name="Tipo_Nivel_Evaluativo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1232,37 +1399,31 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  <Function Name="CALCULAR_IR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="SALARIO_BASE" Type="money" Mode="In" />
   </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  <Function Name="OBTENER_DIAS_QUINCENA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="AÑO" Type="int" Mode="In" />
+    <Parameter Name="MES" Type="int" Mode="In" />
+    <Parameter Name="DIA_INICIO" Type="int" Mode="In" />
+    <Parameter Name="DIA_FIN" Type="int" Mode="In" />
+    <Parameter Name="FECHA_INICIO" Type="date" Mode="In" />
+    <Parameter Name="FECHA_FIN" Type="date" Mode="In" />
   </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
+  <Function Name="OBTENER_VACACIONES_QUINCENA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EMPLEADO" Type="int" Mode="In" />
+    <Parameter Name="AÑO" Type="int" Mode="In" />
+    <Parameter Name="MES" Type="int" Mode="In" />
+    <Parameter Name="DIA_INICIO" Type="int" Mode="In" />
+    <Parameter Name="DIA_FIN" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="TOTAL_DIAS" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
   </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="DB_Recursos_HumanosModelStoreContainer">
     <EntitySet Name="Antecedentes" EntityType="Self.Antecedentes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
@@ -1278,7 +1439,6 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <EntitySet Name="DetIdiomasReq" EntityType="Self.DetIdiomasReq" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Documentacion" EntityType="Self.Documentacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="encuesta" EntityType="Self.encuesta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="entradas" EntityType="Self.entradas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Especialidades" EntityType="Self.Especialidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EspecialidadesReq" EntityType="Self.EspecialidadesReq" Schema="dbo" store:Type="Tables" />
@@ -1292,13 +1452,8 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <EntitySet Name="Oficina" EntityType="Self.Oficina" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="permisos" EntityType="Self.permisos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="plan_estudio" EntityType="Self.plan_estudio" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="pregunta" EntityType="Self.pregunta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Profesiones" EntityType="Self.Profesiones" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="respuesta" EntityType="Self.respuesta" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Resultados" EntityType="Self.Resultados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="salidas" EntityType="Self.salidas" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TB_Adm_Contenido" EntityType="Self.TB_Adm_Contenido" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_Adm_OpcionesSistema" EntityType="Self.TB_Adm_OpcionesSistema" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_Adm_RolesDeUsuario" EntityType="Self.TB_Adm_RolesDeUsuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_Adm_Sesion" EntityType="Self.TB_Adm_Sesion" Schema="dbo" store:Type="Tables" />
@@ -1311,100 +1466,252 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
     <EntitySet Name="TB_ESTADO" EntityType="Self.TB_ESTADO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_MOVIMIENTO_DEDUCCION" EntityType="Self.TB_MOVIMIENTO_DEDUCCION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_MOVIMIENTO_DEVENGADO" EntityType="Self.TB_MOVIMIENTO_DEVENGADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_NOMINA" EntityType="Self.TB_NOMINA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_PLAZO_PAGO" EntityType="Self.TB_PLAZO_PAGO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_PRESTAMO" EntityType="Self.TB_PRESTAMO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_RECIBO_CUOTA" EntityType="Self.TB_RECIBO_CUOTA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tema" EntityType="Self.tema" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tema_plan" EntityType="Self.tema_plan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vacaciones" EntityType="Self.vacaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vacantes" EntityType="Self.Vacantes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="capacitacion_empleado" EntityType="Self.capacitacion_empleado" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [capacitacion_empleado].[Id_empleado] AS [Id_empleado], 
+    [capacitacion_empleado].[ID_empleado] AS [ID_empleado], 
     [capacitacion_empleado].[ID_capacitacion] AS [ID_capacitacion]
     FROM [dbo].[capacitacion_empleado] AS [capacitacion_empleado]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__capacitac__ID_ar__59063A47" Association="Self.FK__capacitac__ID_ar__59063A47">
+    <EntitySet Name="Resultados_Evaluacion" EntityType="Self.Resultados_Evaluacion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Resultados_Evaluacion].[Numero_Evaluacion] AS [Numero_Evaluacion], 
+    [Resultados_Evaluacion].[Id_Empleado] AS [Id_Empleado], 
+    [Resultados_Evaluacion].[Nombre_Indicador] AS [Nombre_Indicador], 
+    [Resultados_Evaluacion].[Tipo_Nivel_Evaluativo] AS [Tipo_Nivel_Evaluativo], 
+    [Resultados_Evaluacion].[Nombre_Fortalezas] AS [Nombre_Fortalezas], 
+    [Resultados_Evaluacion].[Nombre_Debilidades] AS [Nombre_Debilidades], 
+    [Resultados_Evaluacion].[Fecha_Evaluacion] AS [Fecha_Evaluacion], 
+    [Resultados_Evaluacion].[Nota_Indicador] AS [Nota_Indicador], 
+    [Resultados_Evaluacion].[Total_Evaluacion] AS [Total_Evaluacion], 
+    [Resultados_Evaluacion].[Observaciones] AS [Observaciones], 
+    [Resultados_Evaluacion].[cod] AS [cod]
+    FROM [dbo].[Resultados_Evaluacion] AS [Resultados_Evaluacion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TB_Adm_Bitacora_Transaccional" EntityType="Self.TB_Adm_Bitacora_Transaccional" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_Adm_Bitacora_Transaccional].[id_bitacora_transaccional] AS [id_bitacora_transaccional], 
+    [TB_Adm_Bitacora_Transaccional].[id_sesion] AS [id_sesion], 
+    [TB_Adm_Bitacora_Transaccional].[usuario] AS [usuario], 
+    [TB_Adm_Bitacora_Transaccional].[Tipo_Registro] AS [Tipo_Registro], 
+    [TB_Adm_Bitacora_Transaccional].[Tabla_Asociada] AS [Tabla_Asociada], 
+    [TB_Adm_Bitacora_Transaccional].[Identificador_Registro] AS [Identificador_Registro], 
+    [TB_Adm_Bitacora_Transaccional].[Campos] AS [Campos], 
+    [TB_Adm_Bitacora_Transaccional].[Antiguos_Registros] AS [Antiguos_Registros], 
+    [TB_Adm_Bitacora_Transaccional].[Nuevos_Registros] AS [Nuevos_Registros], 
+    [TB_Adm_Bitacora_Transaccional].[Fecha] AS [Fecha]
+    FROM [dbo].[TB_Adm_Bitacora_Transaccional] AS [TB_Adm_Bitacora_Transaccional]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DEDUCCIONES" EntityType="Self.VW_DEDUCCIONES" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DEDUCCIONES].[EMPLEADO] AS [EMPLEADO], 
+    [VW_DEDUCCIONES].[AÑO] AS [AÑO], 
+    [VW_DEDUCCIONES].[MES] AS [MES], 
+    [VW_DEDUCCIONES].[DIA_INICIO] AS [DIA_INICIO], 
+    [VW_DEDUCCIONES].[DIA_FIN] AS [DIA_FIN], 
+    [VW_DEDUCCIONES].[NOMBRE] AS [NOMBRE], 
+    [VW_DEDUCCIONES].[MONTO] AS [MONTO]
+    FROM [dbo].[VW_DEDUCCIONES] AS [VW_DEDUCCIONES]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DEVENGADOS" EntityType="Self.VW_DEVENGADOS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DEVENGADOS].[EMPLEADO] AS [EMPLEADO], 
+    [VW_DEVENGADOS].[AÑO] AS [AÑO], 
+    [VW_DEVENGADOS].[MES] AS [MES], 
+    [VW_DEVENGADOS].[DIA_INICIO] AS [DIA_INICIO], 
+    [VW_DEVENGADOS].[DIA_FIN] AS [DIA_FIN], 
+    [VW_DEVENGADOS].[NOMBRE] AS [NOMBRE], 
+    [VW_DEVENGADOS].[MONTO] AS [MONTO]
+    FROM [dbo].[VW_DEVENGADOS] AS [VW_DEVENGADOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DIAS_TRABAJO_EMP" EntityType="Self.VW_DIAS_TRABAJO_EMP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DIAS_TRABAJO_EMP].[EMPLEADO] AS [EMPLEADO], 
+    [VW_DIAS_TRABAJO_EMP].[FECHA] AS [FECHA], 
+    [VW_DIAS_TRABAJO_EMP].[TOTAL_HORAS] AS [TOTAL_HORAS], 
+    [VW_DIAS_TRABAJO_EMP].[TOTAL_HORAS_EXTRA] AS [TOTAL_HORAS_EXTRA], 
+    [VW_DIAS_TRABAJO_EMP].[TOTAL_HORAS_AUSENTE] AS [TOTAL_HORAS_AUSENTE], 
+    [VW_DIAS_TRABAJO_EMP].[HORAS_PERMISO] AS [HORAS_PERMISO], 
+    [VW_DIAS_TRABAJO_EMP].[FECHA_INTEGRACION] AS [FECHA_INTEGRACION], 
+    [VW_DIAS_TRABAJO_EMP].[TITULO] AS [TITULO], 
+    [VW_DIAS_TRABAJO_EMP].[SALARIO_HORA] AS [SALARIO_HORA], 
+    [VW_DIAS_TRABAJO_EMP].[NOMBRE] AS [NOMBRE], 
+    [VW_DIAS_TRABAJO_EMP].[APELLIDO] AS [APELLIDO]
+    FROM [dbo].[VW_DIAS_TRABAJO_EMP] AS [VW_DIAS_TRABAJO_EMP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_EMP" EntityType="Self.VW_EMP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_EMP].[ID] AS [ID], 
+    [VW_EMP].[FECHA_INTEGRACION] AS [FECHA_INTEGRACION], 
+    [VW_EMP].[SALARIO_HORA] AS [SALARIO_HORA], 
+    [VW_EMP].[TITULO] AS [TITULO], 
+    [VW_EMP].[NOMBRE] AS [NOMBRE], 
+    [VW_EMP].[APELLIDO] AS [APELLIDO], 
+    [VW_EMP].[TELEFONO] AS [TELEFONO], 
+    [VW_EMP].[DIRECCION] AS [DIRECCION]
+    FROM [dbo].[VW_EMP] AS [VW_EMP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_ENTRADA_SALIDA" EntityType="Self.VW_ENTRADA_SALIDA" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_ENTRADA_SALIDA].[EMPLEADO] AS [EMPLEADO], 
+    [VW_ENTRADA_SALIDA].[FECHA] AS [FECHA], 
+    [VW_ENTRADA_SALIDA].[TOTAL_HORAS] AS [TOTAL_HORAS], 
+    [VW_ENTRADA_SALIDA].[HORAS_EXTRA] AS [HORAS_EXTRA], 
+    [VW_ENTRADA_SALIDA].[HORAS_AUSENTE] AS [HORAS_AUSENTE]
+    FROM [dbo].[VW_ENTRADA_SALIDA] AS [VW_ENTRADA_SALIDA]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_NOMINA" EntityType="Self.VW_NOMINA" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_NOMINA].[EMPLEADO] AS [EMPLEADO], 
+    [VW_NOMINA].[AÑO] AS [AÑO], 
+    [VW_NOMINA].[MES] AS [MES], 
+    [VW_NOMINA].[DIA_INICIO] AS [DIA_INICIO], 
+    [VW_NOMINA].[DIA_FIN] AS [DIA_FIN], 
+    [VW_NOMINA].[FECHA_INTEGRACION] AS [FECHA_INTEGRACION], 
+    [VW_NOMINA].[TITULO] AS [TITULO], 
+    [VW_NOMINA].[SALARIO_HORA] AS [SALARIO_HORA], 
+    [VW_NOMINA].[NOMBRE] AS [NOMBRE], 
+    [VW_NOMINA].[APELLIDO] AS [APELLIDO], 
+    [VW_NOMINA].[TOTAL_HORAS_TRABAJADAS] AS [TOTAL_HORAS_TRABAJADAS], 
+    [VW_NOMINA].[TOTAL_HORAS_EXTRA] AS [TOTAL_HORAS_EXTRA], 
+    [VW_NOMINA].[TOTAL_HORAS_AUSENTE] AS [TOTAL_HORAS_AUSENTE], 
+    [VW_NOMINA].[TOTAL_HORAS_PERMISO] AS [TOTAL_HORAS_PERMISO], 
+    [VW_NOMINA].[TOTAL_DIAS_VACACIONES] AS [TOTAL_DIAS_VACACIONES], 
+    [VW_NOMINA].[SALARIO_BASE] AS [SALARIO_BASE], 
+    [VW_NOMINA].[IR] AS [IR], 
+    [VW_NOMINA].[INSS] AS [INSS], 
+    [VW_NOMINA].[AGUINALDO] AS [AGUINALDO], 
+    [VW_NOMINA].[TOTAL_PRESTAMOS] AS [TOTAL_PRESTAMOS], 
+    [VW_NOMINA].[MOVIMIENTOS_DEVENGADOS] AS [MOVIMIENTOS_DEVENGADOS], 
+    [VW_NOMINA].[MOVIMIENTOS_DEDUCCIONES] AS [MOVIMIENTOS_DEDUCCIONES], 
+    [VW_NOMINA].[TOTAL_DEVENGADOS] AS [TOTAL_DEVENGADOS], 
+    [VW_NOMINA].[TOTAL_DEDUCCIONES] AS [TOTAL_DEDUCCIONES], 
+    [VW_NOMINA].[PAGO_NETO] AS [PAGO_NETO]
+    FROM [dbo].[VW_NOMINA] AS [VW_NOMINA]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_NOMINA_AGUINALDO" EntityType="Self.VW_NOMINA_AGUINALDO" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_NOMINA_AGUINALDO].[EMPLEADO] AS [EMPLEADO], 
+    [VW_NOMINA_AGUINALDO].[AÑO] AS [AÑO], 
+    [VW_NOMINA_AGUINALDO].[MES] AS [MES], 
+    [VW_NOMINA_AGUINALDO].[DIA_INICIO] AS [DIA_INICIO], 
+    [VW_NOMINA_AGUINALDO].[DIA_FIN] AS [DIA_FIN], 
+    [VW_NOMINA_AGUINALDO].[FECHA_INTEGRACION] AS [FECHA_INTEGRACION], 
+    [VW_NOMINA_AGUINALDO].[TITULO] AS [TITULO], 
+    [VW_NOMINA_AGUINALDO].[SALARIO_HORA] AS [SALARIO_HORA], 
+    [VW_NOMINA_AGUINALDO].[NOMBRE] AS [NOMBRE], 
+    [VW_NOMINA_AGUINALDO].[APELLIDO] AS [APELLIDO], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_HORAS_TRABAJADAS] AS [TOTAL_HORAS_TRABAJADAS], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_HORAS_EXTRA] AS [TOTAL_HORAS_EXTRA], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_HORAS_AUSENTE] AS [TOTAL_HORAS_AUSENTE], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_HORAS_PERMISO] AS [TOTAL_HORAS_PERMISO], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_DIAS_VACACIONES] AS [TOTAL_DIAS_VACACIONES], 
+    [VW_NOMINA_AGUINALDO].[SALARIO_BASE] AS [SALARIO_BASE], 
+    [VW_NOMINA_AGUINALDO].[IR] AS [IR], 
+    [VW_NOMINA_AGUINALDO].[INSS] AS [INSS], 
+    [VW_NOMINA_AGUINALDO].[AGUINALDO] AS [AGUINALDO], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_PRESTAMOS] AS [TOTAL_PRESTAMOS], 
+    [VW_NOMINA_AGUINALDO].[MOVIMIENTOS_DEVENGADOS] AS [MOVIMIENTOS_DEVENGADOS], 
+    [VW_NOMINA_AGUINALDO].[MOVIMIENTOS_DEDUCCIONES] AS [MOVIMIENTOS_DEDUCCIONES], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_DEVENGADOS] AS [TOTAL_DEVENGADOS], 
+    [VW_NOMINA_AGUINALDO].[TOTAL_DEDUCCIONES] AS [TOTAL_DEDUCCIONES], 
+    [VW_NOMINA_AGUINALDO].[PAGO_NETO] AS [PAGO_NETO]
+    FROM [dbo].[VW_NOMINA_AGUINALDO] AS [VW_NOMINA_AGUINALDO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_QUINCENA_TRABAJO_EMP" EntityType="Self.VW_QUINCENA_TRABAJO_EMP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_QUINCENA_TRABAJO_EMP].[EMPLEADO] AS [EMPLEADO], 
+    [VW_QUINCENA_TRABAJO_EMP].[AÑO] AS [AÑO], 
+    [VW_QUINCENA_TRABAJO_EMP].[MES] AS [MES], 
+    [VW_QUINCENA_TRABAJO_EMP].[DIA_INICIO] AS [DIA_INICIO], 
+    [VW_QUINCENA_TRABAJO_EMP].[DIA_FIN] AS [DIA_FIN], 
+    [VW_QUINCENA_TRABAJO_EMP].[FECHA_INTEGRACION] AS [FECHA_INTEGRACION], 
+    [VW_QUINCENA_TRABAJO_EMP].[TITULO] AS [TITULO], 
+    [VW_QUINCENA_TRABAJO_EMP].[SALARIO_HORA] AS [SALARIO_HORA], 
+    [VW_QUINCENA_TRABAJO_EMP].[NOMBRE] AS [NOMBRE], 
+    [VW_QUINCENA_TRABAJO_EMP].[APELLIDO] AS [APELLIDO], 
+    [VW_QUINCENA_TRABAJO_EMP].[TOTAL_HORAS_TRABAJADAS] AS [TOTAL_HORAS_TRABAJADAS], 
+    [VW_QUINCENA_TRABAJO_EMP].[TOTAL_HORAS_EXTRA] AS [TOTAL_HORAS_EXTRA], 
+    [VW_QUINCENA_TRABAJO_EMP].[TOTAL_HORAS_AUSENTE] AS [TOTAL_HORAS_AUSENTE], 
+    [VW_QUINCENA_TRABAJO_EMP].[TOTAL_HORAS_PERMISO] AS [TOTAL_HORAS_PERMISO], 
+    [VW_QUINCENA_TRABAJO_EMP].[TOTAL_DIAS_VACACIONES] AS [TOTAL_DIAS_VACACIONES]
+    FROM [dbo].[VW_QUINCENA_TRABAJO_EMP] AS [VW_QUINCENA_TRABAJO_EMP]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__capacitac__ID_ar__4D94879B" Association="Self.FK__capacitac__ID_ar__4D94879B">
       <End Role="area" EntitySet="area" />
       <End Role="capacitacion" EntitySet="capacitacion" />
     </AssociationSet>
-    <AssociationSet Name="FK__capacitac__ID_ca__5BE2A6F2" Association="Self.FK__capacitac__ID_ca__5BE2A6F2">
+    <AssociationSet Name="FK__capacitac__ID_ca__5070F446" Association="Self.FK__capacitac__ID_ca__5070F446">
       <End Role="capacitacion" EntitySet="capacitacion" />
       <End Role="capacitacion_empleado" EntitySet="capacitacion_empleado" />
     </AssociationSet>
-    <AssociationSet Name="FK__capacitac__ID_ce__571DF1D5" Association="Self.FK__capacitac__ID_ce__571DF1D5">
+    <AssociationSet Name="FK__capacitac__ID_ce__4CA06362" Association="Self.FK__capacitac__ID_ce__4CA06362">
       <End Role="centro_capacit" EntitySet="centro_capacit" />
       <End Role="capacitacion" EntitySet="capacitacion" />
     </AssociationSet>
-    <AssociationSet Name="FK__capacitac__Id_em__5AEE82B9" Association="Self.FK__capacitac__Id_em__5AEE82B9">
+    <AssociationSet Name="FK__capacitac__ID_em__4F7CD00D" Association="Self.FK__capacitac__ID_em__4F7CD00D">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="capacitacion_empleado" EntitySet="capacitacion_empleado" />
     </AssociationSet>
-    <AssociationSet Name="FK__capacitac__ID_en__5812160E" Association="Self.FK__capacitac__ID_en__5812160E">
-      <End Role="encuesta" EntitySet="encuesta" />
-      <End Role="capacitacion" EntitySet="capacitacion" />
-    </AssociationSet>
-    <AssociationSet Name="FK__capacitac__ID_pl__5629CD9C" Association="Self.FK__capacitac__ID_pl__5629CD9C">
+    <AssociationSet Name="FK__capacitac__ID_pl__4BAC3F29" Association="Self.FK__capacitac__ID_pl__4BAC3F29">
       <End Role="plan_estudio" EntitySet="plan_estudio" />
       <End Role="capacitacion" EntitySet="capacitacion" />
     </AssociationSet>
-    <AssociationSet Name="FK__encuesta__ID_pre__4BAC3F29" Association="Self.FK__encuesta__ID_pre__4BAC3F29">
-      <End Role="pregunta" EntitySet="pregunta" />
-      <End Role="encuesta" EntitySet="encuesta" />
-    </AssociationSet>
-    <AssociationSet Name="FK__entradas__Id_Emp__75A278F5" Association="Self.FK__entradas__Id_Emp__75A278F5">
+    <AssociationSet Name="FK__entradas__Id_Emp__6B24EA82" Association="Self.FK__entradas__Id_Emp__6B24EA82">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="entradas" EntitySet="entradas" />
     </AssociationSet>
-    <AssociationSet Name="FK__liquidaci__Id_Em__7D439ABD" Association="Self.FK__liquidaci__Id_Em__7D439ABD">
+    <AssociationSet Name="FK__liquidaci__Id_Em__72C60C4A" Association="Self.FK__liquidaci__Id_Em__72C60C4A">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="liquidaciones" EntitySet="liquidaciones" />
     </AssociationSet>
-    <AssociationSet Name="FK__permisos__Id_Emp__71D1E811" Association="Self.FK__permisos__Id_Emp__71D1E811">
+    <AssociationSet Name="FK__permisos__Id_Emp__6754599E" Association="Self.FK__permisos__Id_Emp__6754599E">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="permisos" EntitySet="permisos" />
     </AssociationSet>
-    <AssociationSet Name="FK__plan_estu__ID_te__534D60F1" Association="Self.FK__plan_estu__ID_te__534D60F1">
-      <End Role="tema_plan" EntitySet="tema_plan" />
-      <End Role="plan_estudio" EntitySet="plan_estudio" />
-    </AssociationSet>
-    <AssociationSet Name="FK__respuesta__ID_pr__48CFD27E" Association="Self.FK__respuesta__ID_pr__48CFD27E">
-      <End Role="pregunta" EntitySet="pregunta" />
-      <End Role="respuesta" EntitySet="respuesta" />
-    </AssociationSet>
-    <AssociationSet Name="FK__salidas__Id_Empl__787EE5A0" Association="Self.FK__salidas__Id_Empl__787EE5A0">
+    <AssociationSet Name="FK__salidas__Id_Empl__6E01572D" Association="Self.FK__salidas__Id_Empl__6E01572D">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="salidas" EntitySet="salidas" />
     </AssociationSet>
-    <AssociationSet Name="FK__salidas__id_entr__797309D9" Association="Self.FK__salidas__id_entr__797309D9">
+    <AssociationSet Name="FK__salidas__id_entr__6EF57B66" Association="Self.FK__salidas__id_entr__6EF57B66">
       <End Role="entradas" EntitySet="entradas" />
       <End Role="salidas" EntitySet="salidas" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Adm_Us__Id_Em__1F98B2C1" Association="Self.FK__TB_Adm_Us__Id_Em__1F98B2C1">
+    <AssociationSet Name="FK__TB_Adm_Us__Id_Em__17F790F9" Association="Self.FK__TB_Adm_Us__Id_Em__17F790F9">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_MOVIMI__EMPLE__03F0984C" Association="Self.FK__TB_MOVIMI__EMPLE__03F0984C">
+    <AssociationSet Name="FK__TB_MOVIMI__EMPLE__7A672E12" Association="Self.FK__TB_MOVIMI__EMPLE__7A672E12">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="TB_MOVIMIENTO_DEVENGADO" EntitySet="TB_MOVIMIENTO_DEVENGADO" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_MOVIMI__EMPLE__07C12930" Association="Self.FK__TB_MOVIMI__EMPLE__07C12930">
+    <AssociationSet Name="FK__TB_MOVIMI__EMPLE__7E37BEF6" Association="Self.FK__TB_MOVIMI__EMPLE__7E37BEF6">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="TB_MOVIMIENTO_DEDUCCION" EntitySet="TB_MOVIMIENTO_DEDUCCION" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_MOVIMI__ID_DE__04E4BC85" Association="Self.FK__TB_MOVIMI__ID_DE__04E4BC85">
+    <AssociationSet Name="FK__TB_MOVIMI__ID_DE__797309D9" Association="Self.FK__TB_MOVIMI__ID_DE__797309D9">
       <End Role="TB_DEVENGADO" EntitySet="TB_DEVENGADO" />
       <End Role="TB_MOVIMIENTO_DEVENGADO" EntitySet="TB_MOVIMIENTO_DEVENGADO" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_MOVIMI__ID_DE__08B54D69" Association="Self.FK__TB_MOVIMI__ID_DE__08B54D69">
+    <AssociationSet Name="FK__TB_MOVIMI__ID_DE__7D439ABD" Association="Self.FK__TB_MOVIMI__ID_DE__7D439ABD">
       <End Role="TB_DEDUCCION" EntitySet="TB_DEDUCCION" />
       <End Role="TB_MOVIMIENTO_DEDUCCION" EntitySet="TB_MOVIMIENTO_DEDUCCION" />
     </AssociationSet>
-    <AssociationSet Name="FK__tema_plan__ID_te__5070F446" Association="Self.FK__tema_plan__ID_te__5070F446">
-      <End Role="tema" EntitySet="tema" />
-      <End Role="tema_plan" EntitySet="tema_plan" />
+    <AssociationSet Name="FK__TB_NOMINA__EMPLE__01142BA1" Association="Self.FK__TB_NOMINA__EMPLE__01142BA1">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="TB_NOMINA" EntitySet="TB_NOMINA" />
     </AssociationSet>
-    <AssociationSet Name="FK__vacacione__Id_Em__6E01572D" Association="Self.FK__vacacione__Id_Em__6E01572D">
+    <AssociationSet Name="FK__tema__ID_plan__48CFD27E" Association="Self.FK__tema__ID_plan__48CFD27E">
+      <End Role="plan_estudio" EntitySet="plan_estudio" />
+      <End Role="tema" EntitySet="tema" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vacacione__Id_Em__6383C8BA" Association="Self.FK__vacacione__Id_Em__6383C8BA">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="vacaciones" EntitySet="vacaciones" />
     </AssociationSet>
@@ -1468,37 +1775,29 @@ advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.capacitacion_emplead
       <End Role="DetIdiomasReq" EntitySet="DetIdiomasReq" />
       <End Role="IdiomasRequeridos" EntitySet="IdiomasRequeridos" />
     </AssociationSet>
-    <AssociationSet Name="FK_Indicadores_Debilidades" Association="Self.FK_Indicadores_Debilidades">
-      <End Role="Debilidades" EntitySet="Debilidades" />
-      <End Role="Indicadores" EntitySet="Indicadores" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Indicadores_Fortalezas" Association="Self.FK_Indicadores_Fortalezas">
-      <End Role="Fortalezas" EntitySet="Fortalezas" />
-      <End Role="Indicadores" EntitySet="Indicadores" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Indicadores_Niveles_Evaluativos" Association="Self.FK_Indicadores_Niveles_Evaluativos">
-      <End Role="Niveles_Evaluativos" EntitySet="Niveles_Evaluativos" />
-      <End Role="Indicadores" EntitySet="Indicadores" />
-    </AssociationSet>
     <AssociationSet Name="FK_prestamo_pagoPlazo" Association="Self.FK_prestamo_pagoPlazo">
       <End Role="TB_PLAZO_PAGO" EntitySet="TB_PLAZO_PAGO" />
       <End Role="TB_PRESTAMO" EntitySet="TB_PRESTAMO" />
     </AssociationSet>
-    <AssociationSet Name="FK_Resultados_Empleados" Association="Self.FK_Resultados_Empleados">
+    <AssociationSet Name="FK_Resultados_Evaluacion_Debilidades" Association="Self.FK_Resultados_Evaluacion_Debilidades">
+      <End Role="Debilidades" EntitySet="Debilidades" />
+      <End Role="Resultados_Evaluacion" EntitySet="Resultados_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resultados_Evaluacion_Empleados" Association="Self.FK_Resultados_Evaluacion_Empleados">
       <End Role="Empleado" EntitySet="Empleado" />
-      <End Role="Resultados" EntitySet="Resultados" />
+      <End Role="Resultados_Evaluacion" EntitySet="Resultados_Evaluacion" />
     </AssociationSet>
-    <AssociationSet Name="FK_Resultados_Indicadores1" Association="Self.FK_Resultados_Indicadores1">
+    <AssociationSet Name="FK_Resultados_Evaluacion_Fortalezas" Association="Self.FK_Resultados_Evaluacion_Fortalezas">
+      <End Role="Fortalezas" EntitySet="Fortalezas" />
+      <End Role="Resultados_Evaluacion" EntitySet="Resultados_Evaluacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resultados_Evaluacion_Indicadores" Association="Self.FK_Resultados_Evaluacion_Indicadores">
       <End Role="Indicadores" EntitySet="Indicadores" />
-      <End Role="Resultados" EntitySet="Resultados" />
+      <End Role="Resultados_Evaluacion" EntitySet="Resultados_Evaluacion" />
     </AssociationSet>
-    <AssociationSet Name="FK_TB_Adm_Contenido_TB_Adm_Sesion" Association="Self.FK_TB_Adm_Contenido_TB_Adm_Sesion">
-      <End Role="TB_Adm_Sesion" EntitySet="TB_Adm_Sesion" />
-      <End Role="TB_Adm_Contenido" EntitySet="TB_Adm_Contenido" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TB_Adm_Contenido_TB_Adm_Usuario" Association="Self.FK_TB_Adm_Contenido_TB_Adm_Usuario">
-      <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />
-      <End Role="TB_Adm_Contenido" EntitySet="TB_Adm_Contenido" />
+    <AssociationSet Name="FK_Resultados_Evaluacion_Niveles_Evaluativos" Association="Self.FK_Resultados_Evaluacion_Niveles_Evaluativos">
+      <End Role="Niveles_Evaluativos" EntitySet="Niveles_Evaluativos" />
+      <End Role="Resultados_Evaluacion" EntitySet="Resultados_Evaluacion" />
     </AssociationSet>
     <AssociationSet Name="FK_TB_Adm_Sesion_TB_Adm_Usuario" Association="Self.FK_TB_Adm_Sesion_TB_Adm_Usuario">
       <End Role="TB_Adm_Usuario" EntitySet="TB_Adm_Usuario" />

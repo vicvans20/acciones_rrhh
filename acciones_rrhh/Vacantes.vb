@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Vacantes
-    Public Property ID_Vacante As Integer
+    Public Property tb_Vacante_id As Integer
     Public Property tb_Vacantes_cargo As String
     Public Property tb_Vacantes_genero As String
     Public Property tb_Vacantes_edadMax As Nullable(Of Integer)

@@ -17,9 +17,9 @@ Partial Public Class vacaciones
     Public Property fecha_inicio As Date
     Public Property fecha_fin As Date
     Public Property aceptado As Boolean
-    Public Property timestamp As Byte()
     Public Property pagado As Boolean
     Public Property pendiente_por_pagar As Boolean
+    Public Property timestamp As Byte()
 
     Public Overridable Property Empleado As Empleado
 

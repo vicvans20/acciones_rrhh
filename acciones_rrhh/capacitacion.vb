@@ -17,12 +17,10 @@ Partial Public Class capacitacion
     Public Property fecha As Date
     Public Property duracion As Integer
     Public Property ID_centro_cap As Integer
-    Public Property ID_encuesta As Integer
     Public Property ID_area As Integer
 
     Public Overridable Property area As area
     Public Overridable Property centro_capacit As centro_capacit
-    Public Overridable Property encuesta As encuesta
     Public Overridable Property plan_estudio As plan_estudio
     Public Overridable Property Empleado As ICollection(Of Empleado) = New HashSet(Of Empleado)
 

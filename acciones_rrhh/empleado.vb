@@ -37,10 +37,11 @@ Partial Public Class Empleado
     Public Overridable Property TB_Adm_Usuario As ICollection(Of TB_Adm_Usuario) = New HashSet(Of TB_Adm_Usuario)
     Public Overridable Property TB_MOVIMIENTO_DEVENGADO As ICollection(Of TB_MOVIMIENTO_DEVENGADO) = New HashSet(Of TB_MOVIMIENTO_DEVENGADO)
     Public Overridable Property TB_MOVIMIENTO_DEDUCCION As ICollection(Of TB_MOVIMIENTO_DEDUCCION) = New HashSet(Of TB_MOVIMIENTO_DEDUCCION)
+    Public Overridable Property TB_NOMINA As ICollection(Of TB_NOMINA) = New HashSet(Of TB_NOMINA)
     Public Overridable Property vacaciones As ICollection(Of vacaciones) = New HashSet(Of vacaciones)
     Public Overridable Property Informacion_Academica As Informacion_Academica
     Public Overridable Property Profesiones As Profesiones
-    Public Overridable Property Resultados As ICollection(Of Resultados) = New HashSet(Of Resultados)
+    Public Overridable Property Resultados_Evaluacion As Resultados_Evaluacion
     Public Overridable Property TB_PRESTAMO As ICollection(Of TB_PRESTAMO) = New HashSet(Of TB_PRESTAMO)
     Public Overridable Property TB_RECIBO_CUOTA As ICollection(Of TB_RECIBO_CUOTA) = New HashSet(Of TB_RECIBO_CUOTA)
     Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)

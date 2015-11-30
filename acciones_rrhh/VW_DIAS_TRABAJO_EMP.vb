@@ -10,18 +10,17 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class TB_MOVIMIENTO_DEVENGADO
-    Public Property ID As Integer
-    Public Property ID_DEVENGADO As Integer
+Partial Public Class VW_DIAS_TRABAJO_EMP
     Public Property EMPLEADO As Integer
-    Public Property AÑO As Integer
-    Public Property MES As Integer
-    Public Property DIA_INICIO As Integer
-    Public Property DIA_FIN As Integer
-    Public Property MONTO As Decimal
-    Public Property DESCRIPCION As String
-
-    Public Overridable Property Empleado1 As Empleado
-    Public Overridable Property TB_DEVENGADO As TB_DEVENGADO
+    Public Property FECHA As Date
+    Public Property TOTAL_HORAS As Nullable(Of Integer)
+    Public Property TOTAL_HORAS_EXTRA As Nullable(Of Integer)
+    Public Property TOTAL_HORAS_AUSENTE As Nullable(Of Integer)
+    Public Property HORAS_PERMISO As Integer
+    Public Property FECHA_INTEGRACION As Nullable(Of Date)
+    Public Property TITULO As String
+    Public Property SALARIO_HORA As Integer
+    Public Property NOMBRE As String
+    Public Property APELLIDO As String
 
 End Class

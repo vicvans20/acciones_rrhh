@@ -11,9 +11,8 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Fortalezas
-    Public Property Id_Fortalezas As Integer
     Public Property Nombre_Fortalezas As String
 
-    Public Overridable Property Indicadores As ICollection(Of Indicadores) = New HashSet(Of Indicadores)
+    Public Overridable Property Resultados_Evaluacion As ICollection(Of Resultados_Evaluacion) = New HashSet(Of Resultados_Evaluacion)
 
 End Class

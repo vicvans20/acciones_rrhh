@@ -8,6 +8,7 @@
                 cbEmpleados.DisplayMember = "nombreC"
                 cbEmpleados.ValueMember = "id"
             End Using
+            Me.TextBox1.Text = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
         End Sub
         ' Enviar solicitud
         Private Sub bSend_Click(sender As Object, e As EventArgs) Handles bSend.Click

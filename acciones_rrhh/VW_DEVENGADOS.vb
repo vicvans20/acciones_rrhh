@@ -10,13 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Resultados
-    Public Property Id_Resultados As Integer
-    Public Property Id_Indicador As Integer
-    Public Property Resultado_Final As String
-    Public Property Id_Empleado As Integer
-
-    Public Overridable Property Empleado As Empleado
-    Public Overridable Property Indicadores As Indicadores
+Partial Public Class VW_DEVENGADOS
+    Public Property EMPLEADO As Integer
+    Public Property AÑO As Integer
+    Public Property MES As Integer
+    Public Property DIA_INICIO As Integer
+    Public Property DIA_FIN As Integer
+    Public Property NOMBRE As String
+    Public Property MONTO As Decimal
 
 End Class

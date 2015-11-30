@@ -10,16 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class TB_Adm_Contenido
-    Public Property id_contenido As Short
-    Public Property id_sesion As Short
-    Public Property id_user As Short
-    Public Property tabla_registro As String
-    Public Property registros_creados As String
-    Public Property tabla_cambios As String
-    Public Property cambios_realizados As String
-
-    Public Overridable Property TB_Adm_Sesion As TB_Adm_Sesion
-    Public Overridable Property TB_Adm_Usuario As TB_Adm_Usuario
+Partial Public Class VW_EMP
+    Public Property ID As Integer
+    Public Property FECHA_INTEGRACION As Nullable(Of Date)
+    Public Property SALARIO_HORA As Integer
+    Public Property TITULO As String
+    Public Property NOMBRE As String
+    Public Property APELLIDO As String
+    Public Property TELEFONO As String
+    Public Property DIRECCION As String
 
 End Class

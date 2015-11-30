@@ -10,12 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class respuesta
-    Public Property ID As Integer
-    Public Property ID_pregunta As Integer
-    Public Property respuesta1 As String
-    Public Property correcta As Integer
-
-    Public Overridable Property pregunta As pregunta
+Partial Public Class OBTENER_VACACIONES_QUINCENA_Result
+    Public Property TOTAL_DIAS As Nullable(Of Integer)
 
 End Class

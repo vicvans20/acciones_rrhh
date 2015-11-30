@@ -38,6 +38,7 @@
                 cbEmpleados.DisplayMember = "nombreC"
                 cbEmpleados.ValueMember = "id"
             End Using
+            Me.tbVaA.Text = Modelos.VacacionModel.calcular_saldo_vacaciones(cbEmpleados.SelectedValue)
         End Sub
 
         Private Sub cbEmpleados_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbEmpleados.SelectionChangeCommitted

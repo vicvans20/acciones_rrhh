@@ -10,11 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class encuesta
-    Public Property ID As Integer
-    Public Property ID_pregunta As Integer
-
-    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
-    Public Overridable Property pregunta As pregunta
+Partial Public Class VW_ENTRADA_SALIDA
+    Public Property EMPLEADO As Integer
+    Public Property FECHA As Date
+    Public Property TOTAL_HORAS As Nullable(Of Integer)
+    Public Property HORAS_EXTRA As Nullable(Of Integer)
+    Public Property HORAS_AUSENTE As Nullable(Of Integer)
 
 End Class

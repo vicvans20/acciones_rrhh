@@ -11,9 +11,9 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class TB_Adm_Usuario_OpcionesSistema
-    Public Property id_userOpciones As Short
-    Public Property id_user As Short
-    Public Property id_opciones As Short
+    Public Property id_userOpciones As Integer
+    Public Property id_user As Integer
+    Public Property id_opciones As Integer
 
     Public Overridable Property TB_Adm_OpcionesSistema As TB_Adm_OpcionesSistema
     Public Overridable Property TB_Adm_Usuario As TB_Adm_Usuario

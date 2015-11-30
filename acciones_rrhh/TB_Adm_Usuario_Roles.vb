@@ -11,9 +11,9 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class TB_Adm_Usuario_Roles
-    Public Property id_userRoles As Short
-    Public Property id_user As Short
-    Public Property id_rolUsuario As Short
+    Public Property id_userRoles As Integer
+    Public Property id_user As Integer
+    Public Property id_rolUsuario As Integer
 
     Public Overridable Property TB_Adm_RolesDeUsuario As TB_Adm_RolesDeUsuario
     Public Overridable Property TB_Adm_Usuario As TB_Adm_Usuario

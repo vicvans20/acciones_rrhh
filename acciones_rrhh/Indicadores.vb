@@ -11,16 +11,8 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Indicadores
-    Public Property Id_Indicador As Integer
     Public Property Nombre_Indicador As String
-    Public Property Id_Nivel_Evaluativo As Integer
-    Public Property Id_Fortalezas As Integer
-    Public Property Id_Debilidades As Integer
-    Public Property Fecha_Evaluacion As Date
 
-    Public Overridable Property Debilidades As Debilidades
-    Public Overridable Property Fortalezas As Fortalezas
-    Public Overridable Property Niveles_Evaluativos As Niveles_Evaluativos
-    Public Overridable Property Resultados As ICollection(Of Resultados) = New HashSet(Of Resultados)
+    Public Overridable Property Resultados_Evaluacion As ICollection(Of Resultados_Evaluacion) = New HashSet(Of Resultados_Evaluacion)
 
 End Class

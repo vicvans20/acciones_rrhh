@@ -21,7 +21,9 @@
     <EntitySetMapping Name="Candidato">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Candidato">
         <MappingFragment StoreEntitySet="Candidato">
-          <ScalarProperty Name="ID_Candidato" ColumnName="ID_Candidato" />
+          <ScalarProperty Name="tb_Candidato_id" ColumnName="tb_Candidato_id" />
+          <ScalarProperty Name="tb_Candidatos_FecSolicitud" ColumnName="tb_Candidatos_FecSolicitud" />
+          <ScalarProperty Name="tb_Candidatos_cargoAspirar" ColumnName="tb_Candidatos_cargoAspirar" />
           <ScalarProperty Name="tb_Candidatos_nombres" ColumnName="tb_Candidatos_nombres" />
           <ScalarProperty Name="tb_Candidatos_apellidos" ColumnName="tb_Candidatos_apellidos" />
           <ScalarProperty Name="tb_Candidatos_genero" ColumnName="tb_Candidatos_genero" />
@@ -53,7 +55,6 @@
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="duracion" ColumnName="duracion" />
           <ScalarProperty Name="ID_centro_cap" ColumnName="ID_centro_cap" />
-          <ScalarProperty Name="ID_encuesta" ColumnName="ID_encuesta" />
           <ScalarProperty Name="ID_area" ColumnName="ID_area" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -92,7 +93,6 @@
     <EntitySetMapping Name="Debilidades">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Debilidades">
         <MappingFragment StoreEntitySet="Debilidades">
-          <ScalarProperty Name="Id_Debilidades" ColumnName="Id_Debilidades" />
           <ScalarProperty Name="Nombre_Debilidades" ColumnName="Nombre_Debilidades" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -162,14 +162,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="encuesta">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.encuesta">
-        <MappingFragment StoreEntitySet="encuesta">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ID_pregunta" ColumnName="ID_pregunta" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="entradas">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.entradas">
         <MappingFragment StoreEntitySet="entradas">
@@ -200,7 +192,6 @@
     <EntitySetMapping Name="Fortalezas">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Fortalezas">
         <MappingFragment StoreEntitySet="Fortalezas">
-          <ScalarProperty Name="Id_Fortalezas" ColumnName="Id_Fortalezas" />
           <ScalarProperty Name="Nombre_Fortalezas" ColumnName="Nombre_Fortalezas" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -224,12 +215,7 @@
     <EntitySetMapping Name="Indicadores">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Indicadores">
         <MappingFragment StoreEntitySet="Indicadores">
-          <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
           <ScalarProperty Name="Nombre_Indicador" ColumnName="Nombre_Indicador" />
-          <ScalarProperty Name="Id_Nivel_Evaluativo" ColumnName="Id_Nivel_Evaluativo" />
-          <ScalarProperty Name="Id_Fortalezas" ColumnName="Id_Fortalezas" />
-          <ScalarProperty Name="Id_Debilidades" ColumnName="Id_Debilidades" />
-          <ScalarProperty Name="Fecha_Evaluacion" ColumnName="Fecha_Evaluacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -265,8 +251,9 @@
     <EntitySetMapping Name="Niveles_Evaluativos">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Niveles_Evaluativos">
         <MappingFragment StoreEntitySet="Niveles_Evaluativos">
-          <ScalarProperty Name="Id_Nivel_Evaluativo" ColumnName="Id_Nivel_Evaluativo" />
           <ScalarProperty Name="Tipo_Nivel_Evaluativo" ColumnName="Tipo_Nivel_Evaluativo" />
+          <ScalarProperty Name="Significado_Nivel_Evaluativo" ColumnName="Significado_Nivel_Evaluativo" />
+          <ScalarProperty Name="Equivalente_Nivel_Evaluativo" ColumnName="Equivalente_Nivel_Evaluativo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -297,16 +284,7 @@
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.plan_estudio">
         <MappingFragment StoreEntitySet="plan_estudio">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ID_tema_plan" ColumnName="ID_tema_plan" />
           <ScalarProperty Name="anio" ColumnName="anio" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="pregunta">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.pregunta">
-        <MappingFragment StoreEntitySet="pregunta">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="pregunta1" ColumnName="pregunta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -319,26 +297,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="respuesta">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.respuesta">
-        <MappingFragment StoreEntitySet="respuesta">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ID_pregunta" ColumnName="ID_pregunta" />
-          <ScalarProperty Name="respuesta1" ColumnName="respuesta" />
-          <ScalarProperty Name="correcta" ColumnName="correcta" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Resultados">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultados">
-        <MappingFragment StoreEntitySet="Resultados">
-          <ScalarProperty Name="Id_Resultados" ColumnName="Id_Resultados" />
-          <ScalarProperty Name="Id_Indicador" ColumnName="Id_Indicador" />
-          <ScalarProperty Name="Resultado_Final" ColumnName="Resultado_Final" />
-          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="salidas">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.salidas">
         <MappingFragment StoreEntitySet="salidas">
@@ -347,30 +305,6 @@
           <ScalarProperty Name="id_entrada" ColumnName="id_entrada" />
           <ScalarProperty Name="hora_marcado" ColumnName="hora_marcado" />
           <ScalarProperty Name="timestamp" ColumnName="timestamp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TB_Adm_Contenido">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Contenido">
-        <MappingFragment StoreEntitySet="TB_Adm_Contenido">
-          <ScalarProperty Name="id_contenido" ColumnName="id_contenido" />
-          <ScalarProperty Name="id_sesion" ColumnName="id_sesion" />
-          <ScalarProperty Name="id_user" ColumnName="id_user" />
-          <ScalarProperty Name="tabla_registro" ColumnName="tabla_registro" />
-          <ScalarProperty Name="registros_creados" ColumnName="registros_creados" />
-          <ScalarProperty Name="tabla_cambios" ColumnName="tabla_cambios" />
-          <ScalarProperty Name="cambios_realizados" ColumnName="cambios_realizados" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -390,6 +324,7 @@
           <ScalarProperty Name="id_rolUsuario" ColumnName="id_rolUsuario" />
           <ScalarProperty Name="rol_usuario" ColumnName="rol_usuario" />
           <ScalarProperty Name="descripcion_rol" ColumnName="descripcion_rol" />
+          <ScalarProperty Name="moduloRol" ColumnName="moduloRol" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -474,13 +409,14 @@
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_MOVIMIENTO_DEDUCCION">
         <MappingFragment StoreEntitySet="TB_MOVIMIENTO_DEDUCCION">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_DEDUCCION" ColumnName="ID_DEDUCCION" />
           <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
           <ScalarProperty Name="AÑO" ColumnName="AÑO" />
           <ScalarProperty Name="MES" ColumnName="MES" />
           <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
           <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
           <ScalarProperty Name="MONTO" ColumnName="MONTO" />
-          <ScalarProperty Name="ID_DEDUCCION" ColumnName="ID_DEDUCCION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -488,13 +424,45 @@
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_MOVIMIENTO_DEVENGADO">
         <MappingFragment StoreEntitySet="TB_MOVIMIENTO_DEVENGADO">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_DEVENGADO" ColumnName="ID_DEVENGADO" />
           <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
           <ScalarProperty Name="AÑO" ColumnName="AÑO" />
           <ScalarProperty Name="MES" ColumnName="MES" />
           <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
           <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
           <ScalarProperty Name="MONTO" ColumnName="MONTO" />
-          <ScalarProperty Name="ID_DEVENGADOS" ColumnName="ID_DEVENGADOS" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_NOMINA">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_NOMINA">
+        <MappingFragment StoreEntitySet="TB_NOMINA">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="FECHA_INTEGRACION" ColumnName="FECHA_INTEGRACION" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="SALARIO_HORA" ColumnName="SALARIO_HORA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TOTAL_HORAS_TRABAJADAS" ColumnName="TOTAL_HORAS_TRABAJADAS" />
+          <ScalarProperty Name="TOTAL_HORAS_EXTRA" ColumnName="TOTAL_HORAS_EXTRA" />
+          <ScalarProperty Name="TOTAL_HORAS_AUSENTE" ColumnName="TOTAL_HORAS_AUSENTE" />
+          <ScalarProperty Name="TOTAL_HORAS_PERMISO" ColumnName="TOTAL_HORAS_PERMISO" />
+          <ScalarProperty Name="TOTAL_DIAS_VACACIONES" ColumnName="TOTAL_DIAS_VACACIONES" />
+          <ScalarProperty Name="SALARIO_BASE" ColumnName="SALARIO_BASE" />
+          <ScalarProperty Name="IR" ColumnName="IR" />
+          <ScalarProperty Name="INSS" ColumnName="INSS" />
+          <ScalarProperty Name="AGUINALDO" ColumnName="AGUINALDO" />
+          <ScalarProperty Name="TOTAL_PRESTAMOS" ColumnName="TOTAL_PRESTAMOS" />
+          <ScalarProperty Name="MOVIMIENTOS_DEVENGADOS" ColumnName="MOVIMIENTOS_DEVENGADOS" />
+          <ScalarProperty Name="MOVIMIENTOS_DEDUCCIONES" ColumnName="MOVIMIENTOS_DEDUCCIONES" />
+          <ScalarProperty Name="TOTAL_DEVENGADOS" ColumnName="TOTAL_DEVENGADOS" />
+          <ScalarProperty Name="TOTAL_DEDUCCIONES" ColumnName="TOTAL_DEDUCCIONES" />
+          <ScalarProperty Name="PAGO_NETO" ColumnName="PAGO_NETO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -536,14 +504,7 @@
         <MappingFragment StoreEntitySet="tema">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tema_plan">
-      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.tema_plan">
-        <MappingFragment StoreEntitySet="tema_plan">
           <ScalarProperty Name="ID_plan" ColumnName="ID_plan" />
-          <ScalarProperty Name="ID_tema" ColumnName="ID_tema" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -556,16 +517,16 @@
           <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
           <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
           <ScalarProperty Name="aceptado" ColumnName="aceptado" />
-          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
           <ScalarProperty Name="pagado" ColumnName="pagado" />
           <ScalarProperty Name="pendiente_por_pagar" ColumnName="pendiente_por_pagar" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vacantes">
       <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Vacantes">
         <MappingFragment StoreEntitySet="Vacantes">
-          <ScalarProperty Name="ID_Vacante" ColumnName="ID_Vacante" />
+          <ScalarProperty Name="tb_Vacante_id" ColumnName="tb_Vacante_id" />
           <ScalarProperty Name="tb_Vacantes_cargo" ColumnName="tb_Vacantes_cargo" />
           <ScalarProperty Name="tb_Vacantes_genero" ColumnName="tb_Vacantes_genero" />
           <ScalarProperty Name="tb_Vacantes_edadMax" ColumnName="tb_Vacantes_edadMax" />
@@ -580,37 +541,204 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Resultados_Evaluacion">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.Resultados_Evaluacion">
+        <MappingFragment StoreEntitySet="Resultados_Evaluacion">
+          <ScalarProperty Name="Numero_Evaluacion" ColumnName="Numero_Evaluacion" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Nombre_Indicador" ColumnName="Nombre_Indicador" />
+          <ScalarProperty Name="Tipo_Nivel_Evaluativo" ColumnName="Tipo_Nivel_Evaluativo" />
+          <ScalarProperty Name="Nombre_Fortalezas" ColumnName="Nombre_Fortalezas" />
+          <ScalarProperty Name="Nombre_Debilidades" ColumnName="Nombre_Debilidades" />
+          <ScalarProperty Name="Fecha_Evaluacion" ColumnName="Fecha_Evaluacion" />
+          <ScalarProperty Name="Nota_Indicador" ColumnName="Nota_Indicador" />
+          <ScalarProperty Name="Total_Evaluacion" ColumnName="Total_Evaluacion" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="cod" ColumnName="cod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Adm_Bitacora_Transaccional">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.TB_Adm_Bitacora_Transaccional">
+        <MappingFragment StoreEntitySet="TB_Adm_Bitacora_Transaccional">
+          <ScalarProperty Name="id_bitacora_transaccional" ColumnName="id_bitacora_transaccional" />
+          <ScalarProperty Name="id_sesion" ColumnName="id_sesion" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="Tipo_Registro" ColumnName="Tipo_Registro" />
+          <ScalarProperty Name="Tabla_Asociada" ColumnName="Tabla_Asociada" />
+          <ScalarProperty Name="Identificador_Registro" ColumnName="Identificador_Registro" />
+          <ScalarProperty Name="Campos" ColumnName="Campos" />
+          <ScalarProperty Name="Antiguos_Registros" ColumnName="Antiguos_Registros" />
+          <ScalarProperty Name="Nuevos_Registros" ColumnName="Nuevos_Registros" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DEDUCCIONES">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_DEDUCCIONES">
+        <MappingFragment StoreEntitySet="VW_DEDUCCIONES">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DEVENGADOS">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_DEVENGADOS">
+        <MappingFragment StoreEntitySet="VW_DEVENGADOS">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DIAS_TRABAJO_EMP">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_DIAS_TRABAJO_EMP">
+        <MappingFragment StoreEntitySet="VW_DIAS_TRABAJO_EMP">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="TOTAL_HORAS" ColumnName="TOTAL_HORAS" />
+          <ScalarProperty Name="TOTAL_HORAS_EXTRA" ColumnName="TOTAL_HORAS_EXTRA" />
+          <ScalarProperty Name="TOTAL_HORAS_AUSENTE" ColumnName="TOTAL_HORAS_AUSENTE" />
+          <ScalarProperty Name="HORAS_PERMISO" ColumnName="HORAS_PERMISO" />
+          <ScalarProperty Name="FECHA_INTEGRACION" ColumnName="FECHA_INTEGRACION" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="SALARIO_HORA" ColumnName="SALARIO_HORA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_EMP">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_EMP">
+        <MappingFragment StoreEntitySet="VW_EMP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FECHA_INTEGRACION" ColumnName="FECHA_INTEGRACION" />
+          <ScalarProperty Name="SALARIO_HORA" ColumnName="SALARIO_HORA" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_ENTRADA_SALIDA">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_ENTRADA_SALIDA">
+        <MappingFragment StoreEntitySet="VW_ENTRADA_SALIDA">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="TOTAL_HORAS" ColumnName="TOTAL_HORAS" />
+          <ScalarProperty Name="HORAS_EXTRA" ColumnName="HORAS_EXTRA" />
+          <ScalarProperty Name="HORAS_AUSENTE" ColumnName="HORAS_AUSENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_NOMINA">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_NOMINA">
+        <MappingFragment StoreEntitySet="VW_NOMINA">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="FECHA_INTEGRACION" ColumnName="FECHA_INTEGRACION" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="SALARIO_HORA" ColumnName="SALARIO_HORA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TOTAL_HORAS_TRABAJADAS" ColumnName="TOTAL_HORAS_TRABAJADAS" />
+          <ScalarProperty Name="TOTAL_HORAS_EXTRA" ColumnName="TOTAL_HORAS_EXTRA" />
+          <ScalarProperty Name="TOTAL_HORAS_AUSENTE" ColumnName="TOTAL_HORAS_AUSENTE" />
+          <ScalarProperty Name="TOTAL_HORAS_PERMISO" ColumnName="TOTAL_HORAS_PERMISO" />
+          <ScalarProperty Name="TOTAL_DIAS_VACACIONES" ColumnName="TOTAL_DIAS_VACACIONES" />
+          <ScalarProperty Name="SALARIO_BASE" ColumnName="SALARIO_BASE" />
+          <ScalarProperty Name="IR" ColumnName="IR" />
+          <ScalarProperty Name="INSS" ColumnName="INSS" />
+          <ScalarProperty Name="AGUINALDO" ColumnName="AGUINALDO" />
+          <ScalarProperty Name="TOTAL_PRESTAMOS" ColumnName="TOTAL_PRESTAMOS" />
+          <ScalarProperty Name="MOVIMIENTOS_DEVENGADOS" ColumnName="MOVIMIENTOS_DEVENGADOS" />
+          <ScalarProperty Name="MOVIMIENTOS_DEDUCCIONES" ColumnName="MOVIMIENTOS_DEDUCCIONES" />
+          <ScalarProperty Name="TOTAL_DEVENGADOS" ColumnName="TOTAL_DEVENGADOS" />
+          <ScalarProperty Name="TOTAL_DEDUCCIONES" ColumnName="TOTAL_DEDUCCIONES" />
+          <ScalarProperty Name="PAGO_NETO" ColumnName="PAGO_NETO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_NOMINA_AGUINALDO">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_NOMINA_AGUINALDO">
+        <MappingFragment StoreEntitySet="VW_NOMINA_AGUINALDO">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="FECHA_INTEGRACION" ColumnName="FECHA_INTEGRACION" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="SALARIO_HORA" ColumnName="SALARIO_HORA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TOTAL_HORAS_TRABAJADAS" ColumnName="TOTAL_HORAS_TRABAJADAS" />
+          <ScalarProperty Name="TOTAL_HORAS_EXTRA" ColumnName="TOTAL_HORAS_EXTRA" />
+          <ScalarProperty Name="TOTAL_HORAS_AUSENTE" ColumnName="TOTAL_HORAS_AUSENTE" />
+          <ScalarProperty Name="TOTAL_HORAS_PERMISO" ColumnName="TOTAL_HORAS_PERMISO" />
+          <ScalarProperty Name="TOTAL_DIAS_VACACIONES" ColumnName="TOTAL_DIAS_VACACIONES" />
+          <ScalarProperty Name="SALARIO_BASE" ColumnName="SALARIO_BASE" />
+          <ScalarProperty Name="IR" ColumnName="IR" />
+          <ScalarProperty Name="INSS" ColumnName="INSS" />
+          <ScalarProperty Name="AGUINALDO" ColumnName="AGUINALDO" />
+          <ScalarProperty Name="TOTAL_PRESTAMOS" ColumnName="TOTAL_PRESTAMOS" />
+          <ScalarProperty Name="MOVIMIENTOS_DEVENGADOS" ColumnName="MOVIMIENTOS_DEVENGADOS" />
+          <ScalarProperty Name="MOVIMIENTOS_DEDUCCIONES" ColumnName="MOVIMIENTOS_DEDUCCIONES" />
+          <ScalarProperty Name="TOTAL_DEVENGADOS" ColumnName="TOTAL_DEVENGADOS" />
+          <ScalarProperty Name="TOTAL_DEDUCCIONES" ColumnName="TOTAL_DEDUCCIONES" />
+          <ScalarProperty Name="PAGO_NETO" ColumnName="PAGO_NETO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_QUINCENA_TRABAJO_EMP">
+      <EntityTypeMapping TypeName="DB_Recursos_HumanosModel.VW_QUINCENA_TRABAJO_EMP">
+        <MappingFragment StoreEntitySet="VW_QUINCENA_TRABAJO_EMP">
+          <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA_INICIO" ColumnName="DIA_INICIO" />
+          <ScalarProperty Name="DIA_FIN" ColumnName="DIA_FIN" />
+          <ScalarProperty Name="FECHA_INTEGRACION" ColumnName="FECHA_INTEGRACION" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="SALARIO_HORA" ColumnName="SALARIO_HORA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TOTAL_HORAS_TRABAJADAS" ColumnName="TOTAL_HORAS_TRABAJADAS" />
+          <ScalarProperty Name="TOTAL_HORAS_EXTRA" ColumnName="TOTAL_HORAS_EXTRA" />
+          <ScalarProperty Name="TOTAL_HORAS_AUSENTE" ColumnName="TOTAL_HORAS_AUSENTE" />
+          <ScalarProperty Name="TOTAL_HORAS_PERMISO" ColumnName="TOTAL_HORAS_PERMISO" />
+          <ScalarProperty Name="TOTAL_DIAS_VACACIONES" ColumnName="TOTAL_DIAS_VACACIONES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="capacitacion_empleado" TypeName="DB_Recursos_HumanosModel.capacitacion_empleado" StoreEntitySet="capacitacion_empleado">
       <EndProperty Name="capacitacion">
         <ScalarProperty Name="ID" ColumnName="ID_capacitacion" />
       </EndProperty>
       <EndProperty Name="Empleado">
-        <ScalarProperty Name="Id_Empleado" ColumnName="Id_empleado" />
+        <ScalarProperty Name="Id_Empleado" ColumnName="ID_empleado" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_Recursos_HumanosModel.Store.sp_helpdiagramdefinition">
+    <FunctionImportMapping FunctionName="DB_Recursos_HumanosModel.Store.OBTENER_VACACIONES_QUINCENA" FunctionImportName="OBTENER_VACACIONES_QUINCENA">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
+        <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.OBTENER_VACACIONES_QUINCENA_Result">
+          <ScalarProperty Name="TOTAL_DIAS" ColumnName="TOTAL_DIAS" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_Recursos_HumanosModel.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DB_Recursos_HumanosModel.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_Recursos_HumanosModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_Recursos_HumanosModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

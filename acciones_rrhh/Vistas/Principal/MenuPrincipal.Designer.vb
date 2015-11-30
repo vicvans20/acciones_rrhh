@@ -24,40 +24,24 @@
         <System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
             Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-            Me.NóminaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.EmpleadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.AccionesRRHHToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.VacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.SolicitarVacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.AdministrarVacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.PermisosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.ReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.PermisosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.MenuStrip1.SuspendLayout()
             Me.SuspendLayout()
             '
             'MenuStrip1
             '
             Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ControlLight
-            Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NóminaToolStripMenuItem, Me.AccionesRRHHToolStripMenuItem, Me.AyudaToolStripMenuItem})
+            Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AccionesRRHHToolStripMenuItem})
             Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
             Me.MenuStrip1.Name = "MenuStrip1"
             Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
             Me.MenuStrip1.TabIndex = 0
             Me.MenuStrip1.Text = "Acciones RRHH"
-            '
-            'NóminaToolStripMenuItem
-            '
-            Me.NóminaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EmpleadoToolStripMenuItem})
-            Me.NóminaToolStripMenuItem.Name = "NóminaToolStripMenuItem"
-            Me.NóminaToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
-            Me.NóminaToolStripMenuItem.Text = "Nómina"
-            '
-            'EmpleadoToolStripMenuItem
-            '
-            Me.EmpleadoToolStripMenuItem.Name = "EmpleadoToolStripMenuItem"
-            Me.EmpleadoToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
-            Me.EmpleadoToolStripMenuItem.Text = "Empleado"
             '
             'AccionesRRHHToolStripMenuItem
             '
@@ -85,23 +69,17 @@
             Me.AdministrarVacacionesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
             Me.AdministrarVacacionesToolStripMenuItem.Text = "Administrar Vacaciones"
             '
-            'PermisosToolStripMenuItem
-            '
-            Me.PermisosToolStripMenuItem.Name = "PermisosToolStripMenuItem"
-            Me.PermisosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-            Me.PermisosToolStripMenuItem.Text = "Permisos"
-            '
-            'AyudaToolStripMenuItem
-            '
-            Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
-            Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
-            Me.AyudaToolStripMenuItem.Text = "Ayuda"
-            '
             'ReporteToolStripMenuItem
             '
             Me.ReporteToolStripMenuItem.Name = "ReporteToolStripMenuItem"
             Me.ReporteToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
             Me.ReporteToolStripMenuItem.Text = "Reporte"
+            '
+            'PermisosToolStripMenuItem
+            '
+            Me.PermisosToolStripMenuItem.Name = "PermisosToolStripMenuItem"
+            Me.PermisosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+            Me.PermisosToolStripMenuItem.Text = "Permisos"
             '
             'MenuPrincipal
             '
@@ -121,13 +99,10 @@
 
         End Sub
         Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-        Friend WithEvents NóminaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-        Friend WithEvents EmpleadoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents AccionesRRHHToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents VacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents SolicitarVacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents AdministrarVacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-        Friend WithEvents AyudaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents PermisosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents ReporteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     End Class

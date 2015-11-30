@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class TB_Adm_OpcionesSistema
-    Public Property id_opciones As Short
+    Public Property id_opciones As Integer
     Public Property nombre_opciones As String
     Public Property desc_opciones As String
     Public Property modulo As String

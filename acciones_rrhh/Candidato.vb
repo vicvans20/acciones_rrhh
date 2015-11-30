@@ -11,9 +11,11 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Candidato
-    Public Property ID_Candidato As Integer
+    Public Property tb_Candidato_id As Integer
+    Public Property tb_Candidatos_FecSolicitud As Date
+    Public Property tb_Candidatos_cargoAspirar As String
     Public Property tb_Candidatos_nombres As String
-    Public Property tb_Candidatos_apellidos As Byte()
+    Public Property tb_Candidatos_apellidos As String
     Public Property tb_Candidatos_genero As Nullable(Of Boolean)
     Public Property tb_Candidatos_cedula As String
     Public Property tb_Candidatos_fecNac As Nullable(Of Date)
