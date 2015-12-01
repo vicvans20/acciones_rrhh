@@ -94,13 +94,13 @@
             'PermisoToolStripMenuItem
             '
             Me.PermisoToolStripMenuItem.Name = "PermisoToolStripMenuItem"
-            Me.PermisoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+            Me.PermisoToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
             Me.PermisoToolStripMenuItem.Text = "Permiso"
             '
             'VacacionToolStripMenuItem
             '
             Me.VacacionToolStripMenuItem.Name = "VacacionToolStripMenuItem"
-            Me.VacacionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+            Me.VacacionToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
             Me.VacacionToolStripMenuItem.Text = "Vacacion"
             '
             'MenuPrincipal
