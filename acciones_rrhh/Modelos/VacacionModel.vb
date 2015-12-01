@@ -2,7 +2,7 @@
     Public Class VacacionModel
         ' Calcula el saldo del empleado basado en sus vacaciones aprobadas.
         Public Shared Function calcular_saldo_vacaciones(eid As Integer)
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Try
                     Dim emp As New Empleado
                     emp = context.Empleado.Find(eid)

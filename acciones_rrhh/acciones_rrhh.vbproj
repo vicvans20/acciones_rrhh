@@ -79,73 +79,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Antecedentes.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="area.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Candidato.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="capacitacion.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cargo.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="centro_capacit.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Contrato.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Debilidades.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetEspecialidadesCand.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetEspecialidadesReq.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetIdiomasCand.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetIdiomasReq.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Documentacion.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Empleado.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="entradas.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Especialidades.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EspecialidadesReq.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Fortalezas.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Idiomas.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IdiomasRequeridos.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Indicadores.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Informacion_Academica.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="liquidaciones.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.vb">
@@ -164,88 +101,10 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VacacionModel.vb" />
-    <Compile Include="Niveles_Evaluativos.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OBTENER_VACACIONES_QUINCENA_Result.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Oficina.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="permisos.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="plan_estudio.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Profesiones.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Resultados_Evaluacion.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="salidas.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_Bitacora_Transaccional.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_OpcionesSistema.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_RolesDeUsuario.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_Sesion.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_Usuario.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_Usuario_OpcionesSistema.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_Adm_Usuario_Roles.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_CUOTA.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_DEDUCCION.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_DEVENGADO.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_ESTADO.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_MOVIMIENTO_DEDUCCION.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_MOVIMIENTO_DEVENGADO.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_NOMINA.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_PLAZO_PAGO.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_PRESTAMO.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TB_RECIBO_CUOTA.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tema.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="vacaciones.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Vacantes.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Permisos\RegistrarPermisos.Designer.vb">
@@ -258,15 +117,6 @@
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Principal\MenuPrincipal.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\Principal\MenuRRHH.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Vistas\Temp Empleado\RegistrarEmpleado.Designer.vb">
-      <DependentUpon>RegistrarEmpleado.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Temp Empleado\RegistrarEmpleado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\Vacaciones\AdministrarVacaciones.vb">
@@ -303,30 +153,6 @@
     <Compile Include="Vistas\Vacaciones\SolicitarVacaciones.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VW_DEDUCCIONES.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_DEVENGADOS.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_DIAS_TRABAJO_EMP.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_EMP.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_ENTRADA_SALIDA.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_NOMINA.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_NOMINA_AGUINALDO.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VW_QUINCENA_TRABAJO_EMP.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Vistas\Permisos\RegistrarPermisos.resx">
@@ -334,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Principal\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Temp Empleado\RegistrarEmpleado.resx">
-      <DependentUpon>RegistrarEmpleado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vacaciones\AdministrarVacaciones.resx">
       <DependentUpon>AdministrarVacaciones.vb</DependentUpon>
@@ -386,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controladores\" />
+    <Folder Include="Vistas\Temp Empleado\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imgs\icon-booking.png" />

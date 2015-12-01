@@ -15,11 +15,10 @@ Partial Public Class Contrato
     Public Property Fecha_Contratacion As Nullable(Of Date)
     Public Property Fecha_Fin As Nullable(Of Date)
     Public Property Id_Empleado As Nullable(Of Integer)
-    Public Property Id_Documento As Nullable(Of Integer)
     Public Property Id_Cargo As Nullable(Of Integer)
+    Public Property Documento As Byte()
+    Public Property Tipo_Documento As String
 
-    Public Overridable Property Cargo As Cargo
-    Public Overridable Property Documentacion As Documentacion
     Public Overridable Property Empleado As Empleado
 
 End Class

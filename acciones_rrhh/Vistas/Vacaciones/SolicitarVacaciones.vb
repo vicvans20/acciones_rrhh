@@ -2,7 +2,7 @@
     Public Class Solicitar_Vacaciones
         ' Cargar combo box al iniciar el form
         Private Sub Solicitar_Vacaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Dim empList = (From emp In context.Empleado Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "nombreC"
@@ -21,7 +21,7 @@
                 If DateDiff(DateInterval.Day, Me.dateInicio.SelectionStart, Me.dateFin.SelectionStart) + 1 > sal Then
                     Throw New ConstraintException("Su saldo de disponible no es suficiente para completar la solicitud.")
                 End If
-                Using context As New DB_Recursos_HumanosEntities
+                Using context As New DB_Recursos_HumanosEntities1
                     Dim emp As New Empleado
                     emp = context.Empleado.Find(cbEmpleados.SelectedValue)
                     If dateFin.SelectionStart > emp.Contrato.Last.Fecha_Fin Then

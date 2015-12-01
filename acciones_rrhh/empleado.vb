@@ -21,29 +21,11 @@ Partial Public Class Empleado
     Public Property Domicilio As String
     Public Property Estado As Boolean
     Public Property Id_Profesion As Integer
-    Public Property Id_Info_Academica As Integer
-    Public Property Id_Antecendete As Integer
     Public Property Id_area As Integer
     Public Property Id_Cargo As Integer
 
-    Public Overridable Property Antecedentes As Antecedentes
-    Public Overridable Property area As area
-    Public Overridable Property Cargo As Cargo
     Public Overridable Property Contrato As ICollection(Of Contrato) = New HashSet(Of Contrato)
-    Public Overridable Property entradas As ICollection(Of entradas) = New HashSet(Of entradas)
-    Public Overridable Property liquidaciones As ICollection(Of liquidaciones) = New HashSet(Of liquidaciones)
     Public Overridable Property permisos As ICollection(Of permisos) = New HashSet(Of permisos)
-    Public Overridable Property salidas As ICollection(Of salidas) = New HashSet(Of salidas)
-    Public Overridable Property TB_Adm_Usuario As ICollection(Of TB_Adm_Usuario) = New HashSet(Of TB_Adm_Usuario)
-    Public Overridable Property TB_MOVIMIENTO_DEVENGADO As ICollection(Of TB_MOVIMIENTO_DEVENGADO) = New HashSet(Of TB_MOVIMIENTO_DEVENGADO)
-    Public Overridable Property TB_MOVIMIENTO_DEDUCCION As ICollection(Of TB_MOVIMIENTO_DEDUCCION) = New HashSet(Of TB_MOVIMIENTO_DEDUCCION)
-    Public Overridable Property TB_NOMINA As ICollection(Of TB_NOMINA) = New HashSet(Of TB_NOMINA)
     Public Overridable Property vacaciones As ICollection(Of vacaciones) = New HashSet(Of vacaciones)
-    Public Overridable Property Informacion_Academica As Informacion_Academica
-    Public Overridable Property Profesiones As Profesiones
-    Public Overridable Property Resultados_Evaluacion As Resultados_Evaluacion
-    Public Overridable Property TB_PRESTAMO As ICollection(Of TB_PRESTAMO) = New HashSet(Of TB_PRESTAMO)
-    Public Overridable Property TB_RECIBO_CUOTA As ICollection(Of TB_RECIBO_CUOTA) = New HashSet(Of TB_RECIBO_CUOTA)
-    Public Overridable Property capacitacion As ICollection(Of capacitacion) = New HashSet(Of capacitacion)
 
 End Class

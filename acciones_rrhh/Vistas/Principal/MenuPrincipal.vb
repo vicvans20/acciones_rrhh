@@ -3,10 +3,6 @@ Namespace Vistas
     Public Class MenuPrincipal
 
         Private Sub EmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs)
-            'Open the child form into parent Form
-            Dim registrarEmpleado As New Vistas.RegistrarEmpleado()
-            registrarEmpleado.MdiParent = Me
-            registrarEmpleado.Show()
         End Sub
 
         Private Sub SolicitarVacacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitarVacacionesToolStripMenuItem.Click

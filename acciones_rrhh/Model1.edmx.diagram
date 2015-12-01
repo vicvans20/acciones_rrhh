@@ -4,117 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="13a801ca4a894ae29cb1ba07bce97fa4" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Antecedentes" Width="1.5" PointX="3" PointY="24.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.area" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Candidato" Width="1.5" PointX="10.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.capacitacion" Width="1.5" PointX="3" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Cargo" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.centro_capacit" Width="1.5" PointX="0.75" PointY="32" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Contrato" Width="1.5" PointX="10.5" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Debilidades" Width="1.5" PointX="10.25" PointY="45.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.DetEspecialidadesCand" Width="1.5" PointX="5.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.DetEspecialidadesReq" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.DetIdiomasCand" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.DetIdiomasReq" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Documentacion" Width="1.5" PointX="8.25" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Empleado" Width="1.5" PointX="5.25" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.entradas" Width="1.5" PointX="7.5" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Especialidades" Width="1.5" PointX="8" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.EspecialidadesReq" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Fortalezas" Width="1.5" PointX="10.25" PointY="47.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Idiomas" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.IdiomasRequeridos" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Indicadores" Width="1.5" PointX="10.25" PointY="49.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Informacion_Academica" Width="1.5" PointX="3" PointY="35.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.liquidaciones" Width="1.5" PointX="7.5" PointY="24" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Niveles_Evaluativos" Width="1.5" PointX="10.25" PointY="51.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Oficina" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.permisos" Width="1.5" PointX="7.5" PointY="28.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.plan_estudio" Width="1.5" PointX="0.75" PointY="28.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Profesiones" Width="1.5" PointX="3" PointY="37.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.salidas" Width="1.5" PointX="9.75" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_OpcionesSistema" Width="1.5" PointX="7.5" PointY="40.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_RolesDeUsuario" Width="1.5" PointX="10.5" PointY="42.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_Sesion" Width="1.5" PointX="9.75" PointY="32.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_Usuario" Width="1.5" PointX="7.5" PointY="32.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_Usuario_OpcionesSistema" Width="1.5" PointX="9.75" PointY="35.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_Usuario_Roles" Width="1.5" PointX="12.75" PointY="32.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_CUOTA" Width="1.5" PointX="9.75" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_DEDUCCION" Width="1.5" PointX="10.25" PointY="21.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_DEVENGADO" Width="1.5" PointX="11.25" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_ESTADO" Width="1.5" PointX="5.25" PointY="35.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_MOVIMIENTO_DEDUCCION" Width="1.5" PointX="12.5" PointY="24" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_MOVIMIENTO_DEVENGADO" Width="1.5" PointX="13.5" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_NOMINA" Width="1.5" PointX="7.5" PointY="43.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_PLAZO_PAGO" Width="1.5" PointX="5.25" PointY="37.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_PRESTAMO" Width="1.5" PointX="7.5" PointY="35.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_RECIBO_CUOTA" Width="1.5" PointX="15" PointY="33.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.tema" Width="1.5" PointX="3" PointY="32.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.vacaciones" Width="1.5" PointX="7.5" PointY="54.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Vacantes" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Resultados_Evaluacion" Width="1.5" PointX="12.5" PointY="35.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.TB_Adm_Bitacora_Transaccional" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_DEDUCCIONES" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_DEVENGADOS" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_DIAS_TRABAJO_EMP" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_EMP" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_ENTRADA_SALIDA" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_NOMINA" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_NOMINA_AGUINALDO" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_QUINCENA_TRABAJO_EMP" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Antecedente_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__capacitac__ID_ar__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Area_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Candidato_Especialidades" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Candidato_Idiomas" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__capacitac__ID_ce__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__capacitac__ID_pl__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Cargo_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Cargo_Oficina" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Contrato_Cargo" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Contrato_Documentacion" ManuallyRouted="false" />
+      <Diagram DiagramId="937c4f1140774d3f9393065e1d0d6f4d" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Contrato" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Empleado" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.permisos" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.vacaciones" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Contrato_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Resultados_Evaluacion_Debilidades" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Especialidades_DetEspecialidadesCand" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_EspecialidadesReq_DetEspecialidadesReq" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Idiomas_DetIdiomasCand" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_IdiomasRequeridos_DetIdiomasReq" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__entradas__Id_Emp__6B24EA82" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__liquidaci__Id_Em__72C60C4A" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__permisos__Id_Emp__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__salidas__Id_Empl__6E01572D" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__TB_Adm_Us__Id_Em__17F790F9" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__TB_MOVIMI__EMPLE__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__TB_MOVIMI__EMPLE__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__TB_NOMINA__EMPLE__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__vacacione__Id_Em__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Empleado_Informacion_Academica" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Empleado_Profesiones" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Resultados_Evaluacion_Empleados" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_PRESTAMO_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_RECIBO_CUOTA_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__salidas__id_entr__6EF57B66" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Vacantes_EspecialidadesReq" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Resultados_Evaluacion_Fortalezas" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Vacantes_IdiomasRequeridos" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Resultados_Evaluacion_Indicadores" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Resultados_Evaluacion_Niveles_Evaluativos" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__tema__ID_plan__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Usuario_OpcionesSistema_TB_Adm_OpcionesSistema" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Usuario_Roles_TB_Adm_RolesDeUsuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_Adm_Sesion_TB_Adm_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Usuario_OpcionesSistema_TB_Adm_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Usuario_Roles_TB_Adm_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_CUOTA_TB_PRESTAMO" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_RECIBO_CUOTA_TB_CUOTA" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__TB_MOVIMI__ID_DE__7D439ABD" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__TB_MOVIMI__ID_DE__797309D9" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_PRESTAMO_TB_ESTADO" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_prestamo_pagoPlazo" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_PRESTAMO_TB_PLAZO_PAGO" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK_TB_RECIBO_CUOTA_TB_PRESTAMO" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.capacitacion_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__permisos__Id_Emp__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__vacacione__Id_Em__5FB337D6" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

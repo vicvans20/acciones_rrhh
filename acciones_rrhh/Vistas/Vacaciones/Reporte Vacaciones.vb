@@ -2,12 +2,12 @@
     Public Class Reporte_Vacaciones
         Dim newC As New DataGridViewColumn
         Private Sub UpdateAvalaibleVacations(empId As Integer)
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Me.tbVaA.Text = Modelos.VacacionModel.calcular_saldo_vacaciones(empId)
             End Using
         End Sub
         Private Sub UpdateDataGridV(empId As Integer, filter As Boolean, fStart As Date, fEnd As Date)
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Dim vList
                 MessageBox.Show(filter)
                 MessageBox.Show(fStart)
@@ -32,7 +32,7 @@
             newC.Name = "Debitado"
             newC.CellTemplate = New DataGridViewTextBoxCell()
 
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Dim empList = (From emp In context.Empleado Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "nombreC"

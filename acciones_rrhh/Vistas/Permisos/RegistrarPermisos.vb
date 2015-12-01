@@ -2,7 +2,7 @@
     Public Class RegistrarPermisos
 
         Private Sub RegistrarPermisos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Dim empList = (From emp In context.Empleado Select New With {.id = emp.Id_Empleado, .nombreC = emp.Nombre & " " & emp.Apellido}).ToList
                 cbEmpleados.DataSource = empList
                 cbEmpleados.DisplayMember = "nombreC"
@@ -24,7 +24,7 @@
                 MessageBox.Show("La fecha de inicio no puede ser mayor o igual que la fecha de fin.")
                 Return
             End If
-            Using context As New DB_Recursos_HumanosEntities
+            Using context As New DB_Recursos_HumanosEntities1
                 Dim p As New permisos
                 p.fecha_inicio = dtInicio
                 p.fecha_fin = dtFin
