@@ -12,7 +12,7 @@
                 If filter = True Then
                     vList = (From v In context.vacaciones Where v.Id_Empleado = empId And v.fecha_inicio >= fStart And v.fecha_fin <= fEnd And v.aceptado = True Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
                 Else
-                    vList = (From v In context.vacaciones Where v.Id_Empleado = empId Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
+                    vList = (From v In context.vacaciones Where v.Id_Empleado = empId And v.aceptado = True Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
                 End If
                 DataGridView1.Columns.Clear()
                 DataGridView1.AutoGenerateColumns = True
