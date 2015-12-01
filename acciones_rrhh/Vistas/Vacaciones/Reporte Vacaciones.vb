@@ -9,11 +9,8 @@
         Private Sub UpdateDataGridV(empId As Integer, filter As Boolean, fStart As Date, fEnd As Date)
             Using context As New DB_Recursos_HumanosEntities1
                 Dim vList
-                MessageBox.Show(filter)
-                MessageBox.Show(fStart)
-                MessageBox.Show(fEnd)
                 If filter = True Then
-                    vList = (From v In context.vacaciones Where v.Id_Empleado = empId And v.fecha_inicio >= fStart And v.fecha_fin <= fEnd Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
+                    vList = (From v In context.vacaciones Where v.Id_Empleado = empId And v.fecha_inicio >= fStart And v.fecha_fin <= fEnd And v.aceptado = True Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
                 Else
                     vList = (From v In context.vacaciones Where v.Id_Empleado = empId Select New With {.FechaInicio = v.fecha_inicio, .FechaFin = v.fecha_fin, .Pagado = v.pagado}).ToList
                 End If

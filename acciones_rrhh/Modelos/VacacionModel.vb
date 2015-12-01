@@ -19,6 +19,7 @@
                 Catch ex As System.InvalidOperationException
                     MessageBox.Show("Hubo un error, porfavor verifique que el empleado seleccionado tiene un contrato asociado.")
                 Catch ex As Exception
+                    MessageBox.Show(ex.Message)
                     MessageBox.Show("Hubo un error, porfavor verifique que todos los datos esten en orden e intente de nuevo.")
                 End Try
                 Return 0

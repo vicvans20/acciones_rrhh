@@ -56,7 +56,49 @@
     <Property Name="pendiente_por_pagar" Type="bit" Nullable="false" />
     <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
-  <Association Name="FK__permisos__Id_Emp__6383C8BA">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_Permisos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_Permisos">
+    <Key>
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="fecha_inicio" />
+      <PropertyRef Name="fecha_fin" />
+      <PropertyRef Name="descripcion" />
+      <PropertyRef Name="categoria" />
+    </Key>
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cedula" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha_inicio" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="fecha_fin" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+    <Property Name="categoria" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_Recursos_Humanos.dbo.VW_Vacaciones' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_Vacaciones">
+    <Key>
+      <PropertyRef Name="Id_Empleado" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="fecha_inicio" />
+      <PropertyRef Name="fecha_fin" />
+      <PropertyRef Name="pagado" />
+    </Key>
+    <Property Name="Id_Empleado" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cedula" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Contratacion" Type="date" />
+    <Property Name="fecha_inicio" Type="date" Nullable="false" />
+    <Property Name="fecha_fin" Type="date" Nullable="false" />
+    <Property Name="pagado" Type="bit" Nullable="false" />
+    <Property Name="Debidato" Type="int" />
+  </EntityType>
+  <Association Name="FK__permisos__Id_Emp__1F98B2C1">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
     <ReferentialConstraint>
@@ -68,7 +110,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__vacacione__Id_Em__5FB337D6">
+  <Association Name="FK__vacacione__Id_Em__3A4CA8FD">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="vacaciones" Type="Self.vacaciones" Multiplicity="*" />
     <ReferentialConstraint>
@@ -97,11 +139,35 @@
     <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="permisos" EntityType="Self.permisos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vacaciones" EntityType="Self.vacaciones" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__permisos__Id_Emp__6383C8BA" Association="Self.FK__permisos__Id_Emp__6383C8BA">
+    <EntitySet Name="VW_Permisos" EntityType="Self.VW_Permisos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_Permisos].[Nombre] AS [Nombre], 
+    [VW_Permisos].[Apellido] AS [Apellido], 
+    [VW_Permisos].[Cedula] AS [Cedula], 
+    [VW_Permisos].[fecha_inicio] AS [fecha_inicio], 
+    [VW_Permisos].[fecha_fin] AS [fecha_fin], 
+    [VW_Permisos].[descripcion] AS [descripcion], 
+    [VW_Permisos].[categoria] AS [categoria]
+    FROM [dbo].[VW_Permisos] AS [VW_Permisos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_Vacaciones" EntityType="Self.VW_Vacaciones" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_Vacaciones].[Id_Empleado] AS [Id_Empleado], 
+    [VW_Vacaciones].[Nombre] AS [Nombre], 
+    [VW_Vacaciones].[Apellido] AS [Apellido], 
+    [VW_Vacaciones].[Cedula] AS [Cedula], 
+    [VW_Vacaciones].[Fecha_Contratacion] AS [Fecha_Contratacion], 
+    [VW_Vacaciones].[fecha_inicio] AS [fecha_inicio], 
+    [VW_Vacaciones].[fecha_fin] AS [fecha_fin], 
+    [VW_Vacaciones].[pagado] AS [pagado], 
+    [VW_Vacaciones].[Debidato] AS [Debidato]
+    FROM [dbo].[VW_Vacaciones] AS [VW_Vacaciones]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__permisos__Id_Emp__1F98B2C1" Association="Self.FK__permisos__Id_Emp__1F98B2C1">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="permisos" EntitySet="permisos" />
     </AssociationSet>
-    <AssociationSet Name="FK__vacacione__Id_Em__5FB337D6" Association="Self.FK__vacacione__Id_Em__5FB337D6">
+    <AssociationSet Name="FK__vacacione__Id_Em__3A4CA8FD" Association="Self.FK__vacacione__Id_Em__3A4CA8FD">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="vacaciones" EntitySet="vacaciones" />
     </AssociationSet>

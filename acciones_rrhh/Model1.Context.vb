@@ -26,5 +26,7 @@ Partial Public Class DB_Recursos_HumanosEntities1
     Public Overridable Property Empleado() As DbSet(Of Empleado)
     Public Overridable Property permisos() As DbSet(Of permisos)
     Public Overridable Property vacaciones() As DbSet(Of vacaciones)
+    Public Overridable Property VW_Permisos() As DbSet(Of VW_Permisos)
+    Public Overridable Property VW_Vacaciones() As DbSet(Of VW_Vacaciones)
 
 End Class

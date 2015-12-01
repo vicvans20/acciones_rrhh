@@ -30,8 +30,8 @@
     <Property Name="Id_area" Type="Int32" Nullable="false" />
     <Property Name="Id_Cargo" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Contrato" Relationship="Self.FK_Contrato_Empleado" FromRole="Empleado" ToRole="Contrato" />
-    <NavigationProperty Name="permisos" Relationship="Self.FK__permisos__Id_Emp__6383C8BA" FromRole="Empleado" ToRole="permisos" />
-    <NavigationProperty Name="vacaciones" Relationship="Self.FK__vacacione__Id_Em__5FB337D6" FromRole="Empleado" ToRole="vacaciones" />
+    <NavigationProperty Name="permisos" Relationship="Self.FK__permisos__Id_Emp__1F98B2C1" FromRole="Empleado" ToRole="permisos" />
+    <NavigationProperty Name="vacaciones" Relationship="Self.FK__vacacione__Id_Em__3A4CA8FD" FromRole="Empleado" ToRole="vacaciones" />
   </EntityType>
   <EntityType Name="permisos">
     <Key>
@@ -45,7 +45,7 @@
     <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-    <NavigationProperty Name="Empleado" Relationship="Self.FK__permisos__Id_Emp__6383C8BA" FromRole="permisos" ToRole="Empleado" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__permisos__Id_Emp__1F98B2C1" FromRole="permisos" ToRole="Empleado" />
   </EntityType>
   <EntityType Name="vacaciones">
     <Key>
@@ -60,7 +60,45 @@
     <Property Name="pagado" Type="Boolean" Nullable="false" />
     <Property Name="pendiente_por_pagar" Type="Boolean" Nullable="false" />
     <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-    <NavigationProperty Name="Empleado" Relationship="Self.FK__vacacione__Id_Em__5FB337D6" FromRole="vacaciones" ToRole="Empleado" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__vacacione__Id_Em__3A4CA8FD" FromRole="vacaciones" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="VW_Permisos">
+    <Key>
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="fecha_inicio" />
+      <PropertyRef Name="fecha_fin" />
+      <PropertyRef Name="descripcion" />
+      <PropertyRef Name="categoria" />
+    </Key>
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_Vacaciones">
+    <Key>
+      <PropertyRef Name="Id_Empleado" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="fecha_inicio" />
+      <PropertyRef Name="fecha_fin" />
+      <PropertyRef Name="pagado" />
+    </Key>
+    <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha_Contratacion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="pagado" Type="Boolean" Nullable="false" />
+    <Property Name="Debidato" Type="Int32" />
   </EntityType>
   <Association Name="FK_Contrato_Empleado">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
@@ -74,7 +112,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__permisos__Id_Emp__6383C8BA">
+  <Association Name="FK__permisos__Id_Emp__1F98B2C1">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="permisos" Type="Self.permisos" Multiplicity="*" />
     <ReferentialConstraint>
@@ -86,7 +124,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__vacacione__Id_Em__5FB337D6">
+  <Association Name="FK__vacacione__Id_Em__3A4CA8FD">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="vacaciones" Type="Self.vacaciones" Multiplicity="*" />
     <ReferentialConstraint>
@@ -103,15 +141,17 @@
     <EntitySet Name="Empleado" EntityType="Self.Empleado" />
     <EntitySet Name="permisos" EntityType="Self.permisos" />
     <EntitySet Name="vacaciones" EntityType="Self.vacaciones" />
+    <EntitySet Name="VW_Permisos" EntityType="Self.VW_Permisos" />
+    <EntitySet Name="VW_Vacaciones" EntityType="Self.VW_Vacaciones" />
     <AssociationSet Name="FK_Contrato_Empleado" Association="Self.FK_Contrato_Empleado">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="Contrato" EntitySet="Contrato" />
     </AssociationSet>
-    <AssociationSet Name="FK__permisos__Id_Emp__6383C8BA" Association="Self.FK__permisos__Id_Emp__6383C8BA">
+    <AssociationSet Name="FK__permisos__Id_Emp__1F98B2C1" Association="Self.FK__permisos__Id_Emp__1F98B2C1">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="permisos" EntitySet="permisos" />
     </AssociationSet>
-    <AssociationSet Name="FK__vacacione__Id_Em__5FB337D6" Association="Self.FK__vacacione__Id_Em__5FB337D6">
+    <AssociationSet Name="FK__vacacione__Id_Em__3A4CA8FD" Association="Self.FK__vacacione__Id_Em__3A4CA8FD">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="vacaciones" EntitySet="vacaciones" />
     </AssociationSet>

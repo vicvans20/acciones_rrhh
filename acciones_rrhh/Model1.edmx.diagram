@@ -4,14 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="937c4f1140774d3f9393065e1d0d6f4d" Name="Diagram1">
+      <Diagram DiagramId="eb6e84cad2614c29a3f0904f434a835b" Name="Diagram1">
         <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Contrato" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_Recursos_HumanosModel.Empleado" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_Recursos_HumanosModel.permisos" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_Recursos_HumanosModel.vacaciones" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_Permisos" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Recursos_HumanosModel.VW_Vacaciones" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="DB_Recursos_HumanosModel.FK_Contrato_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__permisos__Id_Emp__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__vacacione__Id_Em__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__permisos__Id_Emp__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Recursos_HumanosModel.FK__vacacione__Id_Em__3A4CA8FD" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
