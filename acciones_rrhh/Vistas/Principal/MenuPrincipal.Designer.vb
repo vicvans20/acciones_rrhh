@@ -30,6 +30,9 @@
             Me.AdministrarVacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.ReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.PermisosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.PermisoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.VacacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.MenuStrip1.SuspendLayout()
             Me.SuspendLayout()
             '
@@ -45,7 +48,7 @@
             '
             'AccionesRRHHToolStripMenuItem
             '
-            Me.AccionesRRHHToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VacacionesToolStripMenuItem, Me.PermisosToolStripMenuItem})
+            Me.AccionesRRHHToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VacacionesToolStripMenuItem, Me.PermisosToolStripMenuItem, Me.ReportesToolStripMenuItem})
             Me.AccionesRRHHToolStripMenuItem.Name = "AccionesRRHHToolStripMenuItem"
             Me.AccionesRRHHToolStripMenuItem.Size = New System.Drawing.Size(102, 20)
             Me.AccionesRRHHToolStripMenuItem.Text = "Acciones RRHH"
@@ -81,6 +84,25 @@
             Me.PermisosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
             Me.PermisosToolStripMenuItem.Text = "Permisos"
             '
+            'ReportesToolStripMenuItem
+            '
+            Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PermisoToolStripMenuItem, Me.VacacionToolStripMenuItem})
+            Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
+            Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+            Me.ReportesToolStripMenuItem.Text = "Reportes"
+            '
+            'PermisoToolStripMenuItem
+            '
+            Me.PermisoToolStripMenuItem.Name = "PermisoToolStripMenuItem"
+            Me.PermisoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+            Me.PermisoToolStripMenuItem.Text = "Permiso"
+            '
+            'VacacionToolStripMenuItem
+            '
+            Me.VacacionToolStripMenuItem.Name = "VacacionToolStripMenuItem"
+            Me.VacacionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+            Me.VacacionToolStripMenuItem.Text = "Vacacion"
+            '
             'MenuPrincipal
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -105,5 +127,8 @@
         Friend WithEvents AdministrarVacacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents PermisosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents ReporteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents ReportesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents PermisoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+        Friend WithEvents VacacionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     End Class
 End Namespace
