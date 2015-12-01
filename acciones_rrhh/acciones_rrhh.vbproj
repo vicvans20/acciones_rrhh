@@ -158,6 +158,12 @@
     <Compile Include="Vistas\Vacaciones\Reporte Vacaciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\Vacaciones\ReporteV.Designer.vb">
+      <DependentUpon>ReporteV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Vacaciones\ReporteV.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\Vacaciones\SolicitarVacaciones.Designer.vb">
       <DependentUpon>SolicitarVacaciones.vb</DependentUpon>
     </Compile>
@@ -173,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reporte\Report1.rdlc" />
+    <EmbeddedResource Include="Reporte\RP_Vacaciones.rdlc" />
     <EmbeddedResource Include="Vistas\Permisos\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vacaciones\Reporte Vacaciones.resx">
       <DependentUpon>Reporte Vacaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Vacaciones\ReporteV.resx">
+      <DependentUpon>ReporteV.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vacaciones\SolicitarVacaciones.resx">
       <DependentUpon>SolicitarVacaciones.vb</DependentUpon>
@@ -221,6 +231,7 @@
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\DataSources\VW_Permisos.datasource" />
+    <None Include="My Project\DataSources\VW_Vacaciones.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

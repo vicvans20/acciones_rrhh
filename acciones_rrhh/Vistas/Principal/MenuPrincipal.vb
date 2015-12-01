@@ -34,5 +34,11 @@ Namespace Vistas
             reporteP.MdiParent = Me
             reporteP.Show()
         End Sub
+
+        Private Sub VacacionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VacacionToolStripMenuItem.Click
+            Dim reporteV As New Vistas.ReporteV
+            reporteV.MdiParent = Me
+            reporteV.Show()
+        End Sub
     End Class
 End Namespace

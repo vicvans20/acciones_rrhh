@@ -40,3 +40,4 @@ C:\Users\Vicvans\Downloads\acciones_rrhh-master\acciones_rrhh\bin\Debug\EntityFr
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.ReportePermiso.resources
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\RdlCompile.cache
 C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\RdlCompile.compiled
+C:\Users\Vicvans\Documents\rrhh\acciones_rrhh\acciones_rrhh\obj\Debug\WindowsApplication1.Vistas.ReporteV.resources
